@@ -193,7 +193,7 @@ const Footer = () => {
               <CustomLink to="/">الرئيسية</CustomLink>
               <CustomLink to="/about-us">من نحن</CustomLink>
               <CustomLink to="/contact-us">اتصل بنا</CustomLink>
-              <CustomLink to="/">انضم ككابتن</CustomLink>
+              <CustomLink to="https://register.captingirl.com/#/Registration">انضم ككابتن</CustomLink>
             </List>
           </Pages>
           <Legal>
@@ -301,7 +301,7 @@ const Footer = () => {
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to="https://snapchat.com/add/capgill">
+                <IconLink to={{pathname:"https://snapchat.com/add/capgill"}} target="_blank">
                   <img src={SnapChat} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>

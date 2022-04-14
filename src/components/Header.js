@@ -58,7 +58,7 @@ const Label = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = ({ setMenuState }) => {
   return (
     <>
       <NavLogo>
@@ -137,7 +137,7 @@ const Header = () => {
       </NavLogo>
       <Button>
         <Label>En</Label>
-        <Col>
+        <Col onClick={() => setMenuState(true)}>
           <Dash />
           <Dash style={{ marginTop: 4, width: 18 }} />
         </Col>

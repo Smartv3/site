@@ -321,7 +321,7 @@ const Menu = ({ setMenuState }) => {
             <CustomLink to="/">الرئيسية</CustomLink>
             <CustomLink to="/about-us">من نحن</CustomLink>
             <CustomLink to="/contact-us">اتصل بنا</CustomLink>
-            <CustomLink to="/">انضم ككابتن</CustomLink>
+            <CustomLink to={{pathname:"https://register.captingirl.com/#/Registration"}}>انضم ككابتن</CustomLink>
             <CustomLink to="/latest-news">اخبارنا</CustomLink>
             <CustomLink to="/term-and-condition">الشروط والاحكام</CustomLink>
             <CustomLink to="/privacy-and-policy">سياسة الخصوصية</CustomLink>

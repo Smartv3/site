@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import MainVideo from "../assets/Video/sequence.mp4";
+import ImageUrl from "../assets/Images/aboutUs.jpg";
 
-const VideoContainer = styled.section`
+const ImageContainer = styled.section`
   width: 100%;
   height: 100vh;
   position: fixed;
 
-  video {
+  img {
     width: 100%;
     height: 100vh;
     object-fit: cover;
@@ -87,13 +87,13 @@ const Label = styled.div`
   }
 `;
 
-const CoverVideo = ({ setMenuState }) => {
+const AboutUsCover = ({ setMenuState }) => {
   return (
     <>
-      <VideoContainer>
+      <ImageContainer>
         <DarkOverlay />
-        <video src={MainVideo} type="video/mp4" autoPlay muted loop />
-      </VideoContainer>
+        <img src={ImageUrl} alt="About us cover"/>
+      </ImageContainer>
       <NavLogo>
         <Link to="/">
           <svg
@@ -179,4 +179,5 @@ const CoverVideo = ({ setMenuState }) => {
   );
 };
 
-export default CoverVideo;
+export default AboutUsCover;
+
