@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Instagram from "../assets/Svgs/instagram.svg";
 import Youtube from "../assets/Svgs/youtube.svg";
@@ -174,7 +174,7 @@ const LatestCardImage = styled.div`
   text-decoration: none;
 `;
 
-const CustomLink = styled(Link)`
+const CustomLink = styled(NavLink)`
   color: #9e9e9e;
   font-size: 1.6vw;
   margin-bottom: 16px;
@@ -318,13 +318,13 @@ const Menu = ({ setMenuState }) => {
       <Container>
         <MenuSection>
           <List>
-            <CustomLink to="/">الرئيسية</CustomLink>
-            <CustomLink to="/about-us">من نحن</CustomLink>
-            <CustomLink to="/contact-us">اتصل بنا</CustomLink>
-            <CustomLink to={{pathname:"https://register.captingirl.com/#/Registration"}}>انضم ككابتن</CustomLink>
-            <CustomLink to="/latest-news">اخبارنا</CustomLink>
-            <CustomLink to="/term-and-condition">الشروط والاحكام</CustomLink>
-            <CustomLink to="/privacy-and-policy">سياسة الخصوصية</CustomLink>
+            <CustomLink style={isActive => ({ color: isActive ? "green" : "blue" })} to="/">الرئيسية</CustomLink>
+            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/about-us">من نحن</CustomLink>
+            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/contact-us">اتصل بنا</CustomLink>
+            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to={{pathname:"https://register.captingirl.com/#/Registration"}}>انضم ككابتن</CustomLink>
+            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/latest-news">اخبارنا</CustomLink>
+            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/term-and-condition">الشروط والاحكام</CustomLink>
+            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/privacy-and-policy">سياسة الخصوصية</CustomLink>
           </List>
           <LatestNews>
             <NewsLabel>

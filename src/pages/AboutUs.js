@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
+import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 import AboutUsCover from "../components/AboutUsCover";
 import Footer from "../components/Footer";
 import AboutUsImage from "../assets/Images/about3.jpg";
@@ -113,194 +115,209 @@ const AboutUs = () => {
   const containerRef = useRef(null);
   return (
     <>
-      <AboutUsCover setMenuState={setMenuState} />
-      {menuState && <Menu setMenuState={setMenuState} />}
-      <main data-scroll-container ref={containerRef}>
-        <Section>
-          <Container>
-            <Label
-              data-scroll="0"
-              data-scroll-speed="1"
-              data-scroll-delay="0.1"
-            >
-              <p>من نحن</p>
-            </Label>
-            <Paragraph
-              data-scroll="0"
-              data-scroll-speed="1"
-              data-scroll-delay="0.1"
-            >
-              <p>تطبيق سعودي يواكب</p>
-              <p>تطلعات رؤية 2030 طموحنا عنان</p>
-              <p>السماء</p>
-            </Paragraph>
-          </Container>
-        </Section>
-        <AboutUsSection>
-          <BodySection>
+      <LocomotiveScrollProvider
+        options={{
+          smooth: true,
+          // ... all available Locomotive Scroll instance options
+        }}
+        watch={
+          [
+            //..all the dependencies you want to watch to update the scroll.
+            //  Basicaly, you would want to watch page/location changes
+            //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
+          ]
+        }
+        containerRef={containerRef}
+      >
+        <AboutUsCover setMenuState={setMenuState} />
+        {menuState && <Menu setMenuState={setMenuState} />}
+        <main data-scroll-container ref={containerRef}>
+          <Section>
             <Container>
-              <ParagraphTwo>
-                <div
-                  data-scroll="0"
-                  data-scroll-speed="1.2"
-                  data-scroll-delay="0.8"
-                  class="p-wrap is-inview"
-                  style={{
-                    color: "#000",
-                    fontSize: "2vw",
-                    lineHeight: "120%",
-                    fontWeight: 400,
-                    marginBottom: "10px",
-                  }}
-                >
-                  <p>
-                    تطبيق كابتن جيرل <br /> الاأول من نوعه في المملكة العربية
-                    السعودية
-                  </p>
-                </div>
-                <div
-                  data-scroll="0"
-                  data-scroll-speed="1.2"
-                  data-scroll-delay="0.8"
-                  style={{
-                    color: "#000",
-                    fontSize: "0.85vw",
-                    lineHeight: "150%",
-                    letterSpacing: 0.3,
-                    marginBottom: "10px",
-                  }}
-                >
-                  <div>
-                    <p>
-                      كابتن جيرل من الفرد الى المجتمع يعمل على توفير وسيلة نقل
-                      سريعةوآمنة في أي وقت لنقل جميع أفراد المجتمع و الطلاب و
-                      الموظفين حتى الاأطفال علي مدار ٢٤ ساعة.
-                    </p>
-                    <p>
-                      و لان الخصوصية مبدأنا ختار كابتن رحلتك من النساء فقط او
-                      النساد و الرجال و استمتع بالخصوصية و الأمان.
-                    </p>
-                    <p>
-                      في رؤيتنا نسع اتلبية اتياجات السوق السعودي و خلق بيئة عمل
-                      جاذبة و متصدره في هذا المشروع بخدمة المجتمع و تحقيق
-                      طموحاته في مجال أكثر خصوصية.
-                    </p>
-                    <p></p>
-                  </div>
-                </div>
-                <div
-                  data-scroll="0"
-                  data-scroll-speed="1.2"
-                  data-scroll-delay="0.8"
-                  class="p-wrap is-inview"
-                  style={{
-                    color: "#000",
-                    fontSize: "2vw",
-                    lineHeight: "120%",
-                    fontWeight: 400,
-                    marginBottom: "10px",
-                  }}
-                >
-                  <p>قيمنا</p>
-                </div>
-                <div
-                  data-scroll="0"
-                  data-scroll-speed="1.2"
-                  data-scroll-delay="0.8"
-                  style={{
-                    color: "#000",
-                    fontSize: "0.85vw",
-                    lineHeight: "150%",
-                    letterSpacing: 0.3,
-                    marginBottom: "10px",
-                  }}
-                >
-                  <div>
-                    <p>
-                      <strong>الهمة:</strong> نسعى دائما لخلق فرص تسهل من سير
-                      الحياة بستخدام استراتيجيات ذكية ومبتكرة.
-                    </p>
-                    <p>
-                      <strong>التأقلم:</strong> نتكيف مع احتياجات عملائنا
-                      المتغيرة وظروف السوق لنقدم لكم خدمات تلبي رغباتكم.
-                    </p>
-                    <p>
-                      <strong>معاير السلامة :</strong> سلامتكم مسؤليتنا لذلك
-                      نستخدم اجود اساليب الامن و السلامة
-                    </p>
-                  </div>
-                </div>
-                <div
-                  data-scroll="0"
-                  data-scroll-speed="1.2"
-                  data-scroll-delay="0.8"
-                  class="p-wrap is-inview"
-                  style={{
-                    color: "#000",
-                    fontSize: "2vw",
-                    lineHeight: "120%",
-                    fontWeight: 400,
-                    marginBottom: "10px",
-                  }}
-                >
-                  <p>هلا بالكابتن شريك النجاح</p>
-                </div>
-                <div
-                  data-scroll="0"
-                  data-scroll-speed="1.2"
-                  data-scroll-delay="0.8"
-                  style={{
-                    color: "#000",
-                    fontSize: "0.85vw",
-                    lineHeight: "150%",
-                    letterSpacing: 0.3,
-                    marginBottom: "10px",
-                  }}
-                >
-                  <div>
-                    <p>
-                      <strong>-</strong> سيارتك صارت مشروعك متعة قيادتك حولها
-                      الى أرباح.
-                    </p>
-                    <p>
-                      <strong>-</strong> حسب احتياجك أختر دخلك راتب شهري أو
-                      نسبة.
-                    </p>
-                    <p>
-                      <strong>-</strong> فريقنا معك طوال رحلتك للتأكد من راحتك
-                      وراحة عميلك.
-                    </p>
-                    <p>
-                      <strong>-</strong> لأن راحتك مطلبناوخصوصيتك اولويتنا أختر
-                      عميلك من فئة النساء فقط أو النساء و الرجال.
-                    </p>
-                  </div>
-                </div>
-              </ParagraphTwo>
-              <ImageContainer>
-                <div
-                  data-scroll="0"
-                  data-scroll-speed="3"
-                  data-scroll-delay="0.4"
-                >
+              <Label
+                data-scroll="0"
+                data-scroll-speed="1"
+                data-scroll-delay="0.1"
+              >
+                <p>من نحن</p>
+              </Label>
+              <Paragraph
+                data-scroll="0"
+                data-scroll-speed="1"
+                data-scroll-delay="0.1"
+              >
+                <p>تطبيق سعودي يواكب</p>
+                <p>تطلعات رؤية 2030 طموحنا عنان</p>
+                <p>السماء</p>
+              </Paragraph>
+            </Container>
+          </Section>
+          <AboutUsSection>
+            <BodySection>
+              <Container>
+                <ParagraphTwo>
                   <div
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    class="p-wrap is-inview"
                     style={{
-                      display: "flex",
-                      width: "100%",
-                      height: "70vh",
-                      justifyContent: "space-between",
-                      alignItems: "stretch",
+                      color: "#000",
+                      fontSize: "2vw",
+                      lineHeight: "120%",
+                      fontWeight: 400,
+                      marginBottom: "10px",
                     }}
                   >
-                    <img src={AboutUsImage} alt="About" />
+                    <p>
+                      تطبيق كابتن جيرل <br /> الاأول من نوعه في المملكة العربية
+                      السعودية
+                    </p>
                   </div>
-                </div>
-              </ImageContainer>
-            </Container>
-          </BodySection>
-        </AboutUsSection>
-        <Footer />
-      </main>
+                  <div
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    style={{
+                      color: "#000",
+                      fontSize: "0.85vw",
+                      lineHeight: "150%",
+                      letterSpacing: 0.3,
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <div>
+                      <p>
+                        كابتن جيرل من الفرد الى المجتمع يعمل على توفير وسيلة نقل
+                        سريعةوآمنة في أي وقت لنقل جميع أفراد المجتمع و الطلاب و
+                        الموظفين حتى الاأطفال علي مدار ٢٤ ساعة.
+                      </p>
+                      <p>
+                        و لان الخصوصية مبدأنا ختار كابتن رحلتك من النساء فقط او
+                        النساد و الرجال و استمتع بالخصوصية و الأمان.
+                      </p>
+                      <p>
+                        في رؤيتنا نسع اتلبية اتياجات السوق السعودي و خلق بيئة
+                        عمل جاذبة و متصدره في هذا المشروع بخدمة المجتمع و تحقيق
+                        طموحاته في مجال أكثر خصوصية.
+                      </p>
+                      <p></p>
+                    </div>
+                  </div>
+                  <div
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    class="p-wrap is-inview"
+                    style={{
+                      color: "#000",
+                      fontSize: "2vw",
+                      lineHeight: "120%",
+                      fontWeight: 400,
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <p>قيمنا</p>
+                  </div>
+                  <div
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    style={{
+                      color: "#000",
+                      fontSize: "0.85vw",
+                      lineHeight: "150%",
+                      letterSpacing: 0.3,
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <div>
+                      <p>
+                        <strong>الهمة:</strong> نسعى دائما لخلق فرص تسهل من سير
+                        الحياة بستخدام استراتيجيات ذكية ومبتكرة.
+                      </p>
+                      <p>
+                        <strong>التأقلم:</strong> نتكيف مع احتياجات عملائنا
+                        المتغيرة وظروف السوق لنقدم لكم خدمات تلبي رغباتكم.
+                      </p>
+                      <p>
+                        <strong>معاير السلامة :</strong> سلامتكم مسؤليتنا لذلك
+                        نستخدم اجود اساليب الامن و السلامة
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    class="p-wrap is-inview"
+                    style={{
+                      color: "#000",
+                      fontSize: "2vw",
+                      lineHeight: "120%",
+                      fontWeight: 400,
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <p>هلا بالكابتن شريك النجاح</p>
+                  </div>
+                  <div
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    style={{
+                      color: "#000",
+                      fontSize: "0.85vw",
+                      lineHeight: "150%",
+                      letterSpacing: 0.3,
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <div>
+                      <p>
+                        <strong>-</strong> سيارتك صارت مشروعك متعة قيادتك حولها
+                        الى أرباح.
+                      </p>
+                      <p>
+                        <strong>-</strong> حسب احتياجك أختر دخلك راتب شهري أو
+                        نسبة.
+                      </p>
+                      <p>
+                        <strong>-</strong> فريقنا معك طوال رحلتك للتأكد من راحتك
+                        وراحة عميلك.
+                      </p>
+                      <p>
+                        <strong>-</strong> لأن راحتك مطلبناوخصوصيتك اولويتنا
+                        أختر عميلك من فئة النساء فقط أو النساء و الرجال.
+                      </p>
+                    </div>
+                  </div>
+                </ParagraphTwo>
+                <ImageContainer>
+                  <div
+                    data-scroll="0"
+                    data-scroll-speed="3"
+                    data-scroll-delay="0.4"
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "100%",
+                        height: "70vh",
+                        justifyContent: "space-between",
+                        alignItems: "stretch",
+                      }}
+                    >
+                      <img src={AboutUsImage} alt="About" />
+                    </div>
+                  </div>
+                </ImageContainer>
+              </Container>
+            </BodySection>
+          </AboutUsSection>
+          <Footer />
+        </main>
+      </LocomotiveScrollProvider>
     </>
   );
 };
