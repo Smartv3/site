@@ -25,14 +25,18 @@ const Section = styled.section`
 const AboutUsSection = styled.section`
   direction: rtl;
   position: relative;
-  min-height: 100vh;
-  height: 100vh;
+  /* min-height: 100vh;
+  height: 100vh; */
   overflow: hidden;
   width: 100%;
   padding-top: 5vh;
   padding-bottom: 5vh;
   background-color: #fff;
   color: #101010;
+  @media (max-width: 768px) {
+    padding-top: 0vh;
+    padding-bottom: 0vh;
+  }
 `;
 
 const Container = styled.div`
@@ -56,6 +60,9 @@ const Container = styled.div`
 
 const BodySection = styled.div`
   padding: 10vh 8vw;
+  @media (max-width: 768px) {
+    padding: 5vh 8vw;
+  }
 `;
 
 const Label = styled.div`
@@ -96,11 +103,29 @@ const Paragraph = styled.div`
   }
 `;
 
+const ImageSection = styled.div`
+  display: flex;
+  width: 100%;
+  height: 70vh;
+  justify-content: space-between;
+  align-items: stretch;
+  @media (max-width: 768px) {
+    height: 50vh;
+    justify-content: center;
+  }
+`;
+
 const ParagraphTwo = styled.div`
   grid-column-end: 5;
   grid-column-start: 2;
   grid-row-end: 4;
   grid-row-start: 2;
+  @media (max-width: 768px) {
+    grid-column-end: 8;
+    grid-column-start: 1;
+    grid-row-end: 5;
+    grid-row-start: 1;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -108,6 +133,33 @@ const ImageContainer = styled.div`
   grid-column-start: 6;
   grid-row-end: 5;
   grid-row-start: 1;
+  @media (max-width: 768px) {
+    grid-column-end: 9;
+    grid-column-start: 1;
+    grid-row-start: 5;
+  }
+`;
+
+const Title = styled.div`
+  color: #000;
+  font-size: 2vw;
+  line-height: 120%;
+  font-weight: 400;
+  margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 7.4vw;
+  }
+`;
+
+const TitleText = styled.div`
+  color: #000;
+  font-size: 0.85vw;
+  line-height: 150%;
+  letter-spacing: 0.3;
+  margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 3.4vw;
+  }
 `;
 
 const AboutUs = () => {
@@ -156,35 +208,20 @@ const AboutUs = () => {
             <BodySection>
               <Container>
                 <ParagraphTwo>
-                  <div
+                  <Title
                     data-scroll="0"
                     data-scroll-speed="1.2"
                     data-scroll-delay="0.8"
-                    class="p-wrap is-inview"
-                    style={{
-                      color: "#000",
-                      fontSize: "2vw",
-                      lineHeight: "120%",
-                      fontWeight: 400,
-                      marginBottom: "10px",
-                    }}
                   >
                     <p>
                       تطبيق كابتن جيرل <br /> الاأول من نوعه في المملكة العربية
                       السعودية
                     </p>
-                  </div>
-                  <div
+                  </Title>
+                  <TitleText
                     data-scroll="0"
                     data-scroll-speed="1.2"
                     data-scroll-delay="0.8"
-                    style={{
-                      color: "#000",
-                      fontSize: "0.85vw",
-                      lineHeight: "150%",
-                      letterSpacing: 0.3,
-                      marginBottom: "10px",
-                    }}
                   >
                     <div>
                       <p>
@@ -203,33 +240,18 @@ const AboutUs = () => {
                       </p>
                       <p></p>
                     </div>
-                  </div>
-                  <div
+                  </TitleText>
+                  <Title
                     data-scroll="0"
                     data-scroll-speed="1.2"
                     data-scroll-delay="0.8"
-                    class="p-wrap is-inview"
-                    style={{
-                      color: "#000",
-                      fontSize: "2vw",
-                      lineHeight: "120%",
-                      fontWeight: 400,
-                      marginBottom: "10px",
-                    }}
                   >
                     <p>قيمنا</p>
-                  </div>
-                  <div
+                  </Title>
+                  <TitleText
                     data-scroll="0"
                     data-scroll-speed="1.2"
                     data-scroll-delay="0.8"
-                    style={{
-                      color: "#000",
-                      fontSize: "0.85vw",
-                      lineHeight: "150%",
-                      letterSpacing: 0.3,
-                      marginBottom: "10px",
-                    }}
                   >
                     <div>
                       <p>
@@ -245,33 +267,18 @@ const AboutUs = () => {
                         نستخدم اجود اساليب الامن و السلامة
                       </p>
                     </div>
-                  </div>
-                  <div
+                  </TitleText>
+                  <Title
                     data-scroll="0"
                     data-scroll-speed="1.2"
                     data-scroll-delay="0.8"
-                    class="p-wrap is-inview"
-                    style={{
-                      color: "#000",
-                      fontSize: "2vw",
-                      lineHeight: "120%",
-                      fontWeight: 400,
-                      marginBottom: "10px",
-                    }}
                   >
                     <p>هلا بالكابتن شريك النجاح</p>
-                  </div>
-                  <div
+                  </Title>
+                  <TitleText
                     data-scroll="0"
                     data-scroll-speed="1.2"
                     data-scroll-delay="0.8"
-                    style={{
-                      color: "#000",
-                      fontSize: "0.85vw",
-                      lineHeight: "150%",
-                      letterSpacing: 0.3,
-                      marginBottom: "10px",
-                    }}
                   >
                     <div>
                       <p>
@@ -291,7 +298,7 @@ const AboutUs = () => {
                         أختر عميلك من فئة النساء فقط أو النساء و الرجال.
                       </p>
                     </div>
-                  </div>
+                  </TitleText>
                 </ParagraphTwo>
                 <ImageContainer>
                   <div
@@ -299,17 +306,9 @@ const AboutUs = () => {
                     data-scroll-speed="3"
                     data-scroll-delay="0.4"
                   >
-                    <div
-                      style={{
-                        display: "flex",
-                        width: "100%",
-                        height: "70vh",
-                        justifyContent: "space-between",
-                        alignItems: "stretch",
-                      }}
-                    >
+                    <ImageSection>
                       <img src={AboutUsImage} alt="About" />
-                    </div>
+                    </ImageSection>
                   </div>
                 </ImageContainer>
               </Container>

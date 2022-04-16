@@ -24,6 +24,83 @@ const Section = styled.section`
     font-size: 0.8vw;
     line-height: 120%;
     font-weight: 800;
+    @media (max-width: 768px) {
+      font-size: 14px;
+  }
+  }
+`;
+
+const Container = styled.div`
+    width: 100%;
+    padding-right: 8vw;
+    padding-bottom: 10vh;
+    padding-left: 8vw;
+  @media (max-width: 768px) {
+    padding-bottom: 0vh;
+    padding: 0px 0px;
+  }
+`;
+
+const HeaderTitle = styled.p`
+  font-size: "0.8vw";
+  line-height: "100%";
+  letter-spacing: 1.5px;
+`;
+
+const ImageContainer = styled.div`
+  grid-column-end: 8;
+  grid-column-start: 4;
+  grid-row-end: 5;
+  grid-row-start: 2;
+  @media (max-width: 768px) {
+    grid-column-end: 9;
+    grid-column-start: 1;
+    grid-row-start: 5;
+  }
+  div{
+    overflow: hidden;
+    width: 37.5vw;
+    height: 30vh;
+    justify-content: flex-end;
+    align-items: flex-start;
+    @media (max-width: 768px) {
+      width: 100%;
+    height: 100%;
+    }
+  }
+  img{
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+`;
+
+const Address = styled.div`
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-row-end: 5;
+    grid-column-end: 9;
+
+  @media (max-width: 768px) {
+    grid-row-start: 4;
+    grid-column-start: 1;
+    grid-row-end: 5;
+    grid-column-end: 9;
+  }
+`;
+
+const AddressLocation = styled.div`
+    margin-bottom: 24px;
+    font-size: 1.2vw;
+    line-height: 120%;
+    font-weight: 800;
+
+  @media (max-width: 768px) {
+    margin-bottom: 16px;
+    font-size: 5vw;
+    line-height: 120%;
+    font-weight: 800;
   }
 `;
 
@@ -76,15 +153,7 @@ const ContactUs = () => {
                   }}
                 >
                   <div style={{ marginBottom: 16 }}>
-                    <p
-                      style={{
-                        fontSize: "0.8vw",
-                        lineHeight: "100%",
-                        letterSpacing: 1.5,
-                      }}
-                    >
-                      ابقى على تواصل
-                    </p>
+                    <HeaderTitle>ابقى على تواصل</HeaderTitle>
                   </div>
                 </div>
                 <div
@@ -171,13 +240,7 @@ const ContactUs = () => {
               backgroundColor: "#fff",
             }}
           >
-            <div
-              style={{
-                width: "100%",
-                paddingRight: "8vw",
-                paddingBottom: "10vh",
-                paddingLeft: "8vw",
-              }}
+            <Container
             >
               <div
                 style={{
@@ -215,27 +278,15 @@ const ContactUs = () => {
                     </div>
                   </div>
                 </div>
-                <div
-                  style={{
-                    gridColumnEnd: 9,
-                    gridColumnStart: 2,
-                    gridRowEnd: 5,
-                    gridRowStart: 2,
-                  }}
+                <Address
                 >
                   <div>
                     <div>
                       <div>
-                        <p
-                          style={{
-                            marginBottom: 24,
-                            fontSize: "1.2vw",
-                            lineHeight: "120%",
-                            fontWeight: "800",
-                          }}
+                        <AddressLocation
                         >
                           الرياض
-                        </p>
+                        </AddressLocation>
                       </div>
                     </div>
                     <div
@@ -276,47 +327,18 @@ const ContactUs = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  style={{
-                    gridColumnEnd: 9,
-                    gridColumnStart: 4,
-                    gridRowEnd: 5,
-                    gridRowStart: 2,
-                  }}
-                >
+                </Address>
+                <ImageContainer>
                   <div
-                    style={{
-                      overflow: "hidden",
-                      width: "37.5vw",
-                      height: "30vh",
-                      justifyContent: "flex-end",
-                      alignItems: "flex-start",
-                    }}
                   >
-                    <div
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        maxWidth: "none",
-                        objectFit: "cover",
-                      }}
-                    >
                       <img
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          maxWidth: "none",
-                          objectFit: "cover",
-                        }}
                         src="https://www.srmg.com/storage/offices/TkoqrNGzE6SC3zujJFz1QC9cSYcNVJwSJAckRKlZ.jpg"
                         alt="Riyadh"
                       />
-                    </div>
                   </div>
-                </div>
+                </ImageContainer>
               </div>
-            </div>
+            </Container>
           </Section>
           <Footer />
         </main>

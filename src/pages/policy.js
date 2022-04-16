@@ -61,6 +61,10 @@ const Container = styled.div`
   grid-row-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto auto 80px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+  }
 `;
 
 const MainHeader = styled.div`
@@ -71,6 +75,14 @@ const MainHeader = styled.div`
   align-self: start;
   padding-top: 33vh;
   padding-bottom: 30px;
+  @media (max-width: 768px) {
+    grid-column-end: 8;
+    grid-column-start: 1;
+    grid-row-end: 3;
+    grid-row-start: 1;
+    align-self: end;
+    padding-top: 10vh;
+  }
 `;
 
 const LabelOne = styled.div`
@@ -80,6 +92,10 @@ const LabelOne = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  @media (max-width: 768px) {
+    font-size: 3.4vw;
+    margin-bottom: 16px;
+  }
 `;
 
 const LabelTwo = styled.h1`
@@ -92,6 +108,9 @@ const LabelTwo = styled.h1`
   align-items: flex-start;
   font-size: 3.4vw;
   font-weight: 500;
+  @media (max-width: 768px) {
+    font-size: 8vw;
+  }
 `;
 
 const PrivacyContainer = styled.div`
@@ -104,6 +123,12 @@ const PrivacyContainer = styled.div`
   font-size: 0.8vw;
   line-height: 160%;
   letter-spacing: 0.3px;
+  @media (max-width: 768px) {
+    grid-row-start: 3;
+    grid-column-end: 7;
+    grid-column-start: 1;
+    font-size: 3.4vw;
+  }
 `;
 
 const Privacy = () => {

@@ -9,7 +9,7 @@ import Term from "../pages/Term";
 const Navigation = ({ containerRef }) => {
   return (
     <Routes>
-      <Route path="/" element={<Home test={containerRef} />} />
+      <Route path="/" element={<Home />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/latest-news" element={<LatestNews />} />
       <Route path="/term-and-condition" element={<Term />} />

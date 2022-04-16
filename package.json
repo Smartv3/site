@@ -14,6 +14,8 @@
     "react-locomotive-scroll": "^0.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
+    "react-scrolling-color-background": "^1.0.2",
+    "scroll-background": "^1.0.5",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },

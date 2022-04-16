@@ -169,10 +169,10 @@ const AboutUsCover = ({ setMenuState }) => {
         </Link>
       </NavLogo>
       <Button>
-        <Label>En</Label>
+        {/* <Label>En</Label> */}
         <Col onClick={() => setMenuState(true)}>
-          <Dash />
-          <Dash style={{ marginTop: 4, width: 18 }} />
+          <Dash onClick={() => setMenuState(true)}/>
+          <Dash onClick={() => setMenuState(true)} style={{ marginTop: 4, width: 18 }} />
         </Col>
       </Button>
     </>

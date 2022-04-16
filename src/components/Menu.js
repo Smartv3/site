@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Instagram from "../assets/Svgs/instagram.svg";
 import Youtube from "../assets/Svgs/youtube.svg";
@@ -175,6 +175,7 @@ const LatestCardImage = styled.div`
 `;
 
 const CustomLink = styled(NavLink)`
+  /* color: ${props => props.active === "/" || props.active === "/about-us" ? '#fff':  '#9e9e9e'}; */
   color: #9e9e9e;
   font-size: 1.6vw;
   margin-bottom: 16px;
@@ -235,6 +236,8 @@ const IconLink = styled(Link)`
 `;
 
 const Menu = ({ setMenuState }) => {
+  const { pathname } = useLocation();
+  console.log(pathname)
   return (
     <Section>
       <NavLogo>
@@ -318,13 +321,19 @@ const Menu = ({ setMenuState }) => {
       <Container>
         <MenuSection>
           <List>
-            <CustomLink style={isActive => ({ color: isActive ? "green" : "blue" })} to="/">الرئيسية</CustomLink>
-            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/about-us">من نحن</CustomLink>
-            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/contact-us">اتصل بنا</CustomLink>
-            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to={{pathname:"https://register.captingirl.com/#/Registration"}}>انضم ككابتن</CustomLink>
-            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/latest-news">اخبارنا</CustomLink>
-            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/term-and-condition">الشروط والاحكام</CustomLink>
-            <CustomLink style={({isActive}) => {return {color: isActive ? "red" : ""}}} to="/privacy-and-policy">سياسة الخصوصية</CustomLink>
+            <CustomLink style={{color: pathname === "/" && '#fff'}} to="/">الرئيسية</CustomLink>
+            <CustomLink style={{color: pathname === "/about-us" && '#fff'}} to="/about-us">من نحن</CustomLink>
+            <CustomLink style={{color: pathname === "/contact-us" && '#fff'}} to="/contact-us">اتصل بنا</CustomLink>
+            <CustomLink
+              to={{
+                pathname: "https://register.captingirl.com/#/Registration",
+              }}
+            >
+              انضم ككابتن
+            </CustomLink>
+            <CustomLink style={{color: pathname === "/latest-news" && '#fff'}} to="/latest-news">اخبارنا</CustomLink>
+            <CustomLink style={{color: pathname === "/term-and-condition" && '#fff'}} to="/term-and-condition">الشروط والاحكام</CustomLink>
+            <CustomLink style={{color: pathname === "/privacy-and-policy" && '#fff'}} to="/privacy-and-policy">سياسة الخصوصية</CustomLink>
           </List>
           <LatestNews>
             <NewsLabel>
