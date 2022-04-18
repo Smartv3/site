@@ -1,6 +1,4 @@
-import React from "react";
-import { render } from 'react-dom';
-import { AnimatedBg, Transition } from 'scroll-background';
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Image1 from "../assets/Images/1.jpg";
 import Image2 from "../assets/Images/2.jpg";
@@ -15,6 +13,7 @@ const Section = styled.section`
   min-height: 100vh;
   overflow: hidden;
   /* background-color: #bc668c; */
+  background-color: #352344;
 `;
 
 const Container = styled.div`
@@ -48,13 +47,18 @@ const Label = styled.div`
   grid-row-end: 2;
   grid-row-start: 1;
   align-self: auto;
-  color: rgb(99, 59, 127);
+  /* color: rgb(99, 59, 127); */
+  color: #bc668c;
   p {
     font-size: 2vw;
     font-weight: 400;
     @media (max-width: 768px) {
-      font-size: 3.6vw;
+      font-size: 7.4vw;
     }
+  }
+  @media (max-width: 768px) {
+    grid-column-end: 9;
+  grid-column-start: 1;
   }
 `;
 
@@ -72,8 +76,8 @@ const Paragraph = styled.div`
     }
   }
   @media (max-width: 768px) {
-    grid-column-start: 2;
-    grid-column-end: 8;
+    grid-column-start: 1;
+    grid-column-end: 9;
   }
 `;
 
@@ -89,6 +93,8 @@ const Title = styled.div`
   margin-bottom: 10px;
   @media (max-width: 768px) {
     font-size: 7.4vw;
+    grid-column-start: 1;
+    grid-column-end: 9;
   }
 `;
 
@@ -104,6 +110,8 @@ const TitleText = styled.div`
   margin-bottom: 10px;
   @media (max-width: 768px) {
     font-size: 3.4vw;
+    grid-column-start: 1;
+    grid-column-end: 9;
   }
   strong {
     color: #bc668c;
@@ -222,17 +230,25 @@ const CardOverlay = styled.div`
 `;
 
 const AboutUs = () => {
+  const [navBg, setNavBg] = useState(false);
+
+  const changeNavBg = () => {
+   window.scrollY >= 800 ? setNavBg(true) : setNavBg(false);
+   console.log(navBg)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', changeNavBg);
+    return () => {
+      window.removeEventListener('scroll', changeNavBg);
+    }
+  }, [])
+
+  
 
   return (
     <>
-    {/* <ScrollingColorBackground
-  selector='.js-color-stop[data-background-color]'
-  colorDataAttribute='data-background-color'
-  initialRgb='rgb(0, 0, 0)'
-/> */}
-<AnimatedBg>
-<Transition  from="#0D47A1" to="#388E3C" position={0.5}>
-      <Section >
+      <Section>
         <Container>
           <Grid>
             <Label
@@ -250,7 +266,7 @@ const AboutUs = () => {
               <p>
                 من الفرد الى المجتمع يعمل على توفير وسيلة نقل سريعة و آمنة في أي
                 وقت لنقل جميع أفراد المجتمع
-              </p>
+               و الطلاب و الموظفين وحتى الاطفال على مدار 24 ساعه</p>
             </Paragraph>
           </Grid>
         </Container>
@@ -419,7 +435,7 @@ const AboutUs = () => {
                   <CardImgWrap>
                     <CardImg>
                       <CardOverlay />
-                      <img src={Image1} alt="Our news" />
+                      <img src={Image1} loading="lazy" alt="Our news" />
                     </CardImg>
                   </CardImgWrap>
                 </NewCardWrap>
@@ -434,7 +450,7 @@ const AboutUs = () => {
                   <CardImgWrap>
                     <CardImg>
                       <CardOverlay />
-                      <img src={Image2} alt="Our news" />
+                      <img src={Image2} loading="lazy" alt="Our news" />
                     </CardImg>
                   </CardImgWrap>
                 </NewCardWrap>
@@ -449,7 +465,7 @@ const AboutUs = () => {
                   <CardImgWrap>
                     <CardImg>
                       <CardOverlay />
-                      <img src={Image3} alt="Our news" />
+                      <img src={Image3} loading="lazy" alt="Our news" />
                     </CardImg>
                   </CardImgWrap>
                 </NewCardWrap>
@@ -464,7 +480,7 @@ const AboutUs = () => {
                   <CardImgWrap>
                     <CardImg>
                       <CardOverlay />
-                      <img src={Image4} alt="Our news" />
+                      <img src={Image4} loading="lazy" alt="Our news" />
                     </CardImg>
                   </CardImgWrap>
                 </NewCardWrap>
@@ -479,7 +495,7 @@ const AboutUs = () => {
                   <CardImgWrap>
                     <CardImg>
                       <CardOverlay />
-                      <img src={Image5} alt="Our news" />
+                      <img src={Image5} loading="lazy" alt="Our news" />
                     </CardImg>
                   </CardImgWrap>
                 </NewCardWrap>
@@ -494,7 +510,7 @@ const AboutUs = () => {
                   <CardImgWrap>
                     <CardImg>
                       <CardOverlay />
-                      <img src={Image6} alt="Our news" />
+                      <img src={Image6} loading="lazy" alt="Our news" />
                     </CardImg>
                   </CardImgWrap>
                 </NewCardWrap>
@@ -503,8 +519,6 @@ const AboutUs = () => {
           </GridNewsCards>
         </HomeNewsSection>
       </Section>
-      </Transition>
-      </AnimatedBg>
     </>
   );
 };

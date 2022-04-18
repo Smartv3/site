@@ -307,7 +307,7 @@ const AboutUs = () => {
                     data-scroll-delay="0.4"
                   >
                     <ImageSection>
-                      <img src={AboutUsImage} alt="About" />
+                      <img src={AboutUsImage} loading="lazy" alt="About" />
                     </ImageSection>
                   </div>
                 </ImageContainer>

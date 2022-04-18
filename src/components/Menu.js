@@ -175,7 +175,18 @@ const LatestCardImage = styled.div`
 `;
 
 const CustomLink = styled(NavLink)`
-  /* color: ${props => props.active === "/" || props.active === "/about-us" ? '#fff':  '#9e9e9e'}; */
+  color: #9e9e9e;
+  font-size: 1.6vw;
+  margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 4.5vw;
+    margin-bottom: 4px;
+    grid-column-end: 5;
+  }
+`;
+
+const CustomLinkA = styled.a`
   color: #9e9e9e;
   font-size: 1.6vw;
   margin-bottom: 16px;
@@ -221,7 +232,7 @@ const Icon = styled.div`
   transition: all 500ms ease;
 `;
 
-const IconLink = styled(Link)`
+const IconLink = styled.a`
   display: flex;
   width: 100%;
   height: 100%;
@@ -237,7 +248,7 @@ const IconLink = styled(Link)`
 
 const Menu = ({ setMenuState }) => {
   const { pathname } = useLocation();
-  console.log(pathname)
+  console.log(pathname);
   return (
     <Section>
       <NavLogo>
@@ -321,19 +332,42 @@ const Menu = ({ setMenuState }) => {
       <Container>
         <MenuSection>
           <List>
-            <CustomLink style={{color: pathname === "/" && '#fff'}} to="/">الرئيسية</CustomLink>
-            <CustomLink style={{color: pathname === "/about-us" && '#fff'}} to="/about-us">من نحن</CustomLink>
-            <CustomLink style={{color: pathname === "/contact-us" && '#fff'}} to="/contact-us">اتصل بنا</CustomLink>
-            <CustomLink
-              to={{
-                pathname: "https://register.captingirl.com/#/Registration",
-              }}
-            >
-              انضم ككابتن
+            <CustomLink style={{ color: pathname === "/" && "#fff" }} to="/">
+              الرئيسية
             </CustomLink>
-            <CustomLink style={{color: pathname === "/latest-news" && '#fff'}} to="/latest-news">اخبارنا</CustomLink>
-            <CustomLink style={{color: pathname === "/term-and-condition" && '#fff'}} to="/term-and-condition">الشروط والاحكام</CustomLink>
-            <CustomLink style={{color: pathname === "/privacy-and-policy" && '#fff'}} to="/privacy-and-policy">سياسة الخصوصية</CustomLink>
+            <CustomLink
+              style={{ color: pathname === "/about-us" && "#fff" }}
+              to="/about-us"
+            >
+              من نحن
+            </CustomLink>
+            <CustomLink
+              style={{ color: pathname === "/contact-us" && "#fff" }}
+              to="/contact-us"
+            >
+              اتصل بنا
+            </CustomLink>
+            <CustomLinkA href="https://register.captingirl.com/#/Registration">
+              انضم ككابتن
+            </CustomLinkA>
+            <CustomLink
+              style={{ color: pathname === "/latest-news" && "#fff" }}
+              to="/"
+            >
+              اخبارنا
+            </CustomLink>
+            <CustomLink
+              style={{ color: pathname === "/term-and-condition" && "#fff" }}
+              to="/term-and-condition"
+            >
+              الشروط والاحكام
+            </CustomLink>
+            <CustomLink
+              style={{ color: pathname === "/privacy-and-policy" && "#fff" }}
+              to="/privacy-and-policy"
+            >
+              سياسة الخصوصية
+            </CustomLink>
           </List>
           <LatestNews>
             <NewsLabel>
@@ -363,27 +397,27 @@ const Menu = ({ setMenuState }) => {
           <Footer>
             <IconContainer>
               <Icon>
-                <IconLink to="/">
+                <IconLink href="https://www.instagram.com/appcaptaingirl">
                   <img src={Instagram} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to="/">
+                <IconLink href="https://www.youtube.com/channel/UCX6fqo64FyimKo4edXF5zvA">
                   <img src={Youtube} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to="/">
+                <IconLink href="https://twitter.com/AppCaptain">
                   <img src={Twitter} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to="/">
+                <IconLink href="https://tiktok.com/ZSeVfU7nF">
                   <img src={Tiktok} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to="/">
+                <IconLink href="https://snapchat.com/add/capgill">
                   <img src={SnapChat} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>

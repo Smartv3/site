@@ -151,6 +151,18 @@ const CustomLink = styled(Link)`
   }
 `;
 
+const CustomLinkA = styled.a`
+  color: #9e9e9e;
+  font-size: 0.7vw;
+  margin-bottom: 8px;
+
+  @media (max-width: 768px) {
+    font-size: 3vw;
+    margin-bottom: 4px;
+    grid-column-end: 5;
+  }
+`;
+
 const IconContainer = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -168,7 +180,7 @@ const Icon = styled.div`
   transition: all 500ms ease;
 `;
 
-const IconLink = styled(Link)`
+const IconLink = styled.a`
   display: flex;
   width: 100%;
   height: 100%;
@@ -193,7 +205,7 @@ const Footer = () => {
               <CustomLink to="/">الرئيسية</CustomLink>
               <CustomLink to="/about-us">من نحن</CustomLink>
               <CustomLink to="/contact-us">اتصل بنا</CustomLink>
-              <CustomLink to="https://register.captingirl.com/#/Registration">انضم ككابتن</CustomLink>
+              <CustomLinkA href="https://register.captingirl.com/#/Registration">انضم ككابتن</CustomLinkA>
             </List>
           </Pages>
           <Legal>
@@ -281,27 +293,27 @@ const Footer = () => {
           <SocialMedia>
             <IconContainer>
               <Icon>
-                <IconLink to="https://www.instagram.com/appcaptaingirl">
+                <IconLink href="https://www.instagram.com/appcaptaingirl">
                   <img src={Instagram} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to="https://www.youtube.com/channel/UCX6fqo64FyimKo4edXF5zvA">
+                <IconLink href="https://www.youtube.com/channel/UCX6fqo64FyimKo4edXF5zvA">
                   <img src={Youtube} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to="https://twitter.com/AppCaptain">
+                <IconLink href="https://twitter.com/AppCaptain">
                   <img src={Twitter} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to="https://tiktok.com/ZSeVfU7nF">
+                <IconLink href="https://tiktok.com/ZSeVfU7nF">
                   <img src={Tiktok} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink to={{pathname:"https://snapchat.com/add/capgill"}} target="_blank">
+                <IconLink href="https://snapchat.com/add/capgill" >
                   <img src={SnapChat} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>

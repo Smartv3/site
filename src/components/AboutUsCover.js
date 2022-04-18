@@ -92,7 +92,7 @@ const AboutUsCover = ({ setMenuState }) => {
     <>
       <ImageContainer>
         <DarkOverlay />
-        <img src={ImageUrl} alt="About us cover"/>
+        <img src={ImageUrl} loading="lazy" alt="About us cover"/>
       </ImageContainer>
       <NavLogo>
         <Link to="/">

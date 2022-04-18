@@ -5,6 +5,8 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
+import ContactImage1 from '../assets/Images/contactUs1.jpg'
+import ContactImage2 from '../assets/Images/contactUs2.jpg'
 
 const Section = styled.section`
   position: relative;
@@ -332,7 +334,8 @@ const ContactUs = () => {
                   <div
                   >
                       <img
-                        src="https://www.srmg.com/storage/offices/TkoqrNGzE6SC3zujJFz1QC9cSYcNVJwSJAckRKlZ.jpg"
+                        src={ContactImage1}
+                        loading="lazy"
                         alt="Riyadh"
                       />
                   </div>
