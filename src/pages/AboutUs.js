@@ -4,7 +4,7 @@ import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import AboutUsCover from "../components/AboutUsCover";
 import Footer from "../components/Footer";
-import AboutUsImage from "../assets/Images/about3.jpg";
+import AboutUsImage from "../assets/Images/about3.webp";
 import Menu from "../components/Menu";
 
 const Section = styled.section`
@@ -168,10 +168,16 @@ const AboutUs = () => {
   return (
     <>
       <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-        }}
+          options={{
+            smooth: true,
+            // ... all available Locomotive Scroll instance options
+            smartphone:{
+              smooth:true,
+            },
+            tablet:{
+              smooth:true,
+            }
+          }}
         watch={
           [
             //..all the dependencies you want to watch to update the scroll.
@@ -182,7 +188,7 @@ const AboutUs = () => {
         containerRef={containerRef}
       >
         <AboutUsCover setMenuState={setMenuState} />
-        {menuState && <Menu setMenuState={setMenuState} />}
+        <Menu setMenuState={setMenuState} menu={menuState}/>
         <main data-scroll-container ref={containerRef}>
           <Section>
             <Container>

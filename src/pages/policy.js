@@ -137,10 +137,16 @@ const Privacy = () => {
   return (
     <>
       <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-        }}
+          options={{
+            smooth: true,
+            // ... all available Locomotive Scroll instance options
+            smartphone:{
+              smooth:true,
+            },
+            tablet:{
+              smooth:true,
+            }
+          }}
         watch={
           [
             //..all the dependencies you want to watch to update the scroll.
@@ -151,7 +157,7 @@ const Privacy = () => {
         containerRef={containerRef}
       >
         <Header setMenuState={setMenuState} />
-        {menuState && <Menu setMenuState={setMenuState} />}
+        <Menu setMenuState={setMenuState} menu={menuState}/>
         <main data-scroll-container ref={containerRef}>
           <Section>
             <Container>
@@ -160,7 +166,7 @@ const Privacy = () => {
                 <LabelTwo>سياسة الخصوصية</LabelTwo>
               </MainHeader>
               <PrivacyContainer>
-                <div class="p-wrap p-privacy en">
+                <div >
                   <ol>
                     <li>
                       <h3>تعليقات</h3>

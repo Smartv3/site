@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Image1 from "../assets/Images/1.jpg";
-import Image2 from "../assets/Images/2.jpg";
-import Image3 from "../assets/Images/3.jpg";
-import Image4 from "../assets/Images/4.jpg";
-import Image5 from "../assets/Images/5.jpg";
-import Image6 from "../assets/Images/6.jpg";
+import Image1 from "../assets/Images/1.webp";
+import Image2 from "../assets/Images/2.webp";
+import Image3 from "../assets/Images/3.webp";
+import Image4 from "../assets/Images/4.webp";
+import Image5 from "../assets/Images/5.webp";
+import Image6 from "../assets/Images/6.webp";
 
 const Section = styled.section`
   direction: rtl;
@@ -124,7 +124,10 @@ const HomeNewsSection = styled.div`
   padding-right: 12vw;
   padding-left: 12vw;
   @media (max-width: 768px) {
+    padding-right: 24px;
+  padding-left: 24px;
   }
+
 `;
 
 const GridNewsCards = styled.div`
@@ -149,6 +152,8 @@ const HomeNewsInnerGrid = styled.div`
   grid-template-rows: auto auto auto;
   direction: rtl;
   @media (max-width: 768px) {
+    grid-column-gap: 4vw;
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
@@ -158,6 +163,8 @@ const CardMask = styled.div`
   margin-bottom: 2vw;
   perspective: 1000px;
   @media (max-width: 768px) {
+    width: 40vw;
+    height: 90vw;
   }
 `;
 

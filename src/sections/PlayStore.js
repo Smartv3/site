@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import GooglePlay from "../assets/Images/android.png";
-import AppleStore from "../assets/Images/apple.png";
+import GooglePlay from "../assets/Images/android.webp";
+import AppleStore from "../assets/Images/apple.webp";
 
 const Section = styled.div`
   position: relative;

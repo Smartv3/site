@@ -5,8 +5,8 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
-import ContactImage1 from '../assets/Images/contactUs1.jpg'
-import ContactImage2 from '../assets/Images/contactUs2.jpg'
+import ContactImage1 from '../assets/Images/contactUs1.webp'
+import ContactImage2 from '../assets/Images/contactUs2.webp'
 
 const Section = styled.section`
   position: relative;
@@ -112,10 +112,16 @@ const ContactUs = () => {
   return (
     <>
       <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-        }}
+          options={{
+            smooth: true,
+            // ... all available Locomotive Scroll instance options
+            smartphone:{
+              smooth:true,
+            },
+            tablet:{
+              smooth:true,
+            }
+          }}
         watch={
           [
             //..all the dependencies you want to watch to update the scroll.
@@ -126,7 +132,7 @@ const ContactUs = () => {
         containerRef={containerRef}
       >
         <Header setMenuState={setMenuState} />
-        {menuState && <Menu setMenuState={setMenuState} />}
+        <Menu setMenuState={setMenuState} menu={menuState}/>
         <main data-scroll-container ref={containerRef}>
           <Section style={{ backgroundColor: "#000", color: "#fff" }}>
             <div

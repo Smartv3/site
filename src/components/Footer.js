@@ -21,8 +21,7 @@ const FooterContainer = styled.div`
     overflow: visible;
     height: auto;
     padding: 120px 24px 40px;
-}
-
+  }
 `;
 
 const FooterGrid = styled.div`
@@ -195,6 +194,15 @@ const IconLink = styled.a`
 `;
 
 const Footer = () => {
+  const [hover, setHover] = React.useState({
+    main: false,
+    aboutUs: false,
+    contactUs: false,
+    joinAsCaptain: false,
+    latestNews: false,
+    term: false,
+    policy: false,
+  });
   return (
     <Section>
       <FooterContainer>
@@ -202,17 +210,59 @@ const Footer = () => {
           <Pages>
             <Label>الصفحات</Label>
             <List>
-              <CustomLink to="/">الرئيسية</CustomLink>
-              <CustomLink to="/about-us">من نحن</CustomLink>
-              <CustomLink to="/contact-us">اتصل بنا</CustomLink>
-              <CustomLinkA href="https://register.captingirl.com/#/Registration">انضم ككابتن</CustomLinkA>
+              <CustomLink
+                style={{color: hover.main ? '#fff' : '#9e9e9e'}}
+                onMouseOver={() => setHover({ ...hover, main: true })}
+                onMouseOut={() => setHover({ main: false })}
+                to="/"
+              >
+                الرئيسية
+              </CustomLink>
+              <CustomLink
+                style={{color: hover.aboutUs ? '#fff' : '#9e9e9e'}}
+                onMouseOver={() => setHover({ ...hover, aboutUs: true })}
+                onMouseOut={() => setHover({ aboutUs: false })}
+                to="/about-us"
+              >
+                من نحن
+              </CustomLink>
+              <CustomLink
+                style={{color: hover.contactUs ? '#fff' : '#9e9e9e'}}
+                onMouseOver={() => setHover({ ...hover, contactUs: true })}
+                onMouseOut={() => setHover({ contactUs: false })}
+                to="/contact-us"
+              >
+                اتصل بنا
+              </CustomLink>
+              <CustomLinkA
+                style={{color: hover.joinAsCaptain ? '#fff' : '#9e9e9e'}}
+                onMouseOver={() => setHover({ ...hover, joinAsCaptain: true })}
+                onMouseOut={() => setHover({ joinAsCaptain: false })}
+                href="https://register.captingirl.com/#/Registration"
+              >
+                انضم ككابتن
+              </CustomLinkA>
             </List>
           </Pages>
           <Legal>
             <Label>قانوني</Label>
             <List>
-              <CustomLink to="/term-and-condition">الشروط والاحكام</CustomLink>
-              <CustomLink to="/privacy-and-policy">سياسة الخصوصية</CustomLink>
+              <CustomLink
+                style={{color: hover.term ? '#fff' : '#9e9e9e'}}
+                onMouseOver={() => setHover({ ...hover, term: true })}
+                onMouseOut={() => setHover({ term: false })}
+                to="/term-and-condition"
+              >
+                الشروط والاحكام
+              </CustomLink>
+              <CustomLink
+                style={{color: hover.policy ? '#fff' : '#9e9e9e'}}
+                onMouseOver={() => setHover({ ...hover, policy: true })}
+                onMouseOut={() => setHover({ policy: false })}
+                to="/privacy-and-policy"
+              >
+                سياسة الخصوصية
+              </CustomLink>
             </List>
           </Legal>
           <FooterLogo>
@@ -313,7 +363,7 @@ const Footer = () => {
                 </IconLink>
               </Icon>
               <Icon>
-                <IconLink href="https://snapchat.com/add/capgill" >
+                <IconLink href="https://snapchat.com/add/capgill">
                   <img src={SnapChat} loading="lazy" alt="Social Logo" />
                 </IconLink>
               </Icon>

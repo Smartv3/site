@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ImageUrl from "../assets/Images/aboutUs.jpg";
+import ImageUrl from "../assets/Images/aboutUs.webp";
 
 const ImageContainer = styled.section`
   width: 100%;

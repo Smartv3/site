@@ -134,10 +134,16 @@ const Term = () => {
   return (
     <>
       <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-        }}
+          options={{
+            smooth: true,
+            // ... all available Locomotive Scroll instance options
+            smartphone:{
+              smooth:true,
+            },
+            tablet:{
+              smooth:true,
+            }
+          }}
         watch={
           [
             //..all the dependencies you want to watch to update the scroll.
@@ -148,7 +154,7 @@ const Term = () => {
         containerRef={containerRef}
       >
         <Header setMenuState={setMenuState} />
-        {menuState && <Menu setMenuState={setMenuState} />}
+        <Menu setMenuState={setMenuState} menu={menuState}/>
         <main data-scroll-container ref={containerRef}>
           <Section>
             <Container>

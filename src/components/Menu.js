@@ -7,8 +7,8 @@ import Twitter from "../assets/Svgs/twitter.svg";
 import Tiktok from "../assets/Svgs/tiktok.svg";
 import SnapChat from "../assets/Svgs/snapchat.svg";
 
-import ImageOne from "../assets/Images/award1.jpg";
-import ImageTwo from "../assets/Images/award2.jpg";
+import ImageOne from "../assets/Images/award1.webp";
+import ImageTwo from "../assets/Images/award2.webp";
 
 const Section = styled.section`
   top: 0;
@@ -19,6 +19,9 @@ const Section = styled.section`
   background-color: #352344;
   z-index: 9999;
   overflow: hidden;
+  transform: ${(props) =>
+    props.activerun ? "translateY(0vh)" : "translateY(200vh)"};
+  transition: transform 0.33s ease-out;
 `;
 
 const Container = styled.div`
@@ -100,6 +103,7 @@ const Footer = styled.div`
   justify-self: auto;
   align-self: end;
   width: 100%;
+  
   @media (max-width: 768px) {
     grid-column-start: 1;
     grid-column-end: 8;
@@ -114,6 +118,9 @@ const List = styled.div`
   grid-row-end: 3;
   align-self: start;
   justify-self: auto;
+  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(20%)'};
+  opacity: ${props => props.activerun ? 1 : 0};
+  transition: opacity 0.3s ease, transform 0.3s ease;
   @media (max-width: 768px) {
     grid-column-start: 1;
     grid-column-end: 6;
@@ -153,7 +160,7 @@ const NewsContainer = styled.div`
 const LatestCardImage = styled.div`
   display: flex;
   overflow: hidden;
-  width: 9.5vw;
+  width: auto;
   height: 14vw;
   margin-left: 2vw;
   align-items: stretch;
@@ -174,10 +181,25 @@ const LatestCardImage = styled.div`
   text-decoration: none;
 `;
 
+const LinkContainer = styled.div`
+  top: auto;
+  left: 0;
+  transform: translateY(100%);
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  transform: ${(props) => (props.hover ? "scaleX(1)" : "scaleX(0)")};
+  transform-origin: left center;
+  transition: transform 0.35s ease;
+`;
+
 const CustomLink = styled(NavLink)`
   color: #9e9e9e;
   font-size: 1.6vw;
   margin-bottom: 16px;
+  width: auto;
 
   @media (max-width: 768px) {
     font-size: 4.5vw;
@@ -237,20 +259,26 @@ const IconLink = styled.a`
   width: 100%;
   height: 100%;
   justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
   img {
     height: 10px;
   }
 `;
 
-const Menu = ({ setMenuState }) => {
+const Menu = ({ setMenuState, menu }) => {
   const { pathname } = useLocation();
-  console.log(pathname);
+  const [hover, setHover] = React.useState({
+    main: false,
+    aboutUs: false,
+    contactUs: false,
+    joinAsCaptain: false,
+    latestNews: false,
+    term: false,
+    policy: false,
+  });
+  console.log(pathname, menu);
   return (
-    <Section>
+    <Section activerun={menu}>
       <NavLogo>
         <Link to="/">
           <svg
@@ -331,42 +359,90 @@ const Menu = ({ setMenuState }) => {
       </Button>
       <Container>
         <MenuSection>
-          <List>
-            <CustomLink style={{ color: pathname === "/" && "#fff" }} to="/">
-              الرئيسية
+          <List activerun={menu}>
+            <CustomLink
+              to="/"
+              style={{color: pathname === "/" ? '#fff' : hover.main ? '#fff' : '#9e9e9e'}}
+              activerun={menu}
+              onMouseOver={() => setHover({...hover, main: true})}
+              onMouseOut={() => setHover({main:false})}
+            >
+              <div style={{ display: "inline-block" }}>
+                الرئيسية
+                <LinkContainer hover={hover.main} />
+              </div>
             </CustomLink>
             <CustomLink
-              style={{ color: pathname === "/about-us" && "#fff" }}
               to="/about-us"
+              style={{color: pathname === "/about-us" ? '#fff' : hover.aboutUs ? '#fff' : '#9e9e9e'}}
+              activerun={menu}
+              onMouseOver={() => setHover({...hover, aboutUs: true})}
+              onMouseOut={() => setHover(false)}
             >
-              من نحن
+              <div style={{ display: "inline-block" }}>
+                من نحن
+                <LinkContainer hover={hover.aboutUs} />
+              </div>
             </CustomLink>
             <CustomLink
-              style={{ color: pathname === "/contact-us" && "#fff" }}
               to="/contact-us"
+              style={{color: pathname === "/contact-us" ? "#fff" : hover.contactUs ? '#fff' : '#9e9e9e'}}
+              activerun={menu}
+              onMouseOver={() => setHover({...hover, contactUs: true})}
+              onMouseOut={() => setHover(false)}
             >
-              اتصل بنا
+              <div style={{ display: "inline-block" }}>
+                اتصل بنا
+                <LinkContainer hover={hover.contactUs} />
+              </div>
             </CustomLink>
-            <CustomLinkA href="https://register.captingirl.com/#/Registration">
+            <CustomLinkA
+              style={{color: hover.joinAsCaptain ? '#fff' : '#9e9e9e'}}
+              activerun={menu}
+              onMouseOver={() => setHover({...hover, joinAsCaptain: true})}
+              onMouseOut={() => setHover(false)}
+              href="https://register.captingirl.com/#/Registration"
+            >
+              <div style={{ display: "inline-block" }}>
               انضم ككابتن
+              <LinkContainer hover={hover.joinAsCaptain} />
+              </div>
             </CustomLinkA>
             <CustomLink
-              style={{ color: pathname === "/latest-news" && "#fff" }}
               to="/"
+              style={{color: pathname === "/latest-news" ? "#fff" : hover.latestNews ? '#fff' : '#9e9e9e'}}
+              activerun={menu}
+              onMouseOver={() => setHover({...hover, latestNews: true})}
+              onMouseOut={() => setHover(false)}
             >
-              اخبارنا
+              <div style={{ display: "inline-block" }}>
+                اخبارنا
+                <LinkContainer hover={hover.latestNews} />
+              </div>
             </CustomLink>
             <CustomLink
-              style={{ color: pathname === "/term-and-condition" && "#fff" }}
               to="/term-and-condition"
+              style={{color: pathname === "/term-and-condition" ? "#fff" : hover.term ? '#fff' : '#9e9e9e'}}
+              activerun={menu}
+              onMouseOver={() => setHover({...hover, term: true})}
+              onMouseOut={() => setHover(false)}
             >
-              الشروط والاحكام
+              <div style={{ display: "inline-block" }}>
+                الشروط والاحكام
+                <LinkContainer hover={hover.term} />
+              </div>
             </CustomLink>
             <CustomLink
-              style={{ color: pathname === "/privacy-and-policy" && "#fff" }}
               to="/privacy-and-policy"
+              style={{color: pathname === "/privacy-and-policy" ? "#fff" : hover.policy ? '#fff' : '#9e9e9e'}}
+              activerun={menu}
+              onMouseOver={() => setHover({...hover, policy: true})}
+              onMouseOut={() => setHover(false)}
             >
-              سياسة الخصوصية
+              <div style={{ display: "inline-block" }}>
+                سياسة الخصوصية
+                <LinkContainer hover={hover.policy} />
+              </div>
             </CustomLink>
           </List>
           <LatestNews>
@@ -379,8 +455,8 @@ const Menu = ({ setMenuState }) => {
                   src={ImageOne}
                   loading="lazy"
                   sizes="100vw"
-                  alt="Independent Arabia Marks 3 Years of News Excellence, Boosts Premium Video Content, Podcast and Multimedia&nbsp;"
-                  class="nav-latest__img"
+                  alt="Latest news"
+                  
                 />
               </LatestCardImage>
               <LatestCardImage>
@@ -388,8 +464,8 @@ const Menu = ({ setMenuState }) => {
                   src={ImageTwo}
                   loading="lazy"
                   sizes="100vw"
-                  alt="Independent Arabia Marks 3 Years of News Excellence, Boosts Premium Video Content, Podcast and Multimedia&nbsp;"
-                  class="nav-latest__img"
+                  alt="Latest news"
+                  
                 />
               </LatestCardImage>
             </NewsContainer>
