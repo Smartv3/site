@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import gsap from "gsap";
 
 const Section = styled.section`
   position: relative;
@@ -71,9 +72,13 @@ const Paragraph = styled.div`
 `;
 
 const Home = () => {
+  let content = React.useRef(null)
+  React.useEffect(() => {
+    console.log('content',content, 'gsap', gsap)
+  })
   return (
     <Section>
-      <Container>
+      <Container ref={el => content = el}>
         <Label data-scroll="0" data-scroll-speed="1" data-scroll-delay="0.1">
           <p>من نحن</p>
         </Label>

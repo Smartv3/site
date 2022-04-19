@@ -65,7 +65,6 @@ const Button = styled.div`
   z-index: 5;
   height: 30px;
   border: none;
-  cursor: pointer;
   @media (max-width: 768px) {
     right: 24px;
     top: 40px;
@@ -76,6 +75,7 @@ const Dash = styled.div`
   width: 24px;
   height: 2px;
   background-color: #fff;
+  cursor: pointer;
 `;
 
 const Label = styled.div`
@@ -170,7 +170,7 @@ const CoverVideo = ({ setMenuState }) => {
       </NavLogo>
       <Button>
         {/* <Label>En</Label> */}
-        <Col onClick={() => setMenuState(true)}>
+        <Col style={{cursor: 'pointer'}} onClick={() => setMenuState(true)}>
           <Dash onClick={() => setMenuState(true)} />
           <Dash
             onClick={() => setMenuState(true)}

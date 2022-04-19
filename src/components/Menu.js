@@ -21,7 +21,7 @@ const Section = styled.section`
   overflow: hidden;
   transform: ${(props) =>
     props.activerun ? "translateY(0vh)" : "translateY(200vh)"};
-  transition: transform 0.33s ease-out;
+  transition: transform 0.05s ease-out;
 `;
 
 const Container = styled.div`
@@ -72,7 +72,6 @@ const Button = styled.div`
   z-index: 5;
   height: 30px;
   border: none;
-  cursor: pointer;
   @media (max-width: 768px) {
     right: 24px;
     top: 40px;
@@ -83,6 +82,7 @@ const Dash = styled.div`
   width: 20px;
   height: 2px;
   background-color: #fff;
+  cursor: pointer;
 `;
 
 const Label = styled.div`
@@ -118,9 +118,7 @@ const List = styled.div`
   grid-row-end: 3;
   align-self: start;
   justify-self: auto;
-  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(20%)'};
-  opacity: ${props => props.activerun ? 1 : 0};
-  transition: opacity 0.3s ease, transform 0.3s ease;
+
   @media (max-width: 768px) {
     grid-column-start: 1;
     grid-column-end: 6;
@@ -155,6 +153,9 @@ const NewsContainer = styled.div`
   height: 100%;
   justify-content: flex-start;
   align-items: flex-start;
+  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(80%)'};
+  opacity: ${props => props.activerun ? 1 : 0};
+  transition: opacity 0.6s ease, transform 0.6s ease;
 `;
 
 const LatestCardImage = styled.div`
@@ -200,7 +201,9 @@ const CustomLink = styled(NavLink)`
   font-size: 1.6vw;
   margin-bottom: 16px;
   width: auto;
-
+  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(90%)'};
+  opacity: ${props => props.activerun ? 1 : 0};
+  transition: opacity 0.4s ease, transform 0.4s ease;
   @media (max-width: 768px) {
     font-size: 4.5vw;
     margin-bottom: 4px;
@@ -212,7 +215,9 @@ const CustomLinkA = styled.a`
   color: #9e9e9e;
   font-size: 1.6vw;
   margin-bottom: 16px;
-
+  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(90%)'};
+  opacity: ${props => props.activerun ? 1 : 0};
+  transition: opacity 0.4s ease, transform 0.4s ease;
   @media (max-width: 768px) {
     font-size: 4.5vw;
     margin-bottom: 4px;
@@ -241,6 +246,9 @@ const IconContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(90%)'};
+  opacity: ${props => props.activerun ? 1 : 0};
+  transition: opacity 0.6s ease, transform 0.6s ease;
 `;
 
 const Icon = styled.div`
@@ -449,7 +457,7 @@ const Menu = ({ setMenuState, menu }) => {
             <NewsLabel>
               <span>أخبارنا</span>
             </NewsLabel>
-            <NewsContainer>
+            <NewsContainer activerun={menu}>
               <LatestCardImage>
                 <img
                   src={ImageOne}
@@ -471,7 +479,7 @@ const Menu = ({ setMenuState, menu }) => {
             </NewsContainer>
           </LatestNews>
           <Footer>
-            <IconContainer>
+            <IconContainer activerun={menu}>
               <Icon>
                 <IconLink href="https://www.instagram.com/appcaptaingirl">
                   <img src={Instagram} loading="lazy" alt="Social Logo" />
