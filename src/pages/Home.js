@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
@@ -10,6 +10,7 @@ import AboutUs from "../sections/AboutUs";
 import Career from "../sections/Career";
 import PlayStore from "../sections/PlayStore";
 import Footer from "../components/Footer";
+
 
 function Home() {
   const [menuState, setMenuState] = useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import gsap from "gsap";
+import { gsap } from "gsap";
 
 const Section = styled.section`
   position: relative;
@@ -73,9 +73,12 @@ const Paragraph = styled.div`
 
 const Home = () => {
   let content = React.useRef(null)
+
   React.useEffect(() => {
-    console.log('content',content, 'gsap', gsap)
-  })
+    console.log('content',content.children[0].children, 'gsap', gsap)
+    
+  }, [])
+
   return (
     <Section>
       <Container ref={el => content = el}>

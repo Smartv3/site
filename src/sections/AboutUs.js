@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
+import {gsap} from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image1 from "../assets/Images/1.webp";
 import Image2 from "../assets/Images/2.webp";
 import Image3 from "../assets/Images/3.webp";
@@ -237,25 +239,38 @@ const CardOverlay = styled.div`
 `;
 
 const AboutUs = () => {
-  const [navBg, setNavBg] = useState(false);
-
-  const changeNavBg = () => {
-   window.scrollY >= 800 ? setNavBg(true) : setNavBg(false);
-   console.log(navBg)
-  }
+  const ref = useRef(null)
+  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    window.addEventListener('scroll', changeNavBg);
-    return () => {
-      window.removeEventListener('scroll', changeNavBg);
-    }
+    const element = ref.current;
+    console.log(element)
+    gsap.fromTo(
+      element.querySelector("#gsap-logo"),
+      {
+        opacity: 0,
+        scale: 0.2,
+        y: -20,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: element.querySelector(".logo"),
+          start: "top center",
+          end: "bottom top",
+          markers: true,
+          scrub: true,
+        },
+      }
+    );
   }, [])
-
-  
-
   return (
     <>
-      <Section>
+      <Section ref={ref} >
         <Container>
           <Grid>
             <Label
@@ -263,7 +278,7 @@ const AboutUs = () => {
               data-scroll-speed="1"
               data-scroll-delay="0.1"
             >
-              <p>كابتن جيرل</p>
+              <p className="logo">كابتن جيرل</p>
             </Label>
             <Paragraph
               data-scroll="0"
