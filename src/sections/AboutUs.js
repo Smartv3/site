@@ -253,7 +253,7 @@ const AboutUs = () => {
         ease: "none",
         scrollTrigger: {
           trigger: element.querySelector("#th"),
-          start: "top 200px",
+          start: "top 300px",
           end: "bottom 100px",
           // markers: true,
           scrub: true,
@@ -266,7 +266,7 @@ const AboutUs = () => {
         ease: "none",
         scrollTrigger: {
           trigger: element.querySelector("#th"),
-          start: "top 200px",
+          start: "top 300px",
           end: "bottom 100px",
           // markers: true,
           scrub: true,
