@@ -10,7 +10,7 @@ import AboutUs from "../sections/AboutUs";
 import Career from "../sections/Career";
 import PlayStore from "../sections/PlayStore";
 import Footer from "../components/Footer";
-
+import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 
 function Home() {
   const [menuState, setMenuState] = useState(false);
@@ -19,16 +19,16 @@ function Home() {
   return (
     <>
       <LocomotiveScrollProvider
-          options={{
+        options={{
+          smooth: true,
+          // ... all available Locomotive Scroll instance options
+          smartphone: {
             smooth: true,
-            // ... all available Locomotive Scroll instance options
-            smartphone:{
-              smooth:true,
-            },
-            tablet:{
-              smooth:true,
-            }
-          }}
+          },
+          tablet: {
+            smooth: true,
+          },
+        }}
         watch={
           [
             //..all the dependencies you want to watch to update the scroll.
@@ -38,9 +38,10 @@ function Home() {
         }
         containerRef={containerRef}
       >
+        <ScrollTriggerProxy/>
         <CoverVideo setMenuState={setMenuState} />
-        <Menu setMenuState={setMenuState} menu={menuState}/>
-        <main data-scroll-container ref={containerRef}>
+        <Menu setMenuState={setMenuState} menu={menuState} />
+        <main className="one" data-scroll-container ref={containerRef}>
           <HomeHeader />
           <AboutUsOne />
           <AboutUs />

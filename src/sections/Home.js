@@ -72,16 +72,10 @@ const Paragraph = styled.div`
 `;
 
 const Home = () => {
-  let content = React.useRef(null)
-
-  React.useEffect(() => {
-    console.log('content',content.children[0].children, 'gsap', gsap)
-    
-  }, [])
 
   return (
     <Section>
-      <Container ref={el => content = el}>
+      <Container>
         <Label data-scroll="0" data-scroll-speed="1" data-scroll-delay="0.1">
           <p>من نحن</p>
         </Label>
