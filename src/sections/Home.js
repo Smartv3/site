@@ -174,7 +174,7 @@ const Home = () => {
   //       0.4
   //     );
   // }, []);
-
+  // const locale = localStorage.setItem("language", "en")
   return (
     <Section>
       <Container className="col__content-title">
