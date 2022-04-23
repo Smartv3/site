@@ -33,7 +33,7 @@ const DarkOverlay = styled.div`
   right: 0;
   z-index: 1;
 
-  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.3)`};
+  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.5)`};
 `;
 
 const NavLogo = styled.div`
