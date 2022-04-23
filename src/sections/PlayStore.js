@@ -4,9 +4,8 @@ import styled from "styled-components";
 import GooglePlay from "../assets/Images/android.webp";
 import AppleStore from "../assets/Images/apple.webp";
 
-const Section = styled.div`
+const Section = styled.section`
   position: relative;
-  min-height: 100vh;
   overflow: hidden;
   background-color: #352344;
 `;
@@ -14,11 +13,10 @@ const Section = styled.div`
 const Container = styled.div`
   padding: 8vw;
   position: relative;
-  z-index: 4;
+  /* z-index: 4; */
   display: flex;
   overflow: hidden;
   max-width: 100%;
-  padding: 25vh 5vw;
   align-items: center;
   @media (max-width: 768px) {
     display: flex;
