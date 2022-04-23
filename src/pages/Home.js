@@ -4,14 +4,14 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 
 import Menu from "../components/Menu";
 import HomeHeader from "../sections/Home";
-// import CoverVideo from "../components/CoverVideo";
+import CoverVideo from "../components/CoverVideo";
 import AboutUsOne from "../sections/AboutUsOne";
 import AboutUs from "../sections/AboutUs";
 import Career from "../sections/Career";
 import PlayStore from "../sections/PlayStore";
 import Footer from "../components/Footer";
 import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
-const CoverVideo = React.lazy(() => import("../components/CoverVideo"));
+// const CoverVideo = React.lazy(() => import("../components/CoverVideo"));
 
 function Home() {
   const [menuState, setMenuState] = useState(false);
