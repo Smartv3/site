@@ -13,7 +13,6 @@ import Footer from "../components/Footer";
 import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 
 function Home() {
-  // Build 3
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
 
