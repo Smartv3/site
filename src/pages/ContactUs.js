@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import ContactImage1 from '../assets/Images/contactUs1.webp'
-import ContactImage2 from '../assets/Images/contactUs2.webp'
 
 const Section = styled.section`
   position: relative;

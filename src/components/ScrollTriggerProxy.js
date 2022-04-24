@@ -10,7 +10,6 @@ const ScrollTriggerProxy = () => {
   const { scroll } = useLocomotiveScroll();
   // Register scroll trigger plugin
   gsap.registerPlugin(ScrollTrigger);
-
   useEffect(() => {
     if (scroll) {
       const element = scroll?.el; // locomotive scrolling element, in our case it's app (main)

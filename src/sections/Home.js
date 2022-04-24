@@ -1,5 +1,6 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { useTranslation } from 'react-i18next';
 import { gsap, Power4 } from "gsap";
 
 const Section = styled.section`
@@ -115,6 +116,7 @@ const ParagraphThree = styled.div`
 `;
 
 const Home = () => {
+  const { t, i18n } = useTranslation();
   // const ref = React.useRef(null);
 
   // React.useEffect(() => {
@@ -175,6 +177,10 @@ const Home = () => {
   //     );
   // }, []);
   // const locale = localStorage.setItem("language", "en")
+  React.useEffect(() => {
+    i18n.changeLanguage(localStorage.getItem('lang'));
+  }, [])
+  
   return (
     <Section>
       <Container className="col__content-title">
@@ -183,6 +189,7 @@ const Home = () => {
         </Label>
         <ParagraphOne>
           <p className="col__content-txt1">تطبيق سعودي</p>
+          {/* <p className="col__content-txt1">{t('helloWorld')}</p> */}
         </ParagraphOne>
         <ParagraphTwo>
           <p className="col__content-txt2">يواكب تطلعات رؤية</p>

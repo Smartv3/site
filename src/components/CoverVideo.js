@@ -88,6 +88,16 @@ const Label = styled.div`
 `;
 
 const CoverVideo = ({ setMenuState }) => {
+  const enLanguageHandler = () => {
+    window.location.reload()
+    localStorage.setItem('lang', 'en')
+  }
+
+  const arLanguageHandler = () => {
+    window.location.reload()
+    localStorage.setItem('lang', 'ar')
+  }
+ 
   return (
     <>
       <VideoContainer>
@@ -169,7 +179,7 @@ const CoverVideo = ({ setMenuState }) => {
         </Link>
       </NavLogo>
       <Button>
-        {/* <Label>En</Label> */}
+        <Label onClick={true ? arLanguageHandler : enLanguageHandler} style={{cursor: 'pointer'}}>{true ? 'Ar' : 'En'}</Label>
         <Col style={{cursor: 'pointer'}} onClick={() => setMenuState(true)}>
           <Dash onClick={() => setMenuState(true)} />
           <Dash

@@ -6,6 +6,7 @@ import AboutUsCover from "../components/AboutUsCover";
 import Footer from "../components/Footer";
 import AboutUsImage from "../assets/Images/about3.webp";
 import Menu from "../components/Menu";
+import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 
 const Section = styled.section`
   position: relative;
@@ -187,6 +188,7 @@ const AboutUs = () => {
         }
         containerRef={containerRef}
       >
+        {/* <ScrollTriggerProxy/> */}
         <AboutUsCover setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState}/>
         <main data-scroll-container ref={containerRef}>

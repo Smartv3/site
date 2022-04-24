@@ -285,6 +285,7 @@ const Menu = ({ setMenuState, menu }) => {
     policy: false,
   });
   console.log(pathname, menu);
+
   return (
     <Section activerun={menu}>
       <NavLogo>

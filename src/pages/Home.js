@@ -39,7 +39,7 @@ function Home() {
         }
         containerRef={containerRef}
       >
-        <ScrollTriggerProxy/>
+        {/* <ScrollTriggerProxy/> */}
         <CoverVideo setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
         <main className="one" data-scroll-container ref={containerRef}>
