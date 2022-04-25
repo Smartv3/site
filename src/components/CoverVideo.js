@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MainVideo from "../assets/Video/sequence.mp4";
@@ -88,6 +89,7 @@ const Label = styled.div`
 `;
 
 const CoverVideo = ({ setMenuState }) => {
+  const {t, i18n} = useTranslation()
   const enLanguageHandler = () => {
     window.location.reload()
     localStorage.setItem('lang', 'en')
@@ -98,6 +100,10 @@ const CoverVideo = ({ setMenuState }) => {
     localStorage.setItem('lang', 'ar')
   }
  
+  React.useEffect(() => {
+    i18n.changeLanguage(localStorage.getItem("lang"))
+  }, [])
+
   return (
     <>
       <VideoContainer>
@@ -179,7 +185,7 @@ const CoverVideo = ({ setMenuState }) => {
         </Link>
       </NavLogo>
       <Button>
-        <Label onClick={true ? arLanguageHandler : enLanguageHandler} style={{cursor: 'pointer'}}>{true ? 'Ar' : 'En'}</Label>
+        <Label onClick={localStorage.getItem("lang") === "ar" ? enLanguageHandler : arLanguageHandler } style={{cursor: 'pointer'}}>{localStorage.getItem("lang") === "ar" ? t("lang61") : t("lang60") }</Label>
         <Col style={{cursor: 'pointer'}} onClick={() => setMenuState(true)}>
           <Dash onClick={() => setMenuState(true)} />
           <Dash

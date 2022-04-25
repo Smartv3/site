@@ -20,7 +20,7 @@ const Section = styled.section`
 `;
 
 const Container = styled.div`
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   display: grid;
   width: 100%;
   align-items: start;
@@ -183,19 +183,19 @@ const Home = () => {
   
   return (
     <Section>
-      <Container className="col__content-title">
+      <Container lang={i18n.language} className="col__content-title">
         <Label>
-          <p className="line__inner">من نحن</p>
+          <p className="line__inner">{t("lang10")}</p>
         </Label>
         <ParagraphOne>
-          <p className="col__content-txt1">تطبيق سعودي</p>
+          <p className="col__content-txt1">{t("lang11")}</p>
           {/* <p className="col__content-txt1">{t('helloWorld')}</p> */}
         </ParagraphOne>
         <ParagraphTwo>
-          <p className="col__content-txt2">يواكب تطلعات رؤية</p>
+          <p className="col__content-txt2">{t("lang12")}</p>
         </ParagraphTwo>
         <ParagraphThree>
-          <p className="col__content-txt3">2030 طموحنا عنان السماء</p>
+          <p className="col__content-txt3">{t("lang13")}</p>
         </ParagraphThree>
       </Container>
     </Section>

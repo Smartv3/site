@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
@@ -13,7 +14,7 @@ const Section = styled.section`
   padding-right: 8vw;
   padding-left: 8vw;
   display: flex;
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   align-items: center;
   background-color: #352344;
   color: #fff;
@@ -134,6 +135,7 @@ const PrivacyContainer = styled.div`
 const Privacy = () => {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
+  const { t, i18n } = useTranslation();
   return (
     <>
       <LocomotiveScrollProvider
@@ -159,7 +161,7 @@ const Privacy = () => {
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState}/>
         <main data-scroll-container ref={containerRef}>
-          <Section>
+          <Section lang={i18n.language}>
             <Container>
               <MainHeader>
                 <LabelOne>آخر تحديث: ١ يناير ٢٠٢٠</LabelOne>

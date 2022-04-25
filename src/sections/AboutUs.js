@@ -10,9 +10,10 @@ import Image5 from "../assets/Images/5.webp";
 import Image6 from "../assets/Images/6.webp";
 
 import "./dd.css";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -153,7 +154,7 @@ const HomeNewsInnerGrid = styled.div`
   grid-row-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   @media (max-width: 768px) {
     grid-column-gap: 4vw;
     grid-template-columns: 1fr 1fr;
@@ -240,6 +241,7 @@ const CardOverlay = styled.div`
 `;
 
 const AboutUs = () => {
+  const { t, i18n } = useTranslation();
   // const ref = React.useRef(null);
 
   // gsap.registerPlugin(ScrollTrigger);
@@ -280,9 +282,19 @@ const AboutUs = () => {
   //     ScrollTrigger.refresh();
   //   }, 1000);
   // }, []);
+  const lang29 = t("lang29").split(" ");
+  const lang30 = t("lang30").split(" ");
+  const lang31 = t("lang31").split(" ");
+  const lang32 = t("lang32").split(" ");
+
+  const lang35 = t("lang35").split(" ");
+  const lang36 = t("lang36").split(" ");
+  const lang37 = t("lang37").split(" ");
+  const lang38 = t("lang38").split(" ");
+
   return (
     <>
-      <Section className="one">
+      <Section lang={i18n.language} className="one">
         <div id="two">
           <Container>
             <div id="th">
@@ -292,18 +304,14 @@ const AboutUs = () => {
                   data-scroll-speed="1"
                   data-scroll-delay="0.1"
                 >
-                  <p id="text1">كابتن جيرل</p>
+                  <p id="text1">{t("lang15")}</p>
                 </Label>
                 <Paragraph
                   data-scroll="0"
                   data-scroll-speed="1"
                   data-scroll-delay="0.1"
                 >
-                  <p>
-                    من الفرد الى المجتمع يعمل على توفير وسيلة نقل سريعة و آمنة
-                    في أي وقت لنقل جميع أفراد المجتمع و الطلاب و الموظفين وحتى
-                    الاطفال على مدار 24 ساعه
-                  </p>
+                  <p>{t("lang16")}</p>
                 </Paragraph>
               </Grid>
             </div>
@@ -315,17 +323,14 @@ const AboutUs = () => {
                 data-scroll-speed="1"
                 data-scroll-delay="0.1"
               >
-                <p id="text2">لان الخصوصية مبدأنا</p>
+                <p id="text2">{t("lang17")}</p>
               </Label>
               <Paragraph
                 data-scroll="0"
                 data-scroll-speed="1"
                 data-scroll-delay="0.1"
               >
-                <p>
-                  اختر كابتن رحلتك من النساء فقط او النساء و الرجال و استمتع
-                  بالخصوصية و الأمان
-                </p>
+                <p>{t("lang18")}</p>
               </Paragraph>
             </Grid>
           </Container>
@@ -339,7 +344,7 @@ const AboutUs = () => {
                 data-scroll-speed="1.2"
                 data-scroll-delay="0.8"
               >
-                <p>رؤيتنا</p>
+                <p>{t("lang19")}</p>
               </Title>
               <TitleText
                 data-scroll="0"
@@ -347,11 +352,7 @@ const AboutUs = () => {
                 data-scroll-delay="0.8"
               >
                 <div>
-                  <p>
-                    نسعى لتلبية احتياجات السوق السعودي و خلق بيئة عمل جاذبة و
-                    متصدره في هذا المشروع بخدمة المجتمع و تحقيق طموحاته في مجال
-                    أكثر خصوصية
-                  </p>
+                  <p>{t("lang20")}</p>
                 </div>
               </TitleText>
             </Grid>
@@ -364,7 +365,7 @@ const AboutUs = () => {
                 data-scroll-speed="1.2"
                 data-scroll-delay="0.8"
               >
-                <p>قيمنا</p>
+                <p>{t("lang21")}</p>
               </Title>
               <TitleText
                 data-scroll="0"
@@ -373,16 +374,16 @@ const AboutUs = () => {
               >
                 <div>
                   <p>
-                    <strong>الهمة:</strong> نسعى دائما لخلق فرص تسهل من سير
-                    الحياة بستخدام استراتيجيات ذكية ومبتكرة.
+                    <strong>{t("lang22")}</strong>
+                    {t("lang23")}
                   </p>
                   <p>
-                    <strong>التأقلم:</strong> نتكيف مع احتياجات عملائنا المتغيرة
-                    وظروف السوق لنقدم لكم خدمات تلبي رغباتكم.
+                    <strong>{t("lang24")}</strong>
+                    {t("lang25")}
                   </p>
                   <p>
-                    <strong>معاير السلامة :</strong> سلامتكم مسؤليتنا لذلك
-                    نستخدم اجود اساليب الامن و السلامة
+                    <strong>{t("lang26")}</strong>
+                    {t("lang27")}
                   </p>
                 </div>
               </TitleText>
@@ -395,7 +396,7 @@ const AboutUs = () => {
                 data-scroll-speed="1.2"
                 data-scroll-delay="0.8"
               >
-                <p>هلا بالكابتن شريك النجاح</p>
+                <p>{t("lang28")}</p>
               </Title>
               <TitleText
                 data-scroll="0"
@@ -404,22 +405,81 @@ const AboutUs = () => {
               >
                 <div>
                   <p>
-                    <strong>-</strong> <strong>سيارتك</strong> صارت مشروعك متعة
-                    قيادتك حولها الى <strong>أرباح</strong>.
+                    <strong>{lang29[0] + " "}</strong>{" "}
+                    <strong>{lang29[1] + " "}</strong>
+                    {lang29[2] +
+                      " " +
+                      lang29[3] +
+                      " " +
+                      lang29[4] +
+                      " " +
+                      lang29[5] +
+                      " " +
+                      lang29[6] +
+                      " " +
+                      lang29[7] +
+                      " "}
+                    <strong>{lang29[8]}</strong>.
                   </p>
                   <p>
-                    <strong>-</strong> حسب احتياجك أختر دخلك راتب{" "}
-                    <strong>شهري</strong> أو
-                    <strong>نسبة</strong>.
+                    <strong>{lang30[0] + " "}</strong>
+                    {lang30[1] +
+                      " " +
+                      lang30[2] +
+                      " " +
+                      lang30[3] +
+                      " " +
+                      lang30[4] +
+                      " " +
+                      lang30[5] +
+                      " "}
+                    <strong>{lang30[6] + " "}</strong>
+                    {lang30[7] + " "}
+                    <strong>{lang30[8]}</strong>.
                   </p>
                   <p>
-                    <strong>-</strong> <strong>فريقنا معك</strong> طول رحلتك
-                    للتأكد <strong>من راحتك وراحة عميلك</strong>.
+                    <strong>{lang31[0] + " "}</strong>{" "}
+                    <strong>{lang31[1] + " " + lang31[2] + " "}</strong>
+                    {lang31[3] + " " + lang31[4] + " " + lang31[5] + " "}
+                    <strong>
+                      {lang31[6] +
+                        " " +
+                        lang31[7] +
+                        " " +
+                        lang31[8] +
+                        " " +
+                        lang31[9]}
+                    </strong>
+                    .
                   </p>
                   <p>
-                    <strong>-</strong> لأن راحتك مطلبنا و خصوصيتك اولويتنا أختر
-                    عميلك من فئة <strong>النساء</strong> أو{" "}
-                    <strong>النساء و الرجال</strong>.
+                    <strong>{lang32[0] + " "}</strong>
+                    {lang32[1] +
+                      " " +
+                      lang32[2] +
+                      " " +
+                      lang32[3] +
+                      " " +
+                      lang32[4] +
+                      " " +
+                      lang32[5] +
+                      " " +
+                      lang32[6] +
+                      " " +
+                      lang32[7] +
+                      " " +
+                      lang32[8] +
+                      " " +
+                      lang32[9] +
+                      " " +
+                      lang32[10] +
+                      " "}
+                    <strong>{lang32[11] + " "}</strong>
+                    {lang32[12] + " "}
+                    <strong>
+                      {lang32[13] + " " + lang32[14] + " " + lang32[15]}
+                    </strong>
+                    .
                   </p>
                 </div>
               </TitleText>
@@ -432,8 +492,8 @@ const AboutUs = () => {
                 data-scroll-speed="1.2"
                 data-scroll-delay="0.8"
               >
-                <p>لأنك عميل كابتن جيرل تستحق التميز - نوصلك يوميا و شهريا</p>
-                <p>صممنا لك</p>
+                <p>{t("lang33")}</p>
+                <p>{t("lang34")}</p>
               </Title>
               <TitleText
                 data-scroll="0"
@@ -442,22 +502,47 @@ const AboutUs = () => {
               >
                 <div>
                   <p>
-                    <strong>-</strong> الاشتراك الشهري <strong>60</strong> رحلة
-                    بالشهر
-                    <strong> 30 </strong> رحلة عليك <strong> 30 </strong>
-                    رحلة علينا.
+                    <strong>{lang35[0] + " "}</strong>
+                    {lang35[1] + " " + lang35[2] + " "}
+                    <strong>{lang35[3] + " "}</strong>
+                    {lang35[4] + " " + lang35[5] + " "}
+                    <strong>{lang35[6] + " "}</strong>
+                    {lang35[7] + " " + lang35[8] + " "}
+                    <strong>{lang35[9] + " "}</strong>
+                    {lang35[10] + " " + lang35[11]}.
                   </p>
                   <p>
-                    <strong>-</strong> توصيل <strong>يومي</strong> بكل{" "}
-                    <strong>خصوصية</strong> و راحة.
+                    <strong>{lang36[0] + " "}</strong>
+                    {lang36[1] + " "}
+                    <strong>{lang36[2] + " "}</strong>
+                    {lang36[3] + " "}
+                    <strong>{lang36[4] + " "}</strong>
+                    {lang36[5] + " " + lang36[6]}.
                   </p>
                   <p>
-                    <strong>-</strong> <strong>فئات</strong> توصيل متعددة{" "}
-                    <strong>تخدم احتياجك</strong>.
+                    <strong>{lang37[0] + " "}</strong>{" "}
+                    <strong>{lang37[1] + " "}</strong>
+                    {lang37[2] + " " + lang37[3] + " "}
+                    <strong>{lang37[4] + " " + lang37[5]}</strong>.
                   </p>
                   <p>
-                    <strong>-</strong> <strong>فريقنا متابع معك</strong> جميع
-                    رحلاتك <strong>للتأكد من أمانك و راحتك</strong>.
+                    <strong>{lang38[0] + " "}</strong>{" "}
+                    <strong>
+                      {lang38[1] + " " + lang38[2] + " " + lang38[3] + " "}
+                    </strong>
+                    {lang38[4] + " " + lang38[5] + " "}
+                    <strong>
+                      {lang38[6] +
+                        " " +
+                        lang38[7] +
+                        " " +
+                        lang38[8] +
+                        " " +
+                        lang38[9] +
+                        " " +
+                        lang38[10]}
+                    </strong>
+                    .
                   </p>
                 </div>
               </TitleText>
@@ -465,7 +550,7 @@ const AboutUs = () => {
           </Container>
           <HomeNewsSection>
             <GridNewsCards>
-              <HomeNewsInnerGrid>
+              <HomeNewsInnerGrid lang={i18n.language}>
                 <CardMask
                   data-scroll="0"
                   data-scroll-speed="0"

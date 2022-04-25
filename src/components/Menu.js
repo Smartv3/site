@@ -9,6 +9,7 @@ import SnapChat from "../assets/Svgs/snapchat.svg";
 
 import ImageOne from "../assets/Images/award1.webp";
 import ImageTwo from "../assets/Images/award2.webp";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   top: 0;
@@ -30,7 +31,7 @@ const Container = styled.div`
 `;
 
 const MenuSection = styled.div`
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   position: static;
   display: grid;
   width: 100%;
@@ -285,7 +286,7 @@ const Menu = ({ setMenuState, menu }) => {
     policy: false,
   });
   console.log(pathname, menu);
-
+  const {t, i18n} = useTranslation()
   return (
     <Section activerun={menu}>
       <NavLogo>
@@ -363,11 +364,11 @@ const Menu = ({ setMenuState, menu }) => {
         </Link>
       </NavLogo>
       <Button onClick={() => setMenuState(false)}>
-        <Label>إغلاق</Label>
+        <Label>{t("lang59")}</Label>
         <Dash />
       </Button>
       <Container>
-        <MenuSection>
+        <MenuSection lang={i18n.language}>
           <List activerun={menu}>
             <CustomLink
               to="/"
@@ -377,8 +378,7 @@ const Menu = ({ setMenuState, menu }) => {
               onMouseOut={() => setHover({main:false})}
             >
               <div style={{ display: "inline-block" }}>
-                الرئيسية
-                <LinkContainer hover={hover.main} />
+{t("lang01")}                <LinkContainer hover={hover.main} />
               </div>
             </CustomLink>
             <CustomLink
@@ -389,8 +389,7 @@ const Menu = ({ setMenuState, menu }) => {
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-                من نحن
-                <LinkContainer hover={hover.aboutUs} />
+{t("lang02")}                <LinkContainer hover={hover.aboutUs} />
               </div>
             </CustomLink>
             <CustomLink
@@ -401,8 +400,7 @@ const Menu = ({ setMenuState, menu }) => {
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-                اتصل بنا
-                <LinkContainer hover={hover.contactUs} />
+{t("lang03")}                <LinkContainer hover={hover.contactUs} />
               </div>
             </CustomLink>
             <CustomLinkA
@@ -413,8 +411,7 @@ const Menu = ({ setMenuState, menu }) => {
               href="https://register.captingirl.com/#/Registration"
             >
               <div style={{ display: "inline-block" }}>
-              انضم ككابتن
-              <LinkContainer hover={hover.joinAsCaptain} />
+{t("lang04")}              <LinkContainer hover={hover.joinAsCaptain} />
               </div>
             </CustomLinkA>
             <CustomLink
@@ -425,8 +422,7 @@ const Menu = ({ setMenuState, menu }) => {
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-                اخبارنا
-                <LinkContainer hover={hover.latestNews} />
+{t("lang05")}                <LinkContainer hover={hover.latestNews} />
               </div>
             </CustomLink>
             <CustomLink
@@ -437,8 +433,7 @@ const Menu = ({ setMenuState, menu }) => {
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-                الشروط والاحكام
-                <LinkContainer hover={hover.term} />
+{t("lang06")}                <LinkContainer hover={hover.term} />
               </div>
             </CustomLink>
             <CustomLink
@@ -449,14 +444,13 @@ const Menu = ({ setMenuState, menu }) => {
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-                سياسة الخصوصية
-                <LinkContainer hover={hover.policy} />
+{t("lang07")}                <LinkContainer hover={hover.policy} />
               </div>
             </CustomLink>
           </List>
           <LatestNews>
             <NewsLabel>
-              <span>أخبارنا</span>
+              <span>{t("lang08")}</span>
             </NewsLabel>
             <NewsContainer activerun={menu}>
               <LatestCardImage>
@@ -507,7 +501,7 @@ const Menu = ({ setMenuState, menu }) => {
                 </IconLink>
               </Icon>
             </IconContainer>
-            <BottomFooter>© جميع الحققوق محفوظة لشركة كابتن جيرل</BottomFooter>
+            <BottomFooter>{t("lang09")}</BottomFooter>
           </Footer>
         </MenuSection>
       </Container>

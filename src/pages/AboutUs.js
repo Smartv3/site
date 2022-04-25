@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import AboutUsImage from "../assets/Images/about3.webp";
 import Menu from "../components/Menu";
 import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   position: relative;
@@ -24,7 +25,7 @@ const Section = styled.section`
 `;
 
 const AboutUsSection = styled.section`
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   position: relative;
   /* min-height: 100vh;
   height: 100vh; */
@@ -41,7 +42,7 @@ const AboutUsSection = styled.section`
 `;
 
 const Container = styled.div`
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   display: grid;
   width: 100%;
   align-items: start;
@@ -166,19 +167,20 @@ const TitleText = styled.div`
 const AboutUs = () => {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
+  const { t, i18n } = useTranslation();
   return (
     <>
       <LocomotiveScrollProvider
-          options={{
+        options={{
+          smooth: true,
+          // ... all available Locomotive Scroll instance options
+          smartphone: {
             smooth: true,
-            // ... all available Locomotive Scroll instance options
-            smartphone:{
-              smooth:true,
-            },
-            tablet:{
-              smooth:true,
-            }
-          }}
+          },
+          tablet: {
+            smooth: true,
+          },
+        }}
         watch={
           [
             //..all the dependencies you want to watch to update the scroll.
@@ -190,31 +192,31 @@ const AboutUs = () => {
       >
         {/* <ScrollTriggerProxy/> */}
         <AboutUsCover setMenuState={setMenuState} />
-        <Menu setMenuState={setMenuState} menu={menuState}/>
+        <Menu setMenuState={setMenuState} menu={menuState} />
         <main data-scroll-container ref={containerRef}>
           <Section>
-            <Container>
+            <Container lang={i18n.language}>
               <Label
                 data-scroll="0"
                 data-scroll-speed="1"
                 data-scroll-delay="0.1"
               >
-                <p>من نحن</p>
+                <p>{t("lang10")}</p>
               </Label>
               <Paragraph
                 data-scroll="0"
                 data-scroll-speed="1"
                 data-scroll-delay="0.1"
               >
-                <p>تطبيق سعودي يواكب</p>
-                <p>تطلعات رؤية 2030 طموحنا عنان</p>
-                <p>السماء</p>
+                <p>{t("lang11")}</p>
+                <p>{t("lang12")}</p>
+                <p>{t("lang13")}</p>
               </Paragraph>
             </Container>
           </Section>
-          <AboutUsSection>
+          <AboutUsSection lang={i18n.language}>
             <BodySection>
-              <Container>
+              <Container lang={i18n.language}>
                 <ParagraphTwo>
                   <Title
                     data-scroll="0"
@@ -222,8 +224,9 @@ const AboutUs = () => {
                     data-scroll-delay="0.8"
                   >
                     <p>
-                      تطبيق كابتن جيرل <br /> الاأول من نوعه في المملكة العربية
-                      السعودية
+                      {t("lang65")}
+                      <br />
+                      {t("lang66")}
                     </p>
                   </Title>
                   <TitleText
@@ -232,20 +235,9 @@ const AboutUs = () => {
                     data-scroll-delay="0.8"
                   >
                     <div>
-                      <p>
-                        كابتن جيرل من الفرد الى المجتمع يعمل على توفير وسيلة نقل
-                        سريعةوآمنة في أي وقت لنقل جميع أفراد المجتمع و الطلاب و
-                        الموظفين حتى الاأطفال علي مدار ٢٤ ساعة.
-                      </p>
-                      <p>
-                        و لان الخصوصية مبدأنا ختار كابتن رحلتك من النساء فقط او
-                        النساد و الرجال و استمتع بالخصوصية و الأمان.
-                      </p>
-                      <p>
-                        في رؤيتنا نسع اتلبية اتياجات السوق السعودي و خلق بيئة
-                        عمل جاذبة و متصدره في هذا المشروع بخدمة المجتمع و تحقيق
-                        طموحاته في مجال أكثر خصوصية.
-                      </p>
+                      <p>{t("lang62")}</p>
+                      <p>{t("lang63")}</p>
+                      <p>{t("lang64")}</p>
                       <p></p>
                     </div>
                   </TitleText>
@@ -254,7 +246,7 @@ const AboutUs = () => {
                     data-scroll-speed="1.2"
                     data-scroll-delay="0.8"
                   >
-                    <p>قيمنا</p>
+                    <p>{t("lang21")}</p>
                   </Title>
                   <TitleText
                     data-scroll="0"
@@ -263,16 +255,16 @@ const AboutUs = () => {
                   >
                     <div>
                       <p>
-                        <strong>الهمة:</strong> نسعى دائما لخلق فرص تسهل من سير
-                        الحياة بستخدام استراتيجيات ذكية ومبتكرة.
+                        <strong>{t("lang22")}</strong>
+                        {t("lang23")}
                       </p>
                       <p>
-                        <strong>التأقلم:</strong> نتكيف مع احتياجات عملائنا
-                        المتغيرة وظروف السوق لنقدم لكم خدمات تلبي رغباتكم.
+                        <strong>{t("lang24")}</strong>
+                        {t("lang25")}
                       </p>
                       <p>
-                        <strong>معاير السلامة :</strong> سلامتكم مسؤليتنا لذلك
-                        نستخدم اجود اساليب الامن و السلامة
+                        <strong>{t("lang26")}</strong>
+                        {t("lang27")}
                       </p>
                     </div>
                   </TitleText>
@@ -281,7 +273,7 @@ const AboutUs = () => {
                     data-scroll-speed="1.2"
                     data-scroll-delay="0.8"
                   >
-                    <p>هلا بالكابتن شريك النجاح</p>
+                    <p>{t("lang28")}</p>
                   </Title>
                   <TitleText
                     data-scroll="0"
@@ -289,21 +281,11 @@ const AboutUs = () => {
                     data-scroll-delay="0.8"
                   >
                     <div>
-                      <p>
-                        <strong>-</strong> سيارتك صارت مشروعك متعة قيادتك حولها
-                        الى أرباح.
+                      <p>{t("lang29")}.</p>
+                      <p>{t("lang30")}.</p>
+                      <p>{t("lang31")}.
                       </p>
-                      <p>
-                        <strong>-</strong> حسب احتياجك أختر دخلك راتب شهري أو
-                        نسبة.
-                      </p>
-                      <p>
-                        <strong>-</strong> فريقنا معك طوال رحلتك للتأكد من راحتك
-                        وراحة عميلك.
-                      </p>
-                      <p>
-                        <strong>-</strong> لأن راحتك مطلبناوخصوصيتك اولويتنا
-                        أختر عميلك من فئة النساء فقط أو النساء و الرجال.
+                      <p>{t("lang32")}.
                       </p>
                     </div>
                   </TitleText>

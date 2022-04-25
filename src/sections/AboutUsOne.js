@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 const Section = styled.section`
@@ -18,7 +19,7 @@ const Section = styled.section`
 `;
 
 const Container = styled.div`
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   display: grid;
   width: 100%;
   align-items: start;
@@ -71,18 +72,19 @@ const Paragraph = styled.div`
 `;
 
 const AboutUsOne = () => {
+  const {t, i18n} = useTranslation()
   return (
     <Section>
-      <Container>
+      <Container lang={i18n.language}>
         <Label data-scroll="0" data-scroll-speed="1" data-scroll-delay="0.1">
-          <p>من نحن</p>
+          <p>{t("lang10")}</p>
         </Label>
         <Paragraph
           data-scroll="0"
           data-scroll-speed="1"
           data-scroll-delay="0.1"
         >
-          <p>كابتن جيرل الأول من نوعة في المملكة العربية السعودية</p>
+          <p>{t("lang14")}</p>
         </Paragraph>
       </Container>
     </Section>

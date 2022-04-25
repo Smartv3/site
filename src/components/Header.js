@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 const NavLogo = styled.div`
   position: fixed;
@@ -72,6 +73,21 @@ const Label = styled.div`
 `;
 
 const Header = ({ setMenuState }) => {
+  const {t, i18n} = useTranslation()
+  const enLanguageHandler = () => {
+    window.location.reload()
+    localStorage.setItem('lang', 'en')
+  }
+
+  const arLanguageHandler = () => {
+    window.location.reload()
+    localStorage.setItem('lang', 'ar')
+  }
+ 
+  React.useEffect(() => {
+    i18n.changeLanguage(localStorage.getItem("lang"))
+  }, [])
+  
   return (
     <>
       <div>
@@ -150,8 +166,8 @@ const Header = ({ setMenuState }) => {
           </Link>
         </NavLogo>
         <Button>
-          {/* <Label>En</Label> */}
-          <Col style={{ cursor: "pointer" }} onClick={() => setMenuState(true)}>
+        <Label onClick={localStorage.getItem("lang") === "ar" ? enLanguageHandler : arLanguageHandler} style={{cursor: 'pointer'}}>{localStorage.getItem("lang") === "ar" ? t("lang61") : t("lang60")}</Label>
+        <Col style={{cursor: 'pointer'}} onClick={() => setMenuState(true)}>
             <Dash id="two" onClick={() => setMenuState(true)} />
             <Dash
               onClick={() => setMenuState(true)}

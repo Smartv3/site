@@ -7,6 +7,7 @@ import Youtube from "../assets/Svgs/youtube.svg";
 import Twitter from "../assets/Svgs/twitter.svg";
 import Tiktok from "../assets/Svgs/tiktok.svg";
 import SnapChat from "../assets/Svgs/snapchat.svg";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.div`
   position: relative;
@@ -25,7 +26,7 @@ const FooterContainer = styled.div`
 `;
 
 const FooterGrid = styled.div`
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   display: grid;
   width: 100%;
   /* height: 100%; */
@@ -203,66 +204,55 @@ const Footer = () => {
     term: false,
     policy: false,
   });
+  const {t, i18n} = useTranslation()
   return (
     <Section>
       <FooterContainer>
-        <FooterGrid>
+        <FooterGrid lang={i18n.language}>
           <Pages>
-            <Label>الصفحات</Label>
+            <Label>{t("lang42")}</Label>
             <List>
               <CustomLink
                 style={{color: hover.main ? '#fff' : '#9e9e9e'}}
                 onMouseOver={() => setHover({ ...hover, main: true })}
                 onMouseOut={() => setHover({ main: false })}
                 to="/"
-              >
-                الرئيسية
-              </CustomLink>
+              >{t("lang01")}</CustomLink>
               <CustomLink
                 style={{color: hover.aboutUs ? '#fff' : '#9e9e9e'}}
                 onMouseOver={() => setHover({ ...hover, aboutUs: true })}
                 onMouseOut={() => setHover({ aboutUs: false })}
                 to="/about-us"
-              >
-                من نحن
-              </CustomLink>
+              >{t("lang02")}</CustomLink>
               <CustomLink
                 style={{color: hover.contactUs ? '#fff' : '#9e9e9e'}}
                 onMouseOver={() => setHover({ ...hover, contactUs: true })}
                 onMouseOut={() => setHover({ contactUs: false })}
                 to="/contact-us"
-              >
-                اتصل بنا
-              </CustomLink>
+              >{t("lang03")}</CustomLink>
               <CustomLinkA
                 style={{color: hover.joinAsCaptain ? '#fff' : '#9e9e9e'}}
                 onMouseOver={() => setHover({ ...hover, joinAsCaptain: true })}
                 onMouseOut={() => setHover({ joinAsCaptain: false })}
                 href="https://register.captingirl.com/#/Registration"
-              >
-                انضم ككابتن
-              </CustomLinkA>
+              >{t("lang04")}</CustomLinkA>
             </List>
           </Pages>
           <Legal>
-            <Label>قانوني</Label>
+            <Label>{t("lang43")}</Label>
             <List>
               <CustomLink
                 style={{color: hover.term ? '#fff' : '#9e9e9e'}}
                 onMouseOver={() => setHover({ ...hover, term: true })}
                 onMouseOut={() => setHover({ term: false })}
                 to="/term-and-condition"
-              >
-                الشروط والاحكام
-              </CustomLink>
+              >{t("lang06")}</CustomLink>
               <CustomLink
                 style={{color: hover.policy ? '#fff' : '#9e9e9e'}}
                 onMouseOver={() => setHover({ ...hover, policy: true })}
                 onMouseOut={() => setHover({ policy: false })}
                 to="/privacy-and-policy"
-              >
-                سياسة الخصوصية
-              </CustomLink>
+              >{t("lang07")}</CustomLink>
             </List>
           </Legal>
           <FooterLogo>
@@ -339,7 +329,7 @@ const Footer = () => {
               </svg>
             </Link>
           </FooterLogo>
-          <PWrap>© جميع الحققوق محفوظة لشركة كابتن جيرل</PWrap>
+          <PWrap>{t("lang09")}</PWrap>
           <SocialMedia>
             <IconContainer>
               <Icon>

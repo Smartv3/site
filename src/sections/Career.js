@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import Banner from "../assets/Images/banner.webp";
 
@@ -17,7 +18,7 @@ const Section = styled.div`
 `;
 
 const Container = styled.div`
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   display: grid;
   width: 100%;
   grid-auto-columns: 1fr;
@@ -62,15 +63,16 @@ const Paragraph = styled.div`
 `;
 
 const Career = () => {
+  const {t, i18n} = useTranslation()
   return (
     <Section>
-      <Container>
+      <Container lang={i18n.language}>
         <Label data-scroll="0" data-scroll-speed="1" data-scroll-delay="0.1">
-          <p>تجربة تستحق انضمامك</p>
+          <p>{t("lang39")}</p>
         </Label>
         <Paragraph data-scroll="0" data-scroll-speed="1" data-scroll-delay="0.1">
-          <p>الوقت البدل ضائع لا تضيعه بدون أرباح</p>
-          <p>أبدا بتحقيق دخلك مع كابتن جيرل</p>
+          <p>{t("lang40")}</p>
+          <p>{t("lang41")}</p>
         </Paragraph>
       </Container>
     </Section>

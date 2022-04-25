@@ -5,7 +5,8 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
-import ContactImage1 from '../assets/Images/contactUs1.webp'
+import ContactImage1 from "../assets/Images/contactUs1.webp";
+import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
   position: relative;
@@ -14,7 +15,7 @@ const Section = styled.section`
   padding-right: 8vw;
   padding-left: 8vw;
   display: flex;
-  direction: rtl;
+  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
   align-items: center;
   @media (max-width: 768px) {
     padding-right: 24px;
@@ -27,15 +28,15 @@ const Section = styled.section`
     font-weight: 800;
     @media (max-width: 768px) {
       font-size: 14px;
-  }
+    }
   }
 `;
 
 const Container = styled.div`
-    width: 100%;
-    padding-right: 8vw;
-    padding-bottom: 10vh;
-    padding-left: 8vw;
+  width: 100%;
+  padding-right: 8vw;
+  padding-bottom: 10vh;
+  padding-left: 8vw;
   @media (max-width: 768px) {
     padding-bottom: 0vh;
     padding: 0px 0px;
@@ -58,7 +59,7 @@ const ImageContainer = styled.div`
     grid-column-start: 1;
     grid-row-start: 5;
   }
-  div{
+  div {
     overflow: hidden;
     width: 37.5vw;
     height: 30vh;
@@ -66,10 +67,10 @@ const ImageContainer = styled.div`
     align-items: flex-start;
     @media (max-width: 768px) {
       width: 100%;
-    height: 100%;
+      height: 100%;
     }
   }
-  img{
+  img {
     width: 100%;
     height: 100%;
     max-width: none;
@@ -78,10 +79,10 @@ const ImageContainer = styled.div`
 `;
 
 const Address = styled.div`
-    grid-row-start: 2;
-    grid-column-start: 2;
-    grid-row-end: 5;
-    grid-column-end: 9;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-row-end: 5;
+  grid-column-end: 9;
 
   @media (max-width: 768px) {
     grid-row-start: 4;
@@ -92,10 +93,10 @@ const Address = styled.div`
 `;
 
 const AddressLocation = styled.div`
-    margin-bottom: 24px;
-    font-size: 1.2vw;
-    line-height: 120%;
-    font-weight: 800;
+  margin-bottom: 24px;
+  font-size: 1.2vw;
+  line-height: 120%;
+  font-weight: 800;
 
   @media (max-width: 768px) {
     margin-bottom: 16px;
@@ -108,19 +109,20 @@ const AddressLocation = styled.div`
 const ContactUs = () => {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
+  const { t, i18n } = useTranslation();
   return (
     <>
       <LocomotiveScrollProvider
-          options={{
+        options={{
+          smooth: true,
+          // ... all available Locomotive Scroll instance options
+          smartphone: {
             smooth: true,
-            // ... all available Locomotive Scroll instance options
-            smartphone:{
-              smooth:true,
-            },
-            tablet:{
-              smooth:true,
-            }
-          }}
+          },
+          tablet: {
+            smooth: true,
+          },
+        }}
         watch={
           [
             //..all the dependencies you want to watch to update the scroll.
@@ -131,9 +133,9 @@ const ContactUs = () => {
         containerRef={containerRef}
       >
         <Header setMenuState={setMenuState} />
-        <Menu setMenuState={setMenuState} menu={menuState}/>
+        <Menu setMenuState={setMenuState} menu={menuState} />
         <main data-scroll-container ref={containerRef}>
-          <Section style={{ backgroundColor: "#000", color: "#fff" }}>
+          <Section lang={i18n.language} style={{ backgroundColor: "#000", color: "#fff" }}>
             <div
               style={{
                 paddingRight: "8vw",
@@ -160,7 +162,7 @@ const ContactUs = () => {
                   }}
                 >
                   <div style={{ marginBottom: 16 }}>
-                    <HeaderTitle>ابقى على تواصل</HeaderTitle>
+                    <HeaderTitle>{t("lang44")}</HeaderTitle>
                   </div>
                 </div>
                 <div
@@ -179,8 +181,7 @@ const ContactUs = () => {
                       fontWeight: 500,
                     }}
                   >
-                    هل لديك أسئلة ، تتطلع إلى الانضمام إلى فريقنا أو تريد معرفة
-                    المزيد؟
+                    {t("lang45")}
                   </h1>
                 </div>
               </div>
@@ -221,15 +222,17 @@ const ContactUs = () => {
                   <div>
                     <div>
                       <div>
-                        <p>التواصل</p>
+                        <p>{t("lang46")}</p>
                       </div>
                       <div>
                         <div>
                           <a href="mailto:info@srmg.com?subject=Advertising">
                             <p>
-                              info@captingirl.com <br />
-                              المملكة العربية السعوديه <br />
-                              9200 122 90
+                              {t("lang47")}
+                              <br />
+                              {t("lang48")}
+                              <br />
+                              {t("lang49")}
                             </p>
                           </a>
                         </div>
@@ -241,14 +244,14 @@ const ContactUs = () => {
             </div>
           </Section>
           <Section
+          lang={i18n.language}
             style={{
               paddingTop: "5vh",
               paddingBottom: "5vh",
               backgroundColor: "#fff",
             }}
           >
-            <Container
-            >
+            <Container>
               <div
                 style={{
                   display: "grid",
@@ -268,7 +271,7 @@ const ContactUs = () => {
                     gridRowStart: 1,
                   }}
                 >
-                  <p>مكاتبنا</p>
+                  <p>{t("lang50")}</p>
                 </div>
                 <div
                   style={{
@@ -280,20 +283,15 @@ const ContactUs = () => {
                 >
                   <div>
                     <div>
-                      المملكة العربية السعودية
-                      <br />
+                      {t("lang48")} <br />
                     </div>
                   </div>
                 </div>
-                <Address
-                >
+                <Address>
                   <div>
                     <div>
                       <div>
-                        <AddressLocation
-                        >
-                          الرياض
-                        </AddressLocation>
+                        <AddressLocation>{t("lang51")} </AddressLocation>
                       </div>
                     </div>
                     <div
@@ -302,13 +300,14 @@ const ContactUs = () => {
                       }}
                     >
                       <div>
-                        <span>الموقع</span>
+                        <span>{t("lang52")}</span>
                         <br />
                       </div>
                       <div>
                         <p>
-                          صندوق بريد 12213 ، طريق العليا ، <br />
-                          الرياض العليا، المملكة العربية السعودية
+                          {t("lang53")}
+                          <br />
+                          {t("lang54")}
                         </p>
                       </div>
                     </div>
@@ -319,30 +318,23 @@ const ContactUs = () => {
                         }}
                       >
                         <p>
-                          <span>الهاتف</span>
-                          <br />‍<a href="tel:920012290">920012290</a>
+                          <span>{t("lang55")}</span>
+                          <br />‍<a href="tel:920012290">{t("lang56")}</a>
                         </p>
                       </div>
                       <div>
                         <p>
-                          <span>بريد الالكتروني</span>
+                          <span>{t("lang57")}</span>
                           <br />‍
-                          <a href="mailto:info@captingirl.com">
-                            info@captingirl.com
-                          </a>
+                          <a href="mailto:info@captingirl.com">{t("lang58")}</a>
                         </p>
                       </div>
                     </div>
                   </div>
                 </Address>
                 <ImageContainer>
-                  <div
-                  >
-                      <img
-                        src={ContactImage1}
-                        loading="lazy"
-                        alt="Riyadh"
-                      />
+                  <div>
+                    <img src={ContactImage1} loading="lazy" alt="Riyadh" />
                   </div>
                 </ImageContainer>
               </div>
