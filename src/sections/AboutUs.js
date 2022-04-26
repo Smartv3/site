@@ -254,6 +254,7 @@ const AboutUs = () => {
         backgroundColor: "#352344",
         ease: "none",
         scrollTrigger: {
+          id: "testTwo",
           trigger: element.querySelector("#th"),
           start: "top 300px",
           end: "bottom 100px",
@@ -269,6 +270,7 @@ const AboutUs = () => {
           color: "#fff",
           ease: "none",
           scrollTrigger: {
+            id: 'testOne',
             trigger: element.querySelector("#th"),
             start: "top 300px",
             end: "bottom 100px",
@@ -281,8 +283,9 @@ const AboutUs = () => {
 
       ScrollTrigger.refresh();
     }, 1000);
+
   }, []);
-  
+
   const lang29 = t("lang29").split(" ");
   const lang30 = t("lang30").split(" ");
   const lang31 = t("lang31").split(" ");

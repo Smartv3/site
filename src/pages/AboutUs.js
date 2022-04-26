@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
@@ -6,7 +6,8 @@ import AboutUsCover from "../components/AboutUsCover";
 import Footer from "../components/Footer";
 import AboutUsImage from "../assets/Images/about3.webp";
 import Menu from "../components/Menu";
-import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
@@ -168,8 +169,20 @@ const AboutUs = () => {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
   const { t, i18n } = useTranslation();
+
+  // React.useEffect(() => {
+    
+  //   return () => {
+  //     // Let's clear instances
+  //     ScrollTrigger.kill();
+  //   };
+    
+  // }, []);
+
   return (
     <>
+    <div>
+
       <LocomotiveScrollProvider
         options={{
           smooth: true,
@@ -307,6 +320,7 @@ const AboutUs = () => {
           <Footer />
         </main>
       </LocomotiveScrollProvider>
+    </div>
     </>
   );
 };
