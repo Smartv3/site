@@ -285,7 +285,7 @@ const Menu = ({ setMenuState, menu }) => {
     term: false,
     policy: false,
   });
-  console.log(pathname, menu);
+  // console.log(pathname, menu);
   const {t, i18n} = useTranslation()
   return (
     <Section activerun={menu}>

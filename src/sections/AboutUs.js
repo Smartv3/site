@@ -17,8 +17,8 @@ const Section = styled.section`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  /* background-color: #bc668c; */
-  background-color: #352344;
+  background-color: #bc668c;
+  /* background-color: #352344; */
 `;
 
 const Container = styled.div`
@@ -52,8 +52,8 @@ const Label = styled.div`
   grid-row-end: 2;
   grid-row-start: 1;
   align-self: auto;
-  /* color: rgb(99, 59, 127); */
-  color: #fff;
+  color: rgb(99, 59, 127);
+  /* color: #fff; */
   p {
     font-size: 2vw;
     font-weight: 400;
@@ -242,46 +242,47 @@ const CardOverlay = styled.div`
 
 const AboutUs = () => {
   const { t, i18n } = useTranslation();
-  // const ref = React.useRef(null);
+  const ref = React.useRef(null);
 
-  // gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-  // React.useLayoutEffect(() => {
-  //   const element = ref.current;
-  //   setTimeout(() => {
-  //     gsap.to(element.querySelector("#two"), {
-  //       duration: 1,
-  //       backgroundColor: "#352344",
-  //       ease: "none",
-  //       scrollTrigger: {
-  //         trigger: element.querySelector("#th"),
-  //         start: "top 300px",
-  //         end: "bottom 100px",
-  //         // markers: true,
-  //         scrub: true,
-  //         scroller: ".one",
-  //       },
-  //     });
-  //     gsap.to(
-  //       [element.querySelector("#text1"), element.querySelector("#text2")],
-  //       {
-  //         duration: 1,
-  //         color: "#fff",
-  //         ease: "none",
-  //         scrollTrigger: {
-  //           trigger: element.querySelector("#th"),
-  //           start: "top 300px",
-  //           end: "bottom 100px",
-  //           // markers: true,
-  //           scrub: true,
-  //           scroller: ".one",
-  //         },
-  //       }
-  //     );
+  React.useLayoutEffect(() => {
+    const element = ref.current;
+    setTimeout(() => {
+      gsap.to(element.querySelector("#two"), {
+        duration: 1,
+        backgroundColor: "#352344",
+        ease: "none",
+        scrollTrigger: {
+          trigger: element.querySelector("#th"),
+          start: "top 300px",
+          end: "bottom 100px",
+          // markers: true,
+          scrub: true,
+          scroller: ".one",
+        },
+      });
+      gsap.to(
+        [element.querySelector("#text1"), element.querySelector("#text2")],
+        {
+          duration: 1,
+          color: "#fff",
+          ease: "none",
+          scrollTrigger: {
+            trigger: element.querySelector("#th"),
+            start: "top 300px",
+            end: "bottom 100px",
+            // markers: true,
+            scrub: true,
+            scroller: ".one",
+          },
+        }
+      );
 
-  //     ScrollTrigger.refresh();
-  //   }, 1000);
-  // }, []);
+      ScrollTrigger.refresh();
+    }, 1000);
+  }, []);
+  
   const lang29 = t("lang29").split(" ");
   const lang30 = t("lang30").split(" ");
   const lang31 = t("lang31").split(" ");
@@ -294,7 +295,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <Section lang={i18n.language} className="one">
+      <Section lang={i18n.language} className="one" ref={ref}>
         <div id="two">
           <Container>
             <div id="th">
