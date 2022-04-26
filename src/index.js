@@ -6,7 +6,7 @@ import ErrorBoundary from "./helper/ErrorBoundary";
 // import reportWebVitals from './reportWebVitals';
 
 // Before
-// Build 9
+// Build 10
 import "./i18n";
 ReactDOM.render(
   <React.StrictMode>
