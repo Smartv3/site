@@ -9,6 +9,7 @@ import Menu from "../components/Menu";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
+import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 
 const Section = styled.section`
   position: relative;

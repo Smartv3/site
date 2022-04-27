@@ -6,6 +6,7 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Menu from "../components/Menu";
+import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 
 const Section = styled.section`
   position: relative;
@@ -155,6 +156,8 @@ const Term = () => {
         }
         containerRef={containerRef}
       >
+              {/* <ScrollTriggerProxy/> */}
+
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
         <main data-scroll-container ref={containerRef}>

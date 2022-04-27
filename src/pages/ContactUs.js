@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import ContactImage1 from "../assets/Images/contactUs1.webp";
 import { useTranslation } from "react-i18next";
+import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 
 const Section = styled.section`
   position: relative;
@@ -132,6 +133,7 @@ const ContactUs = () => {
         }
         containerRef={containerRef}
       >
+        {/* <ScrollTriggerProxy /> */}
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
         <main data-scroll-container ref={containerRef}>

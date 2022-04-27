@@ -283,7 +283,6 @@ const AboutUs = () => {
 
       ScrollTrigger.refresh();
     }, 1000);
-
   }, []);
 
   const lang29 = t("lang29").split(" ");

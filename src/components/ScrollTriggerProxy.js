@@ -35,14 +35,14 @@ const ScrollTriggerProxy = () => {
         pinType: element.style.transform ? "transform" : "fixed",
       });
     }
-
-    return () => {
-      ScrollTrigger.addEventListener("refresh", () => scroll?.update());
-      ScrollTrigger.refresh();
-    };
+    
+    // return () => {
+    //   ScrollTrigger.addEventListener("refresh", () => scroll?.update());
+    //   ScrollTrigger.refresh();
+    // };
     
   }, [scroll]);
-
+  
   return null;
 };
 
