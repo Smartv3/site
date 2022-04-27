@@ -31,7 +31,7 @@ const Container = styled.div`
 `;
 
 const MenuSection = styled.div`
-  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
+  direction: ${(props) => (props.lang === "ar" ? "rtl" : "ltr")};
   position: static;
   display: grid;
   width: 100%;
@@ -104,7 +104,7 @@ const Footer = styled.div`
   justify-self: auto;
   align-self: end;
   width: 100%;
-  
+
   @media (max-width: 768px) {
     grid-column-start: 1;
     grid-column-end: 8;
@@ -154,8 +154,9 @@ const NewsContainer = styled.div`
   height: 100%;
   justify-content: flex-start;
   align-items: flex-start;
-  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(80%)'};
-  opacity: ${props => props.activerun ? 1 : 0};
+  transform: ${(props) =>
+    props.activerun ? "translateY(0%)" : "translateY(80%)"};
+  opacity: ${(props) => (props.activerun ? 1 : 0)};
   transition: opacity 0.6s ease, transform 0.6s ease;
 `;
 
@@ -202,8 +203,9 @@ const CustomLink = styled(NavLink)`
   font-size: 1.6vw;
   margin-bottom: 16px;
   width: auto;
-  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(90%)'};
-  opacity: ${props => props.activerun ? 1 : 0};
+  transform: ${(props) =>
+    props.activerun ? "translateY(0%)" : "translateY(90%)"};
+  opacity: ${(props) => (props.activerun ? 1 : 0)};
   transition: opacity 0.4s ease, transform 0.4s ease;
   @media (max-width: 768px) {
     font-size: 4.5vw;
@@ -216,8 +218,9 @@ const CustomLinkA = styled.a`
   color: #9e9e9e;
   font-size: 1.6vw;
   margin-bottom: 16px;
-  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(90%)'};
-  opacity: ${props => props.activerun ? 1 : 0};
+  transform: ${(props) =>
+    props.activerun ? "translateY(0%)" : "translateY(90%)"};
+  opacity: ${(props) => (props.activerun ? 1 : 0)};
   transition: opacity 0.4s ease, transform 0.4s ease;
   @media (max-width: 768px) {
     font-size: 4.5vw;
@@ -247,8 +250,9 @@ const IconContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  transform: ${props => props.activerun ? 'translateY(0%)' : 'translateY(90%)'};
-  opacity: ${props => props.activerun ? 1 : 0};
+  transform: ${(props) =>
+    props.activerun ? "translateY(0%)" : "translateY(90%)"};
+  opacity: ${(props) => (props.activerun ? 1 : 0)};
   transition: opacity 0.6s ease, transform 0.6s ease;
 `;
 
@@ -286,7 +290,7 @@ const Menu = ({ setMenuState, menu }) => {
     policy: false,
   });
   // console.log(pathname, menu);
-  const {t, i18n} = useTranslation()
+  const { t, i18n } = useTranslation();
   return (
     <Section activerun={menu}>
       <NavLogo>
@@ -372,79 +376,117 @@ const Menu = ({ setMenuState, menu }) => {
           <List activerun={menu}>
             <CustomLink
               to="/"
-              style={{color: pathname === "/" ? '#fff' : hover.main ? '#fff' : '#9e9e9e'}}
+              style={{
+                color:
+                  pathname === "/" ? "#fff" : hover.main ? "#fff" : "#9e9e9e",
+              }}
               activerun={menu}
-              onMouseOver={() => setHover({...hover, main: true})}
-              onMouseOut={() => setHover({main:false})}
+              onMouseOver={() => setHover({ ...hover, main: true })}
+              onMouseOut={() => setHover({ main: false })}
             >
               <div style={{ display: "inline-block" }}>
-{t("lang01")}                <LinkContainer hover={hover.main} />
+                {t("lang01")} <LinkContainer hover={hover.main} />
               </div>
             </CustomLink>
             <CustomLink
               to="/about-us"
-              style={{color: pathname === "/about-us" ? '#fff' : hover.aboutUs ? '#fff' : '#9e9e9e'}}
+              style={{
+                color:
+                  pathname === "/about-us"
+                    ? "#fff"
+                    : hover.aboutUs
+                    ? "#fff"
+                    : "#9e9e9e",
+              }}
               activerun={menu}
-              onMouseOver={() => setHover({...hover, aboutUs: true})}
+              onMouseOver={() => setHover({ ...hover, aboutUs: true })}
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-{t("lang02")}                <LinkContainer hover={hover.aboutUs} />
+                {t("lang02")} <LinkContainer hover={hover.aboutUs} />
               </div>
             </CustomLink>
             <CustomLink
               to="/contact-us"
-              style={{color: pathname === "/contact-us" ? "#fff" : hover.contactUs ? '#fff' : '#9e9e9e'}}
+              style={{
+                color:
+                  pathname === "/contact-us"
+                    ? "#fff"
+                    : hover.contactUs
+                    ? "#fff"
+                    : "#9e9e9e",
+              }}
               activerun={menu}
-              onMouseOver={() => setHover({...hover, contactUs: true})}
+              onMouseOver={() => setHover({ ...hover, contactUs: true })}
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-{t("lang03")}                <LinkContainer hover={hover.contactUs} />
+                {t("lang03")} <LinkContainer hover={hover.contactUs} />
               </div>
             </CustomLink>
             <CustomLinkA
-              style={{color: hover.joinAsCaptain ? '#fff' : '#9e9e9e'}}
+              style={{ color: hover.joinAsCaptain ? "#fff" : "#9e9e9e" }}
               activerun={menu}
-              onMouseOver={() => setHover({...hover, joinAsCaptain: true})}
+              onMouseOver={() => setHover({ ...hover, joinAsCaptain: true })}
               onMouseOut={() => setHover(false)}
               href="https://register.captingirl.com/#/Registration"
             >
               <div style={{ display: "inline-block" }}>
-{t("lang04")}              <LinkContainer hover={hover.joinAsCaptain} />
+                {t("lang04")} <LinkContainer hover={hover.joinAsCaptain} />
               </div>
             </CustomLinkA>
             <CustomLink
               to="/"
-              style={{color: pathname === "/latest-news" ? "#fff" : hover.latestNews ? '#fff' : '#9e9e9e'}}
+              style={{
+                color:
+                  pathname === "/latest-news"
+                    ? "#fff"
+                    : hover.latestNews
+                    ? "#fff"
+                    : "#9e9e9e",
+              }}
               activerun={menu}
-              onMouseOver={() => setHover({...hover, latestNews: true})}
+              onMouseOver={() => setHover({ ...hover, latestNews: true })}
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-{t("lang05")}                <LinkContainer hover={hover.latestNews} />
+                {t("lang05")} <LinkContainer hover={hover.latestNews} />
               </div>
             </CustomLink>
             <CustomLink
               to="/term-and-condition"
-              style={{color: pathname === "/term-and-condition" ? "#fff" : hover.term ? '#fff' : '#9e9e9e'}}
+              style={{
+                color:
+                  pathname === "/term-and-condition"
+                    ? "#fff"
+                    : hover.term
+                    ? "#fff"
+                    : "#9e9e9e",
+              }}
               activerun={menu}
-              onMouseOver={() => setHover({...hover, term: true})}
+              onMouseOver={() => setHover({ ...hover, term: true })}
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-{t("lang06")}                <LinkContainer hover={hover.term} />
+                {t("lang06")} <LinkContainer hover={hover.term} />
               </div>
             </CustomLink>
             <CustomLink
               to="/privacy-and-policy"
-              style={{color: pathname === "/privacy-and-policy" ? "#fff" : hover.policy ? '#fff' : '#9e9e9e'}}
+              style={{
+                color:
+                  pathname === "/privacy-and-policy"
+                    ? "#fff"
+                    : hover.policy
+                    ? "#fff"
+                    : "#9e9e9e",
+              }}
               activerun={menu}
-              onMouseOver={() => setHover({...hover, policy: true})}
+              onMouseOver={() => setHover({ ...hover, policy: true })}
               onMouseOut={() => setHover(false)}
             >
               <div style={{ display: "inline-block" }}>
-{t("lang07")}                <LinkContainer hover={hover.policy} />
+                {t("lang07")} <LinkContainer hover={hover.policy} />
               </div>
             </CustomLink>
           </List>
@@ -459,7 +501,6 @@ const Menu = ({ setMenuState, menu }) => {
                   loading="lazy"
                   sizes="100vw"
                   alt="Latest news"
-                  
                 />
               </LatestCardImage>
               <LatestCardImage>
@@ -468,7 +509,6 @@ const Menu = ({ setMenuState, menu }) => {
                   loading="lazy"
                   sizes="100vw"
                   alt="Latest news"
-                  
                 />
               </LatestCardImage>
             </NewsContainer>

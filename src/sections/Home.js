@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { gsap, Power4 } from "gsap";
+import { motion } from "framer-motion";
+import AnimationText from "../components/AnimationText";
 
 const Section = styled.section`
   position: relative;
@@ -20,7 +22,7 @@ const Section = styled.section`
 `;
 
 const Container = styled.div`
-  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
+  direction: ${(props) => (props.lang === "ar" ? "rtl" : "ltr")};
   display: grid;
   width: 100%;
   align-items: start;
@@ -117,85 +119,65 @@ const ParagraphThree = styled.div`
 
 const Home = () => {
   const { t, i18n } = useTranslation();
-  // const ref = React.useRef(null);
 
-  // React.useEffect(() => {
-  //   const element = ref.current;
-  //   let tl = gsap.timeline({ delay: 1.2 });
-
-  //   tl.from(element.querySelector(".col__content-title"), {
-  //     ease: "power4",
-  //     y: "+=5vh",
-  //     duration: 2.5,
-  //   })
-  //     .from(
-  //       element.querySelector(".line__inner"),
-  //       {
-  //         // y: -0.113,
-  //         y: 10,
-  //         duration: 2,
-  //         ease: "back",
-  //         stagger: 0.1,
-  //       },
-  //       0
-  //     )
-  //     .from(
-  //       element.querySelector(".col__content-txt1"),
-  //       {
-  //         // x: 100,
-  //         y: 50,
-  //         // opacity: 0,
-  //         duration: 2,
-  //         ease: "power4",
-  //         stagger: 0.2,
-  //       },
-  //       0.4
-  //     )
-  //     .from(
-  //       element.querySelector(".col__content-txt2"),
-  //       {
-  //         // x: 100,
-  //         y: 50,
-  //         // opacity: 0,
-  //         duration: 2,
-  //         ease: "power4",
-  //         stagger: 0.3,
-  //       },
-  //       0.4
-  //     )
-  //     .from(
-  //       element.querySelector(".col__content-txt3"),
-  //       {
-  //         // x: 100,
-  //         y: 50,
-  //         // opacity: 0,
-  //         duration: 2,
-  //         ease: "power4",
-  //         stagger: 0.4,
-  //       },
-  //       0.4
-  //     );
-  // }, []);
-  // const locale = localStorage.setItem("language", "en")
   React.useEffect(() => {
-    i18n.changeLanguage(localStorage.getItem('lang'));
-  }, [])
-  
+    i18n.changeLanguage(localStorage.getItem("lang"));
+  }, []);
+
+  const container1 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.025,
+      },
+    },
+  };
+
+  const container2 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.027,
+      },
+    },
+  };
+
+  const container3 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.029,
+      },
+    },
+  };
+
+  const container4 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.031,
+      },
+    },
+  };
+
   return (
     <Section>
       <Container lang={i18n.language} className="col__content-title">
         <Label>
-          <p className="line__inner">{t("lang10")}</p>
+          <motion.div initial="hidden" animate={"visible"} variants={container1}>
+            <AnimationText type={"paragraph"} text={t("lang10")} />
+          </motion.div>
         </Label>
         <ParagraphOne>
-          <p className="col__content-txt1">{t("lang11")}</p>
-          {/* <p className="col__content-txt1">{t('helloWorld')}</p> */}
+          <motion.div initial="hidden" animate={"visible"} variants={container2}>
+            <AnimationText type={"paragraph"} text={t("lang11")} />
+          </motion.div>
         </ParagraphOne>
         <ParagraphTwo>
-          <p className="col__content-txt2">{t("lang12")}</p>
+          <motion.div initial="hidden" animate={"visible"} variants={container3}>
+            <AnimationText type={"paragraph"} text={t("lang12")} />
+          </motion.div>
         </ParagraphTwo>
         <ParagraphThree>
-          <p className="col__content-txt3">{t("lang13")}</p>
+          <motion.div initial="hidden" animate={"visible"} variants={container4}>
+            <AnimationText type={"paragraph"} text={t("lang13")} />
+          </motion.div>
         </ParagraphThree>
       </Container>
     </Section>

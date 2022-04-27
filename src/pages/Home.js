@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import { AnimatePresence } from "framer-motion";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
 import Menu from "../components/Menu";
@@ -11,12 +12,20 @@ import Career from "../sections/Career";
 import PlayStore from "../sections/PlayStore";
 import Footer from "../components/Footer";
 import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
+import Loader from "../components/Loader";
 // const CoverVideo = React.lazy(() => import("../components/CoverVideo"));
 
 function Home() {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 2000);
+  }, [])
+  
   return (
     <>
       <LocomotiveScrollProvider
@@ -39,6 +48,9 @@ function Home() {
         }
         containerRef={containerRef}
       >
+        <AnimatePresence>
+        {loaded ? null : <Loader />}
+        </AnimatePresence>
         <ScrollTriggerProxy/>
         <CoverVideo setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />

@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { InView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import AnimationText from "../components/AnimationText";
 import Image1 from "../assets/Images/1.webp";
 import Image2 from "../assets/Images/2.webp";
 import Image3 from "../assets/Images/3.webp";
@@ -13,7 +16,7 @@ import "./dd.css";
 import { useTranslation } from "react-i18next";
 
 const Section = styled.section`
-  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
+  direction: ${(props) => (props.lang === "ar" ? "rtl" : "ltr")};
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -154,7 +157,7 @@ const HomeNewsInnerGrid = styled.div`
   grid-row-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
-  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
+  direction: ${(props) => (props.lang === "ar" ? "rtl" : "ltr")};
   @media (max-width: 768px) {
     grid-column-gap: 4vw;
     grid-template-columns: 1fr 1fr;
@@ -242,12 +245,12 @@ const CardOverlay = styled.div`
 
 const AboutUs = () => {
   const { t, i18n } = useTranslation();
-  const ref = React.useRef(null);
+  const reference = React.useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
 
   React.useLayoutEffect(() => {
-    const element = ref.current;
+    const element = reference.current;
     setTimeout(() => {
       gsap.to(element.querySelector("#two"), {
         duration: 1,
@@ -270,7 +273,7 @@ const AboutUs = () => {
           color: "#fff",
           ease: "none",
           scrollTrigger: {
-            id: 'testOne',
+            id: "testOne",
             trigger: element.querySelector("#th"),
             start: "top 300px",
             end: "bottom 100px",
@@ -295,69 +298,138 @@ const AboutUs = () => {
   const lang37 = t("lang37").split(" ");
   const lang38 = t("lang38").split(" ");
 
+  const container1 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.025,
+      },
+    },
+  };
+
   return (
     <>
-      <Section lang={i18n.language} className="one" ref={ref}>
+      <Section lang={i18n.language} className="one" ref={reference}>
         <div id="two">
           <Container>
             <div id="th">
               <Grid>
-                <Label
-                  data-scroll="0"
-                  data-scroll-speed="1"
-                  data-scroll-delay="0.1"
-                >
-                  <p id="text1">{t("lang15")}</p>
-                </Label>
-                <Paragraph
-                  data-scroll="0"
-                  data-scroll-speed="1"
-                  data-scroll-delay="0.1"
-                >
-                  <p>{t("lang16")}</p>
-                </Paragraph>
+                <InView>
+                  {({ inView, ref, entry }) => (
+                    <Label
+                      data-scroll="0"
+                      data-scroll-speed="1"
+                      data-scroll-delay="0.1"
+                      ref={ref}
+                    >
+                      <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang15")} />
+                      </motion.div>
+                    </Label>
+                  )}
+                </InView>
+                <InView>
+                  {({ inView, ref, entry }) => (
+                    <Paragraph
+                      data-scroll="0"
+                      data-scroll-speed="1"
+                      data-scroll-delay="0.1"
+                      ref={ref}
+                    >
+                      <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang16")} />
+                      </motion.div>
+                    </Paragraph>
+                  )}
+                </InView>
               </Grid>
             </div>
           </Container>
           <Container>
             <Grid>
-              <Label
-                data-scroll="0"
-                data-scroll-speed="1"
-                data-scroll-delay="0.1"
-              >
-                <p id="text2">{t("lang17")}</p>
-              </Label>
-              <Paragraph
-                data-scroll="0"
-                data-scroll-speed="1"
-                data-scroll-delay="0.1"
-              >
-                <p>{t("lang18")}</p>
-              </Paragraph>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <Label
+                    data-scroll="0"
+                    data-scroll-speed="1"
+                    data-scroll-delay="0.1"
+                    ref={ref}
+                  >
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang17")} />
+                    </motion.div>
+                  </Label>
+                )}
+              </InView>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <Paragraph
+                    data-scroll="0"
+                    data-scroll-speed="1"
+                    data-scroll-delay="0.1"
+                    ref={ref}
+                  >
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang18")} />
+                    </motion.div>
+                  </Paragraph>
+                )}
+              </InView>
             </Grid>
           </Container>
-
-          {/* </Section>
-      <Section style={{backgroundColor: colorChang.className}}> */}
           <Container>
             <Grid>
-              <Title
-                data-scroll="0"
-                data-scroll-speed="1.2"
-                data-scroll-delay="0.8"
-              >
-                <p>{t("lang19")}</p>
-              </Title>
-              <TitleText
-                data-scroll="0"
-                data-scroll-speed="1.2"
-                data-scroll-delay="0.8"
-              >
-                <div>
-                  <p>{t("lang20")}</p>
-                </div>
-              </TitleText>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <Title
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    ref={ref}
+                  >
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang19")} />
+                    </motion.div>
+                  </Title>
+                )}
+              </InView>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <TitleText
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    ref={ref}
+                  >
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang20")} />
+                    </motion.div>
+                  </TitleText>
+                )}
+              </InView>
             </Grid>
           </Container>
 

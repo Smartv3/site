@@ -1,6 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import {useInView} from "react-intersection-observer";
 import styled from "styled-components";
+import { motion} from "framer-motion";
+import AnimationText from "../components/AnimationText";
 
 const Section = styled.section`
   position: relative;
@@ -73,18 +76,34 @@ const Paragraph = styled.div`
 
 const AboutUsOne = () => {
   const {t, i18n} = useTranslation()
+  const {inView, ref} = useInView();
+
+  const container1 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.025,
+      },
+    },
+  };
+
   return (
     <Section>
-      <Container lang={i18n.language}>
+      <Container ref={ref} lang={i18n.language}>
         <Label data-scroll="0" data-scroll-speed="1" data-scroll-delay="0.1">
-          <p>{t("lang10")}</p>
+          {/* <p>{t("lang10")}</p> */}
+          <motion.div initial="hidden" animate={inView && "visible"} variants={container1}>
+            <AnimationText type={"paragraph"} text={t("lang10")} />
+          </motion.div>
         </Label>
         <Paragraph
           data-scroll="0"
           data-scroll-speed="1"
           data-scroll-delay="0.1"
         >
-          <p>{t("lang14")}</p>
+          {/* <p>{t("lang14")}</p> */}
+          <motion.div initial="hidden" animate={inView && "visible"} variants={container1}>
+            <AnimationText type={"paragraph"} text={t("lang14")} />
+          </motion.div>
         </Paragraph>
       </Container>
     </Section>
