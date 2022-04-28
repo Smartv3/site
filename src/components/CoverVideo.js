@@ -102,7 +102,7 @@ const CoverVideo = ({ setMenuState }) => {
  
   React.useEffect(() => {
     i18n.changeLanguage(localStorage.getItem("lang"))
-  }, [])
+  }, [i18n])
 
   return (
     <>
@@ -185,7 +185,7 @@ const CoverVideo = ({ setMenuState }) => {
         </Link>
       </NavLogo>
       <Button>
-        <Label onClick={localStorage.getItem("lang") === "ar" ? enLanguageHandler : arLanguageHandler } style={{cursor: 'pointer'}}>{localStorage.getItem("lang") === "ar" ? t("lang61") : t("lang60") }</Label>
+        <Label onClick={i18n.language === "ar" ? enLanguageHandler : arLanguageHandler } style={{cursor: 'pointer'}}>{i18n.language === "ar" ? t("lang61") : t("lang60") }</Label>
         <Col style={{cursor: 'pointer'}} onClick={() => setMenuState(true)}>
           <Dash onClick={() => setMenuState(true)} />
           <Dash
