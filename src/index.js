@@ -5,7 +5,7 @@ import App from "./App";
 // import reportWebVitals from './reportWebVitals';
 
 // Before
-// Build 16
+// Build 17
 import "./i18n";
 ReactDOM.render(
   <React.StrictMode>
