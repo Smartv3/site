@@ -7,7 +7,8 @@ import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import ContactImage1 from "../assets/Images/contactUs1.webp";
 import { useTranslation } from "react-i18next";
-import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
+import { motion } from "framer-motion";
+import AnimationText from "../components/AnimationText";
 
 const Section = styled.section`
   position: relative;
@@ -16,7 +17,7 @@ const Section = styled.section`
   padding-right: 8vw;
   padding-left: 8vw;
   display: flex;
-  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
+  direction: ${(props) => (props.lang === "ar" ? "rtl" : "ltr")};
   align-items: center;
   @media (max-width: 768px) {
     padding-right: 24px;
@@ -111,6 +112,26 @@ const ContactUs = () => {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
   const { t, i18n } = useTranslation();
+  const container1 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.025,
+      },
+    },
+  };
+  const item = {
+    hidden: {
+      y: "65%",
+      opacity: 0,
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 },
+      letterSpacing: "initial",
+    },
+  };
   return (
     <>
       <LocomotiveScrollProvider
@@ -137,7 +158,10 @@ const ContactUs = () => {
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
         <main data-scroll-container ref={containerRef}>
-          <Section lang={i18n.language} style={{ backgroundColor: "#000", color: "#fff" }}>
+          <Section
+            lang={i18n.language}
+            style={{ backgroundColor: "#000", color: "#fff" }}
+          >
             <div
               style={{
                 paddingRight: "8vw",
@@ -164,7 +188,15 @@ const ContactUs = () => {
                   }}
                 >
                   <div style={{ marginBottom: 16 }}>
-                    <HeaderTitle>{t("lang44")}</HeaderTitle>
+                    <HeaderTitle>
+                      <motion.div
+                        initial="hidden"
+                        animate={"visible"}
+                        variants={container1}
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang44")} />
+                      </motion.div>
+                    </HeaderTitle>
                   </div>
                 </div>
                 <div
@@ -176,15 +208,22 @@ const ContactUs = () => {
                     alignSelf: "center",
                   }}
                 >
-                  <h1
-                    style={{
-                      fontSize: "3.1vw",
-                      marginBottom: 40,
-                      fontWeight: 500,
-                    }}
+                  <motion.div
+                    initial="hidden"
+                    animate={"visible"}
+                    variants={container1}
                   >
-                    {t("lang45")}
-                  </h1>
+                    <motion.h1
+                      style={{
+                        fontSize: "3.1vw",
+                        marginBottom: 40,
+                        fontWeight: 500,
+                      }}
+                      variants={item}
+                    >
+                      {t("lang45")}
+                    </motion.h1>
+                  </motion.div>
                 </div>
               </div>
               <div
@@ -224,18 +263,30 @@ const ContactUs = () => {
                   <div>
                     <div>
                       <div>
-                        <p>{t("lang46")}</p>
+                        <motion.div
+                          initial="hidden"
+                          animate={"visible"}
+                          variants={container1}
+                        >
+                          <motion.p variants={item}>{t("lang46")}</motion.p>
+                        </motion.div>
                       </div>
                       <div>
                         <div>
                           <a href="mailto:info@srmg.com?subject=Advertising">
-                            <p>
-                              {t("lang47")}
-                              <br />
-                              {t("lang48")}
-                              <br />
-                              {t("lang49")}
-                            </p>
+                            <motion.div
+                              initial="hidden"
+                              animate={"visible"}
+                              variants={container1}
+                            >
+                              <motion.p variants={item}>
+                                {t("lang47")}
+                                <br />
+                                {t("lang48")}
+                                <br />
+                                {t("lang49")}
+                              </motion.p>
+                            </motion.div>
                           </a>
                         </div>
                       </div>
@@ -246,7 +297,7 @@ const ContactUs = () => {
             </div>
           </Section>
           <Section
-          lang={i18n.language}
+            lang={i18n.language}
             style={{
               paddingTop: "5vh",
               paddingBottom: "5vh",

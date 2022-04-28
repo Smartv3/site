@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { InView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import AnimationText from "./AnimationText";
 
 import Instagram from "../assets/Svgs/instagram.svg";
 import Youtube from "../assets/Svgs/youtube.svg";
@@ -26,7 +29,7 @@ const FooterContainer = styled.div`
 `;
 
 const FooterGrid = styled.div`
-  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
+  direction: ${(props) => (props.lang === "ar" ? "rtl" : "ltr")};
   display: grid;
   width: 100%;
   /* height: 100%; */
@@ -204,56 +207,130 @@ const Footer = () => {
     term: false,
     policy: false,
   });
-  const {t, i18n} = useTranslation()
+  const { t, i18n } = useTranslation();
+
+  const container1 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.025,
+      },
+    },
+  };
+
   return (
     <Section>
       <FooterContainer>
         <FooterGrid lang={i18n.language}>
           <Pages>
             <Label>{t("lang42")}</Label>
-            <List>
-              <CustomLink
-                style={{color: hover.main ? '#fff' : '#9e9e9e'}}
-                onMouseOver={() => setHover({ ...hover, main: true })}
-                onMouseOut={() => setHover({ main: false })}
-                to="/"
-              >{t("lang01")}</CustomLink>
-              <CustomLink
-                style={{color: hover.aboutUs ? '#fff' : '#9e9e9e'}}
-                onMouseOver={() => setHover({ ...hover, aboutUs: true })}
-                onMouseOut={() => setHover({ aboutUs: false })}
-                to="/about-us"
-              >{t("lang02")}</CustomLink>
-              <CustomLink
-                style={{color: hover.contactUs ? '#fff' : '#9e9e9e'}}
-                onMouseOver={() => setHover({ ...hover, contactUs: true })}
-                onMouseOut={() => setHover({ contactUs: false })}
-                to="/contact-us"
-              >{t("lang03")}</CustomLink>
-              <CustomLinkA
-                style={{color: hover.joinAsCaptain ? '#fff' : '#9e9e9e'}}
-                onMouseOver={() => setHover({ ...hover, joinAsCaptain: true })}
-                onMouseOut={() => setHover({ joinAsCaptain: false })}
-                href="https://register.captingirl.com/#/Registration"
-              >{t("lang04")}</CustomLinkA>
-            </List>
+            <InView>
+              {({ inView, ref, entry }) => (
+                <List
+                  ref={ref}
+                >
+                  <CustomLink
+                    style={{ color: hover.main ? "#fff" : "#9e9e9e" }}
+                    onMouseOver={() => setHover({ ...hover, main: true })}
+                    onMouseOut={() => setHover({ main: false })}
+                    to="/"
+                  >
+                    <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang01")} />
+                      </motion.div>
+                  </CustomLink>
+                  <CustomLink
+                        style={{ color: hover.aboutUs ? "#fff" : "#9e9e9e" }}
+                    onMouseOver={() => setHover({ ...hover, aboutUs: true })}
+                    onMouseOut={() => setHover({ aboutUs: false })}
+                    to="/about-us"
+                  >
+                    <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang02")} />
+                      </motion.div>
+                  </CustomLink>
+                  <CustomLink
+                    style={{ color: hover.contactUs ? "#fff" : "#9e9e9e" }}
+                    onMouseOver={() => setHover({ ...hover, contactUs: true })}
+                    onMouseOut={() => setHover({ contactUs: false })}
+                    to="/contact-us"
+                  >
+                    <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang03")} />
+                      </motion.div>
+                  </CustomLink>
+                  <CustomLinkA
+                    style={{ color: hover.joinAsCaptain ? "#fff" : "#9e9e9e" }}
+                    onMouseOver={() =>
+                      setHover({ ...hover, joinAsCaptain: true })
+                    }
+                    onMouseOut={() => setHover({ joinAsCaptain: false })}
+                    href="https://register.captingirl.com/#/Registration"
+                  >
+                    <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang04")} />
+                      </motion.div>
+                  </CustomLinkA>
+                </List>
+              )}
+            </InView>
           </Pages>
           <Legal>
             <Label>{t("lang43")}</Label>
-            <List>
+                        <InView>
+              {({ inView, ref, entry }) => (
+            <List ref={ref}>
               <CustomLink
-                style={{color: hover.term ? '#fff' : '#9e9e9e'}}
+                style={{ color: hover.term ? "#fff" : "#9e9e9e" }}
                 onMouseOver={() => setHover({ ...hover, term: true })}
                 onMouseOut={() => setHover({ term: false })}
                 to="/term-and-condition"
-              >{t("lang06")}</CustomLink>
+              >
+                <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang06")} />
+                      </motion.div>
+              </CustomLink>
               <CustomLink
-                style={{color: hover.policy ? '#fff' : '#9e9e9e'}}
+                style={{ color: hover.policy ? "#fff" : "#9e9e9e" }}
                 onMouseOver={() => setHover({ ...hover, policy: true })}
                 onMouseOut={() => setHover({ policy: false })}
                 to="/privacy-and-policy"
-              >{t("lang07")}</CustomLink>
+              >
+                <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+
+                      >
+                        <AnimationText type={"paragraph"} text={t("lang07")} />
+                      </motion.div>
+              </CustomLink>
             </List>
+            )}
+            </InView>
           </Legal>
           <FooterLogo>
             <Link to="/">

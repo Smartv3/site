@@ -305,7 +305,19 @@ const AboutUs = () => {
       },
     },
   };
-
+  const item = {
+    hidden: {
+      y: "65%",
+      opacity: 0,
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 },
+      letterSpacing: "initial",
+    },
+  };
   return (
     <>
       <Section lang={i18n.language} className="one" ref={reference}>
@@ -320,6 +332,7 @@ const AboutUs = () => {
                       data-scroll-speed="1"
                       data-scroll-delay="0.1"
                       ref={ref}
+                      id="text1"
                     >
                       <motion.div
                         initial="hidden"
@@ -361,6 +374,7 @@ const AboutUs = () => {
                     data-scroll-speed="1"
                     data-scroll-delay="0.1"
                     ref={ref}
+                    id="text2"
                   >
                     <motion.div
                       initial="hidden"
@@ -435,192 +449,267 @@ const AboutUs = () => {
 
           <Container>
             <Grid>
-              <Title
-                data-scroll="0"
-                data-scroll-speed="1.2"
-                data-scroll-delay="0.8"
-              >
-                <p>{t("lang21")}</p>
-              </Title>
-              <TitleText
-                data-scroll="0"
-                data-scroll-speed="1.2"
-                data-scroll-delay="0.8"
-              >
-                <div>
-                  <p>
-                    <strong>{t("lang22")}</strong>
-                    {t("lang23")}
-                  </p>
-                  <p>
-                    <strong>{t("lang24")}</strong>
-                    {t("lang25")}
-                  </p>
-                  <p>
-                    <strong>{t("lang26")}</strong>
-                    {t("lang27")}
-                  </p>
-                </div>
-              </TitleText>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <Title
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    ref={ref}
+                  >
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang21")} />
+                    </motion.div>
+                  </Title>
+                )}
+              </InView>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <TitleText
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    ref={ref}
+                  >
+                    <div>
+                      <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+                      >
+                        <motion.p variants={item}>
+                          <strong>{t("lang22")}</strong>
+                          {t("lang23")}
+                        </motion.p>
+                        <motion.p variants={item}>
+                          <strong>{t("lang24")}</strong>
+                          {t("lang25")}
+                        </motion.p>
+                        <motion.p variants={item}>
+                          <strong>{t("lang26")}</strong>
+                          {t("lang27")}
+                        </motion.p>
+                      </motion.div>
+                    </div>
+                  </TitleText>
+                )}
+              </InView>
             </Grid>
           </Container>
           <Container>
             <Grid>
-              <Title
-                data-scroll="0"
-                data-scroll-speed="1.2"
-                data-scroll-delay="0.8"
-              >
-                <p>{t("lang28")}</p>
-              </Title>
-              <TitleText
-                data-scroll="0"
-                data-scroll-speed="1.2"
-                data-scroll-delay="0.8"
-              >
-                <div>
-                  <p>
-                    <strong>{lang29[0] + " "}</strong>{" "}
-                    <strong>{lang29[1] + " "}</strong>
-                    {lang29[2] +
-                      " " +
-                      lang29[3] +
-                      " " +
-                      lang29[4] +
-                      " " +
-                      lang29[5] +
-                      " " +
-                      lang29[6] +
-                      " " +
-                      lang29[7] +
-                      " "}
-                    <strong>{lang29[8]}</strong>.
-                  </p>
-                  <p>
-                    <strong>{lang30[0] + " "}</strong>
-                    {lang30[1] +
-                      " " +
-                      lang30[2] +
-                      " " +
-                      lang30[3] +
-                      " " +
-                      lang30[4] +
-                      " " +
-                      lang30[5] +
-                      " "}
-                    <strong>{lang30[6] + " "}</strong>
-                    {lang30[7] + " "}
-                    <strong>{lang30[8]}</strong>.
-                  </p>
-                  <p>
-                    <strong>{lang31[0] + " "}</strong>{" "}
-                    <strong>{lang31[1] + " " + lang31[2] + " "}</strong>
-                    {lang31[3] + " " + lang31[4] + " " + lang31[5] + " "}
-                    <strong>
-                      {lang31[6] +
-                        " " +
-                        lang31[7] +
-                        " " +
-                        lang31[8] +
-                        " " +
-                        lang31[9]}
-                    </strong>
-                    .
-                  </p>
-                  <p>
-                    <strong>{lang32[0] + " "}</strong>
-                    {lang32[1] +
-                      " " +
-                      lang32[2] +
-                      " " +
-                      lang32[3] +
-                      " " +
-                      lang32[4] +
-                      " " +
-                      lang32[5] +
-                      " " +
-                      lang32[6] +
-                      " " +
-                      lang32[7] +
-                      " " +
-                      lang32[8] +
-                      " " +
-                      lang32[9] +
-                      " " +
-                      lang32[10] +
-                      " "}
-                    <strong>{lang32[11] + " "}</strong>
-                    {lang32[12] + " "}
-                    <strong>
-                      {lang32[13] + " " + lang32[14] + " " + lang32[15]}
-                    </strong>
-                    .
-                  </p>
-                </div>
-              </TitleText>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <Title
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    ref={ref}
+                  >
+                                        <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+                      >
+
+                    <motion.p variants={item}>{t("lang28")}</motion.p>
+                      </motion.div>
+                    
+                  </Title>
+                )}
+              </InView>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <TitleText
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    ref={ref}
+                  >
+                    <div>
+                    <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+                      >
+
+                      <motion.p variants={item}>
+                        <strong>{lang29[0] + " "}</strong>{" "}
+                        <strong>{lang29[1] + " "}</strong>
+                        {lang29[2] +
+                          " " +
+                          lang29[3] +
+                          " " +
+                          lang29[4] +
+                          " " +
+                          lang29[5] +
+                          " " +
+                          lang29[6] +
+                          " " +
+                          lang29[7] +
+                          " "}
+                        <strong>{lang29[8]}</strong>.
+                      </motion.p>
+                      <motion.p variants={item}>
+                        <strong>{lang30[0] + " "}</strong>
+                        {lang30[1] +
+                          " " +
+                          lang30[2] +
+                          " " +
+                          lang30[3] +
+                          " " +
+                          lang30[4] +
+                          " " +
+                          lang30[5] +
+                          " "}
+                        <strong>{lang30[6] + " "}</strong>
+                        {lang30[7] + " "}
+                        <strong>{lang30[8]}</strong>.
+                      </motion.p>
+                      <motion.p variants={item}>
+                        <strong>{lang31[0] + " "}</strong>{" "}
+                        <strong>{lang31[1] + " " + lang31[2] + " "}</strong>
+                        {lang31[3] + " " + lang31[4] + " " + lang31[5] + " "}
+                        <strong>
+                          {lang31[6] +
+                            " " +
+                            lang31[7] +
+                            " " +
+                            lang31[8] +
+                            " " +
+                            lang31[9]}
+                        </strong>
+                        .
+                      </motion.p>
+                      <motion.p variants={item}>
+                        <strong>{lang32[0] + " "}</strong>
+                        {lang32[1] +
+                          " " +
+                          lang32[2] +
+                          " " +
+                          lang32[3] +
+                          " " +
+                          lang32[4] +
+                          " " +
+                          lang32[5] +
+                          " " +
+                          lang32[6] +
+                          " " +
+                          lang32[7] +
+                          " " +
+                          lang32[8] +
+                          " " +
+                          lang32[9] +
+                          " " +
+                          lang32[10] +
+                          " "}
+                        <strong>{lang32[11] + " "}</strong>
+                        {lang32[12] + " "}
+                        <strong>
+                          {lang32[13] + " " + lang32[14] + " " + lang32[15]}
+                        </strong>
+                        .
+                      </motion.p>
+                      </motion.div>
+                    </div>
+                  </TitleText>
+                )}
+              </InView>
             </Grid>
           </Container>
           <Container>
             <Grid>
-              <Title
-                data-scroll="0"
-                data-scroll-speed="1.2"
-                data-scroll-delay="0.8"
-              >
-                <p>{t("lang33")}</p>
-                <p>{t("lang34")}</p>
-              </Title>
-              <TitleText
-                data-scroll="0"
-                data-scroll-speed="1.2"
-                data-scroll-delay="0.8"
-              >
-                <div>
-                  <p>
-                    <strong>{lang35[0] + " "}</strong>
-                    {lang35[1] + " " + lang35[2] + " "}
-                    <strong>{lang35[3] + " "}</strong>
-                    {lang35[4] + " " + lang35[5] + " "}
-                    <strong>{lang35[6] + " "}</strong>
-                    {lang35[7] + " " + lang35[8] + " "}
-                    <strong>{lang35[9] + " "}</strong>
-                    {lang35[10] + " " + lang35[11]}.
-                  </p>
-                  <p>
-                    <strong>{lang36[0] + " "}</strong>
-                    {lang36[1] + " "}
-                    <strong>{lang36[2] + " "}</strong>
-                    {lang36[3] + " "}
-                    <strong>{lang36[4] + " "}</strong>
-                    {lang36[5] + " " + lang36[6]}.
-                  </p>
-                  <p>
-                    <strong>{lang37[0] + " "}</strong>{" "}
-                    <strong>{lang37[1] + " "}</strong>
-                    {lang37[2] + " " + lang37[3] + " "}
-                    <strong>{lang37[4] + " " + lang37[5]}</strong>.
-                  </p>
-                  <p>
-                    <strong>{lang38[0] + " "}</strong>{" "}
-                    <strong>
-                      {lang38[1] + " " + lang38[2] + " " + lang38[3] + " "}
-                    </strong>
-                    {lang38[4] + " " + lang38[5] + " "}
-                    <strong>
-                      {lang38[6] +
-                        " " +
-                        lang38[7] +
-                        " " +
-                        lang38[8] +
-                        " " +
-                        lang38[9] +
-                        " " +
-                        lang38[10]}
-                    </strong>
-                    .
-                  </p>
-                </div>
-              </TitleText>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <Title
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    ref={ref}
+                  >
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang33")} />
+                    </motion.div>
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang34")} />
+                    </motion.div>
+                  </Title>
+                )}
+              </InView>
+              <InView>
+                {({ inView, ref, entry }) => (
+                  <TitleText
+                    data-scroll="0"
+                    data-scroll-speed="1.2"
+                    data-scroll-delay="0.8"
+                    ref={ref}
+                  >
+                    <div>
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <motion.p variants={item}>
+                        <strong>{lang35[0] + " "}</strong>
+                        {lang35[1] + " " + lang35[2] + " "}
+                        <strong>{lang35[3] + " "}</strong>
+                        {lang35[4] + " " + lang35[5] + " "}
+                        <strong>{lang35[6] + " "}</strong>
+                        {lang35[7] + " " + lang35[8] + " "}
+                        <strong>{lang35[9] + " "}</strong>
+                        {lang35[10] + " " + lang35[11]}.
+                      </motion.p>
+                      <motion.p variants={item}>
+                        <strong>{lang36[0] + " "}</strong>
+                        {lang36[1] + " "}
+                        <strong>{lang36[2] + " "}</strong>
+                        {lang36[3] + " "}
+                        <strong>{lang36[4] + " "}</strong>
+                        {lang36[5] + " " + lang36[6]}.
+                      </motion.p>
+                      <motion.p variants={item}>
+                        <strong>{lang37[0] + " "}</strong>{" "}
+                        <strong>{lang37[1] + " "}</strong>
+                        {lang37[2] + " " + lang37[3] + " "}
+                        <strong>{lang37[4] + " " + lang37[5]}</strong>.
+                      </motion.p>
+                      <motion.p variants={item}>
+                        <strong>{lang38[0] + " "}</strong>{" "}
+                        <strong>
+                          {lang38[1] + " " + lang38[2] + " " + lang38[3] + " "}
+                        </strong>
+                        {lang38[4] + " " + lang38[5] + " "}
+                        <strong>
+                          {lang38[6] +
+                            " " +
+                            lang38[7] +
+                            " " +
+                            lang38[8] +
+                            " " +
+                            lang38[9] +
+                            " " +
+                            lang38[10]}
+                        </strong>
+                        .
+                      </motion.p>
+                      </motion.div>
+                    </div>
+                  </TitleText>
+                )}
+              </InView>
             </Grid>
           </Container>
           <HomeNewsSection>

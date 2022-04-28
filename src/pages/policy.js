@@ -6,7 +6,7 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Menu from "../components/Menu";
-import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
+import { motion } from "framer-motion";
 
 const Section = styled.section`
   position: relative;
@@ -100,7 +100,7 @@ const LabelOne = styled.div`
   }
 `;
 
-const LabelTwo = styled.h1`
+const LabelTwo = styled(motion.h1)`
   overflow: hidden;
   color: #bc3b81;
   overflow: hidden;
@@ -137,6 +137,26 @@ const Privacy = () => {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
   const { t, i18n } = useTranslation();
+  const container1 = {
+    visible: {
+      transition: {
+        staggerChildren: 0.025,
+      },
+    },
+  };
+  const item = {
+    hidden: {
+      y: "65%",
+      opacity: 0,
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 },
+      letterSpacing: "initial",
+    },
+  };
   return (
     <>
       <LocomotiveScrollProvider
@@ -159,7 +179,7 @@ const Privacy = () => {
         }
         containerRef={containerRef}
       >
-              {/* <ScrollTriggerProxy/> */}
+        {/* <ScrollTriggerProxy/> */}
 
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
@@ -168,7 +188,15 @@ const Privacy = () => {
             <Container>
               <MainHeader>
                 <LabelOne>{t("lang67")}</LabelOne>
-                <LabelTwo>{t("lang68")}</LabelTwo>
+                <motion.div
+                  initial="hidden"
+                  animate={"visible"}
+                  variants={container1}
+                >
+                  <LabelTwo variants={item}>
+                    {t("lang68")}
+                  </LabelTwo>
+                </motion.div>
               </MainHeader>
               <PrivacyContainer>
                 <div>

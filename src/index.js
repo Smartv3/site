@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter as Router } from "react-router-dom";
 import App from "./App";
-import ErrorBoundary from "./helper/ErrorBoundary";
 // import reportWebVitals from './reportWebVitals';
 
 // Before
@@ -11,9 +10,7 @@ import "./i18n";
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      {/* <ErrorBoundary> */}
         <App />
-      {/* </ErrorBoundary> */}
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

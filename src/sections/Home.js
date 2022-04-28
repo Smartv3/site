@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { gsap, Power4 } from "gsap";
 import { motion } from "framer-motion";
 import AnimationText from "../components/AnimationText";
 
@@ -117,12 +116,8 @@ const ParagraphThree = styled.div`
   }
 `;
 
-const Home = () => {
+const Home = (props) => {
   const { t, i18n } = useTranslation();
-
-  React.useEffect(() => {
-    i18n.changeLanguage(localStorage.getItem("lang"));
-  }, []);
 
   const container1 = {
     visible: {
@@ -160,22 +155,22 @@ const Home = () => {
     <Section>
       <Container lang={i18n.language} className="col__content-title">
         <Label>
-          <motion.div initial="hidden" animate={"visible"} variants={container1}>
+          <motion.div initial="hidden" animate={props.test && "visible"} variants={container1}>
             <AnimationText type={"paragraph"} text={t("lang10")} />
           </motion.div>
         </Label>
         <ParagraphOne>
-          <motion.div initial="hidden" animate={"visible"} variants={container2}>
+          <motion.div initial="hidden" animate={props.test && "visible"} variants={container2}>
             <AnimationText type={"paragraph"} text={t("lang11")} />
           </motion.div>
         </ParagraphOne>
         <ParagraphTwo>
-          <motion.div initial="hidden" animate={"visible"} variants={container3}>
+          <motion.div initial="hidden" animate={props.test && "visible"} variants={container3}>
             <AnimationText type={"paragraph"} text={t("lang12")} />
           </motion.div>
         </ParagraphTwo>
         <ParagraphThree>
-          <motion.div initial="hidden" animate={"visible"} variants={container4}>
+          <motion.div initial="hidden" animate={props.test && "visible"} variants={container4}>
             <AnimationText type={"paragraph"} text={t("lang13")} />
           </motion.div>
         </ParagraphThree>

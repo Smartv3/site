@@ -13,17 +13,20 @@ import PlayStore from "../sections/PlayStore";
 import Footer from "../components/Footer";
 import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 import Loader from "../components/Loader";
-// const CoverVideo = React.lazy(() => import("../components/CoverVideo"));
 
 function Home() {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
+  const [test, setTest] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
     }, 2000);
+    setTimeout(() => {
+      setTest(true);
+    }, 2500);
   }, [])
   
   return (
@@ -55,7 +58,7 @@ function Home() {
         <CoverVideo setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
         <main className="one" data-scroll-container ref={containerRef}>
-          <HomeHeader />
+          <HomeHeader loaded={loaded} test={test}/>
           <AboutUsOne />
           <AboutUs />
           <Career />
