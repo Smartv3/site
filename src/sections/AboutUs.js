@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import Tilt from "../helper/Tilt";
+// import Tilt from '../../dist/tilt.js'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { InView } from "react-intersection-observer";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import AnimationText from "../components/AnimationText";
 import Image1 from "../assets/Images/1.webp";
 import Image2 from "../assets/Images/2.webp";
@@ -90,7 +92,7 @@ const Paragraph = styled.div`
 `;
 
 const Title = styled.div`
-  grid-column-end: 5;
+  grid-column-end: 6;
   grid-column-start: 2;
   grid-row-end: 2;
   grid-row-start: 1;
@@ -201,6 +203,7 @@ const CardImg = styled.div`
   align-items: stretch;
   transform: rotate(0deg);
   color: #fff;
+  scale: 3;
   text-decoration: none;
   img {
     width: 100%;
@@ -318,6 +321,19 @@ const AboutUs = () => {
       letterSpacing: "initial",
     },
   };
+
+  const x = useMotionValue(200);
+  const y = useMotionValue(200);
+
+  const rotateX = useTransform(y, [0, 400], [45, -45]);
+  const rotateY = useTransform(x, [0, 400], [-45, 45]);
+
+  function handleMouse(event) {
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    x.set(event.clientX - rect.left);
+    y.set(event.clientY - rect.top);
+  }
   return (
     <>
       <Section lang={i18n.language} className="one" ref={reference}>
@@ -510,15 +526,13 @@ const AboutUs = () => {
                     data-scroll-delay="0.8"
                     ref={ref}
                   >
-                                        <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-                      >
-
-                    <motion.p variants={item}>{t("lang28")}</motion.p>
-                      </motion.div>
-                    
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <motion.p variants={item}>{t("lang28")}</motion.p>
+                    </motion.div>
                   </Title>
                 )}
               </InView>
@@ -531,89 +545,88 @@ const AboutUs = () => {
                     ref={ref}
                   >
                     <div>
-                    <motion.div
+                      <motion.div
                         initial="hidden"
                         animate={inView && "visible"}
                         variants={container1}
                       >
-
-                      <motion.p variants={item}>
-                        <strong>{lang29[0] + " "}</strong>{" "}
-                        <strong>{lang29[1] + " "}</strong>
-                        {lang29[2] +
-                          " " +
-                          lang29[3] +
-                          " " +
-                          lang29[4] +
-                          " " +
-                          lang29[5] +
-                          " " +
-                          lang29[6] +
-                          " " +
-                          lang29[7] +
-                          " "}
-                        <strong>{lang29[8]}</strong>.
-                      </motion.p>
-                      <motion.p variants={item}>
-                        <strong>{lang30[0] + " "}</strong>
-                        {lang30[1] +
-                          " " +
-                          lang30[2] +
-                          " " +
-                          lang30[3] +
-                          " " +
-                          lang30[4] +
-                          " " +
-                          lang30[5] +
-                          " "}
-                        <strong>{lang30[6] + " "}</strong>
-                        {lang30[7] + " "}
-                        <strong>{lang30[8]}</strong>.
-                      </motion.p>
-                      <motion.p variants={item}>
-                        <strong>{lang31[0] + " "}</strong>{" "}
-                        <strong>{lang31[1] + " " + lang31[2] + " "}</strong>
-                        {lang31[3] + " " + lang31[4] + " " + lang31[5] + " "}
-                        <strong>
-                          {lang31[6] +
+                        <motion.p variants={item}>
+                          <strong>{lang29[0] + " "}</strong>{" "}
+                          <strong>{lang29[1] + " "}</strong>
+                          {lang29[2] +
                             " " +
-                            lang31[7] +
+                            lang29[3] +
                             " " +
-                            lang31[8] +
+                            lang29[4] +
                             " " +
-                            lang31[9]}
-                        </strong>
-                        .
-                      </motion.p>
-                      <motion.p variants={item}>
-                        <strong>{lang32[0] + " "}</strong>
-                        {lang32[1] +
-                          " " +
-                          lang32[2] +
-                          " " +
-                          lang32[3] +
-                          " " +
-                          lang32[4] +
-                          " " +
-                          lang32[5] +
-                          " " +
-                          lang32[6] +
-                          " " +
-                          lang32[7] +
-                          " " +
-                          lang32[8] +
-                          " " +
-                          lang32[9] +
-                          " " +
-                          lang32[10] +
-                          " "}
-                        <strong>{lang32[11] + " "}</strong>
-                        {lang32[12] + " "}
-                        <strong>
-                          {lang32[13] + " " + lang32[14] + " " + lang32[15]}
-                        </strong>
-                        .
-                      </motion.p>
+                            lang29[5] +
+                            " " +
+                            lang29[6] +
+                            " " +
+                            lang29[7] +
+                            " "}
+                          <strong>{lang29[8]}</strong>.
+                        </motion.p>
+                        <motion.p variants={item}>
+                          <strong>{lang30[0] + " "}</strong>
+                          {lang30[1] +
+                            " " +
+                            lang30[2] +
+                            " " +
+                            lang30[3] +
+                            " " +
+                            lang30[4] +
+                            " " +
+                            lang30[5] +
+                            " "}
+                          <strong>{lang30[6] + " "}</strong>
+                          {lang30[7] + " "}
+                          <strong>{lang30[8]}</strong>.
+                        </motion.p>
+                        <motion.p variants={item}>
+                          <strong>{lang31[0] + " "}</strong>{" "}
+                          <strong>{lang31[1] + " " + lang31[2] + " "}</strong>
+                          {lang31[3] + " " + lang31[4] + " " + lang31[5] + " "}
+                          <strong>
+                            {lang31[6] +
+                              " " +
+                              lang31[7] +
+                              " " +
+                              lang31[8] +
+                              " " +
+                              lang31[9]}
+                          </strong>
+                          .
+                        </motion.p>
+                        <motion.p variants={item}>
+                          <strong>{lang32[0] + " "}</strong>
+                          {lang32[1] +
+                            " " +
+                            lang32[2] +
+                            " " +
+                            lang32[3] +
+                            " " +
+                            lang32[4] +
+                            " " +
+                            lang32[5] +
+                            " " +
+                            lang32[6] +
+                            " " +
+                            lang32[7] +
+                            " " +
+                            lang32[8] +
+                            " " +
+                            lang32[9] +
+                            " " +
+                            lang32[10] +
+                            " "}
+                          <strong>{lang32[11] + " "}</strong>
+                          {lang32[12] + " "}
+                          <strong>
+                            {lang32[13] + " " + lang32[14] + " " + lang32[15]}
+                          </strong>
+                          .
+                        </motion.p>
                       </motion.div>
                     </div>
                   </TitleText>
@@ -657,54 +670,59 @@ const AboutUs = () => {
                     ref={ref}
                   >
                     <div>
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <motion.p variants={item}>
-                        <strong>{lang35[0] + " "}</strong>
-                        {lang35[1] + " " + lang35[2] + " "}
-                        <strong>{lang35[3] + " "}</strong>
-                        {lang35[4] + " " + lang35[5] + " "}
-                        <strong>{lang35[6] + " "}</strong>
-                        {lang35[7] + " " + lang35[8] + " "}
-                        <strong>{lang35[9] + " "}</strong>
-                        {lang35[10] + " " + lang35[11]}.
-                      </motion.p>
-                      <motion.p variants={item}>
-                        <strong>{lang36[0] + " "}</strong>
-                        {lang36[1] + " "}
-                        <strong>{lang36[2] + " "}</strong>
-                        {lang36[3] + " "}
-                        <strong>{lang36[4] + " "}</strong>
-                        {lang36[5] + " " + lang36[6]}.
-                      </motion.p>
-                      <motion.p variants={item}>
-                        <strong>{lang37[0] + " "}</strong>{" "}
-                        <strong>{lang37[1] + " "}</strong>
-                        {lang37[2] + " " + lang37[3] + " "}
-                        <strong>{lang37[4] + " " + lang37[5]}</strong>.
-                      </motion.p>
-                      <motion.p variants={item}>
-                        <strong>{lang38[0] + " "}</strong>{" "}
-                        <strong>
-                          {lang38[1] + " " + lang38[2] + " " + lang38[3] + " "}
-                        </strong>
-                        {lang38[4] + " " + lang38[5] + " "}
-                        <strong>
-                          {lang38[6] +
-                            " " +
-                            lang38[7] +
-                            " " +
-                            lang38[8] +
-                            " " +
-                            lang38[9] +
-                            " " +
-                            lang38[10]}
-                        </strong>
-                        .
-                      </motion.p>
+                      <motion.div
+                        initial="hidden"
+                        animate={inView && "visible"}
+                        variants={container1}
+                      >
+                        <motion.p variants={item}>
+                          <strong>{lang35[0] + " "}</strong>
+                          {lang35[1] + " " + lang35[2] + " "}
+                          <strong>{lang35[3] + " "}</strong>
+                          {lang35[4] + " " + lang35[5] + " "}
+                          <strong>{lang35[6] + " "}</strong>
+                          {lang35[7] + " " + lang35[8] + " "}
+                          <strong>{lang35[9] + " "}</strong>
+                          {lang35[10] + " " + lang35[11]}.
+                        </motion.p>
+                        <motion.p variants={item}>
+                          <strong>{lang36[0] + " "}</strong>
+                          {lang36[1] + " "}
+                          <strong>{lang36[2] + " "}</strong>
+                          {lang36[3] + " "}
+                          <strong>{lang36[4] + " "}</strong>
+                          {lang36[5] + " " + lang36[6]}.
+                        </motion.p>
+                        <motion.p variants={item}>
+                          <strong>{lang37[0] + " "}</strong>{" "}
+                          <strong>{lang37[1] + " "}</strong>
+                          {lang37[2] + " " + lang37[3] + " "}
+                          <strong>{lang37[4] + " " + lang37[5]}</strong>.
+                        </motion.p>
+                        <motion.p variants={item}>
+                          <strong>{lang38[0] + " "}</strong>{" "}
+                          <strong>
+                            {lang38[1] +
+                              " " +
+                              lang38[2] +
+                              " " +
+                              lang38[3] +
+                              " "}
+                          </strong>
+                          {lang38[4] + " " + lang38[5] + " "}
+                          <strong>
+                            {lang38[6] +
+                              " " +
+                              lang38[7] +
+                              " " +
+                              lang38[8] +
+                              " " +
+                              lang38[9] +
+                              " " +
+                              lang38[10]}
+                          </strong>
+                          .
+                        </motion.p>
                       </motion.div>
                     </div>
                   </TitleText>
@@ -720,14 +738,16 @@ const AboutUs = () => {
                   data-scroll-speed="0"
                   data-scroll-delay="0.1"
                 >
-                  <NewCardWrap>
-                    <CardImgWrap>
-                      <CardImg>
-                        <CardOverlay />
-                        <img src={Image1} loading="lazy" alt="Our news" />
-                      </CardImg>
-                    </CardImgWrap>
-                  </NewCardWrap>
+                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                    <NewCardWrap>
+                      <CardImgWrap>
+                        <CardImg>
+                          <CardOverlay />
+                          <img src={Image1} loading="lazy" alt="Our news" />
+                        </CardImg>
+                      </CardImgWrap>
+                    </NewCardWrap>
+                  </Tilt>
                 </CardMask>
 
                 <CardMask
@@ -735,14 +755,16 @@ const AboutUs = () => {
                   data-scroll-speed="1.8"
                   data-scroll-delay="0.1"
                 >
-                  <NewCardWrap>
-                    <CardImgWrap>
-                      <CardImg>
-                        <CardOverlay />
-                        <img src={Image2} loading="lazy" alt="Our news" />
-                      </CardImg>
-                    </CardImgWrap>
-                  </NewCardWrap>
+                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                    <NewCardWrap>
+                      <CardImgWrap>
+                        <CardImg>
+                          <CardOverlay />
+                          <img src={Image2} loading="lazy" alt="Our news" />
+                        </CardImg>
+                      </CardImgWrap>
+                    </NewCardWrap>
+                  </Tilt>
                 </CardMask>
 
                 <CardMask
@@ -750,14 +772,16 @@ const AboutUs = () => {
                   data-scroll-speed="1"
                   data-scroll-delay="0.8"
                 >
-                  <NewCardWrap>
-                    <CardImgWrap>
-                      <CardImg>
-                        <CardOverlay />
-                        <img src={Image3} loading="lazy" alt="Our news" />
-                      </CardImg>
-                    </CardImgWrap>
-                  </NewCardWrap>
+                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                    <NewCardWrap>
+                      <CardImgWrap>
+                        <CardImg>
+                          <CardOverlay />
+                          <img src={Image3} loading="lazy" alt="Our news" />
+                        </CardImg>
+                      </CardImgWrap>
+                    </NewCardWrap>
+                  </Tilt>
                 </CardMask>
 
                 <CardMask
@@ -765,14 +789,16 @@ const AboutUs = () => {
                   data-scroll-speed="1.5"
                   data-scroll-delay="0.8"
                 >
-                  <NewCardWrap>
-                    <CardImgWrap>
-                      <CardImg>
-                        <CardOverlay />
-                        <img src={Image4} loading="lazy" alt="Our news" />
-                      </CardImg>
-                    </CardImgWrap>
-                  </NewCardWrap>
+                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                    <NewCardWrap>
+                      <CardImgWrap>
+                        <CardImg>
+                          <CardOverlay />
+                          <img src={Image4} loading="lazy" alt="Our news" />
+                        </CardImg>
+                      </CardImgWrap>
+                    </NewCardWrap>
+                  </Tilt>
                 </CardMask>
 
                 <CardMask
@@ -780,14 +806,16 @@ const AboutUs = () => {
                   data-scroll-speed="2.4"
                   data-scroll-delay="0.1"
                 >
-                  <NewCardWrap>
-                    <CardImgWrap>
-                      <CardImg>
-                        <CardOverlay />
-                        <img src={Image5} loading="lazy" alt="Our news" />
-                      </CardImg>
-                    </CardImgWrap>
-                  </NewCardWrap>
+                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                    <NewCardWrap>
+                      <CardImgWrap>
+                        <CardImg>
+                          <CardOverlay />
+                          <img src={Image5} loading="lazy" alt="Our news" />
+                        </CardImg>
+                      </CardImgWrap>
+                    </NewCardWrap>
+                  </Tilt>
                 </CardMask>
 
                 <CardMask
@@ -795,14 +823,16 @@ const AboutUs = () => {
                   data-scroll-speed="4"
                   data-scroll-delay="0.1"
                 >
-                  <NewCardWrap>
-                    <CardImgWrap>
-                      <CardImg>
-                        <CardOverlay />
-                        <img src={Image6} loading="lazy" alt="Our news" />
-                      </CardImg>
-                    </CardImgWrap>
-                  </NewCardWrap>
+                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                    <NewCardWrap>
+                      <CardImgWrap>
+                        <CardImg>
+                          <CardOverlay />
+                          <img src={Image6} loading="lazy" alt="Our news" />
+                        </CardImg>
+                      </CardImgWrap>
+                    </NewCardWrap>
+                  </Tilt>
                 </CardMask>
               </HomeNewsInnerGrid>
             </GridNewsCards>

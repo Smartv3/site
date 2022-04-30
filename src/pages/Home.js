@@ -13,6 +13,7 @@ import PlayStore from "../sections/PlayStore";
 import Footer from "../components/Footer";
 import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 import Loader from "../components/Loader";
+import Mouse from "../components/Mouse";
 
 function Home() {
   const [menuState, setMenuState] = useState(false);
@@ -57,6 +58,7 @@ function Home() {
         <ScrollTriggerProxy/>
         <CoverVideo setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
+        <Mouse/>
         <main className="one" data-scroll-container ref={containerRef}>
           <HomeHeader loaded={loaded} test={test}/>
           <AboutUsOne />

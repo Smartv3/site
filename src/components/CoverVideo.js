@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import MainVideo from "../assets/Video/sequence.mp4";
+import { CursorContext } from "../helper/CursorContextProvider";
 
 const VideoContainer = styled.section`
   width: 100%;
@@ -104,13 +105,21 @@ const CoverVideo = ({ setMenuState }) => {
     i18n.changeLanguage(localStorage.getItem("lang"))
   }, [i18n])
 
+  const [, setCursor] = React.useContext(CursorContext);
+  const toggleCursor = React.useCallback(() => {
+    setCursor(({ active }) => ({ active: !active }));
+  });
+
   return (
     <>
       <VideoContainer>
         <DarkOverlay />
         <video src={MainVideo} type="video/mp4" autoPlay muted loop />
       </VideoContainer>
-      <NavLogo>
+      <NavLogo
+      onMouseEnter={toggleCursor}
+      onMouseLeave={toggleCursor}
+      >
         <Link to="/">
           <svg
             id="Layer_1"

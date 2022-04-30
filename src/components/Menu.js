@@ -6,10 +6,12 @@ import Youtube from "../assets/Svgs/youtube.svg";
 import Twitter from "../assets/Svgs/twitter.svg";
 import Tiktok from "../assets/Svgs/tiktok.svg";
 import SnapChat from "../assets/Svgs/snapchat.svg";
+import CursorContextProvider from "../helper/CursorContextProvider";
 
 import ImageOne from "../assets/Images/award1.webp";
 import ImageTwo from "../assets/Images/award2.webp";
 import { useTranslation } from "react-i18next";
+import Mouse from "./Mouse";
 
 const Section = styled.section`
   top: 0;
@@ -293,6 +295,9 @@ const Menu = ({ setMenuState, menu }) => {
   const { t, i18n } = useTranslation();
   return (
     <Section activerun={menu}>
+      <CursorContextProvider>
+        <Mouse />
+      </CursorContextProvider>
       <NavLogo>
         <Link to="/">
           <svg
