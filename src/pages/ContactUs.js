@@ -9,6 +9,7 @@ import ContactImage1 from "../assets/Images/contactUs1.webp";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import AnimationText from "../components/AnimationText";
+import Mouse from "../components/Mouse";
 
 const Section = styled.section`
   position: relative;
@@ -157,6 +158,7 @@ const ContactUs = () => {
         {/* <ScrollTriggerProxy /> */}
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
+        <Mouse/>
         <main data-scroll-container ref={containerRef}>
           <Section
             lang={i18n.language}

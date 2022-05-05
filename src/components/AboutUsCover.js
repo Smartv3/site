@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ImageUrl from "../assets/Images/aboutUs.webp";
 import { useTranslation } from "react-i18next";
+import { CursorContext } from "../helper/CursorContextProvider";
 
 const ImageContainer = styled.section`
   width: 100%;
@@ -89,21 +90,26 @@ const Label = styled.div`
 `;
 
 const AboutUsCover = ({ setMenuState }) => {
-  const {t, i18n} = useTranslation()
+  const { t, i18n } = useTranslation();
   const enLanguageHandler = () => {
-    window.location.reload()
-    localStorage.setItem('lang', 'en')
-  }
+    window.location.reload();
+    localStorage.setItem("lang", "en");
+  };
 
   const arLanguageHandler = () => {
-    window.location.reload()
-    localStorage.setItem('lang', 'ar')
-  }
- 
+    window.location.reload();
+    localStorage.setItem("lang", "ar");
+  };
+
   React.useEffect(() => {
-    i18n.changeLanguage(localStorage.getItem("lang"))
-  }, [i18n])
-  
+    i18n.changeLanguage(localStorage.getItem("lang"));
+  }, [i18n]);
+
+  const [, setCursor] = React.useContext(CursorContext);
+  const toggleCursor = React.useCallback(() => {
+    setCursor(({ active }) => ({ active: !active }));
+  });
+
   return (
     <>
       <div>
@@ -111,7 +117,7 @@ const AboutUsCover = ({ setMenuState }) => {
           <DarkOverlay />
           <img src={ImageUrl} loading="lazy" alt="About us cover" />
         </ImageContainer>
-        <NavLogo>
+        <NavLogo onMouseEnter={toggleCursor} onMouseLeave={toggleCursor}>
           <Link to="/">
             <svg
               id="Layer_1"
@@ -186,8 +192,15 @@ const AboutUsCover = ({ setMenuState }) => {
           </Link>
         </NavLogo>
         <Button>
-        <Label onClick={i18n.language === "ar" ? enLanguageHandler : arLanguageHandler } style={{cursor: 'pointer'}}>{i18n.language === "ar" ? t("lang61") :  t("lang60")}</Label>
-        <Col style={{cursor: 'pointer'}} onClick={() => setMenuState(true)}>
+          <Label
+            onClick={
+              i18n.language === "ar" ? enLanguageHandler : arLanguageHandler
+            }
+            style={{ cursor: "pointer" }}
+          >
+            {i18n.language === "ar" ? t("lang61") : t("lang60")}
+          </Label>
+          <Col style={{ cursor: "pointer" }} onClick={() => setMenuState(true)}>
             <Dash onClick={() => setMenuState(true)} />
             <Dash
               onClick={() => setMenuState(true)}

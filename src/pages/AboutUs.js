@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import AnimationText from "../components/AnimationText";
+import Mouse from "../components/Mouse";
 
 const Section = styled.section`
   position: relative;
@@ -212,6 +213,7 @@ const AboutUs = () => {
           {/* <ScrollTriggerProxy/> */}
           <AboutUsCover setMenuState={setMenuState} />
           <Menu setMenuState={setMenuState} menu={menuState} />
+          <Mouse/>
           <main data-scroll-container ref={containerRef}>
             <Section>
               <Container lang={i18n.language}>

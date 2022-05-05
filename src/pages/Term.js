@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Menu from "../components/Menu";
 import { motion } from "framer-motion";
+import Mouse from "../components/Mouse";
 
 const Section = styled.section`
   position: relative;
@@ -180,6 +181,7 @@ const Term = () => {
 
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
+        <Mouse/>
         <main data-scroll-container ref={containerRef}>
           <Section lang={i18n.language}>
             <Container>

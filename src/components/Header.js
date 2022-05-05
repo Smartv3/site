@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { CursorContext } from "../helper/CursorContextProvider";
 
 const NavLogo = styled.div`
   position: fixed;
@@ -64,25 +65,30 @@ const Label = styled.div`
 `;
 
 const Header = ({ setMenuState }) => {
-  const {t, i18n} = useTranslation()
+  const { t, i18n } = useTranslation();
   const enLanguageHandler = () => {
-    window.location.reload()
-    localStorage.setItem('lang', 'en')
-  }
+    window.location.reload();
+    localStorage.setItem("lang", "en");
+  };
 
   const arLanguageHandler = () => {
-    window.location.reload()
-    localStorage.setItem('lang', 'ar')
-  }
- 
+    window.location.reload();
+    localStorage.setItem("lang", "ar");
+  };
+
   React.useEffect(() => {
-    i18n.changeLanguage(localStorage.getItem("lang"))
-  }, [i18n])
-  
+    i18n.changeLanguage(localStorage.getItem("lang"));
+  }, [i18n]);
+
+  const [, setCursor] = React.useContext(CursorContext);
+  const toggleCursor = React.useCallback(() => {
+    setCursor(({ active }) => ({ active: !active }));
+  });
+
   return (
     <>
       <div>
-        <NavLogo>
+        <NavLogo onMouseEnter={toggleCursor} onMouseLeave={toggleCursor}>
           <Link to="/">
             <svg
               id="Layer_1"
@@ -157,8 +163,15 @@ const Header = ({ setMenuState }) => {
           </Link>
         </NavLogo>
         <Button>
-        <Label onClick={i18n.language === "ar" ? enLanguageHandler : arLanguageHandler} style={{cursor: 'pointer'}}>{i18n.language === "ar" ? t("lang61") : t("lang60")}</Label>
-        <Col style={{cursor: 'pointer'}} onClick={() => setMenuState(true)}>
+          <Label
+            onClick={
+              i18n.language === "ar" ? enLanguageHandler : arLanguageHandler
+            }
+            style={{ cursor: "pointer" }}
+          >
+            {i18n.language === "ar" ? t("lang61") : t("lang60")}
+          </Label>
+          <Col style={{ cursor: "pointer" }} onClick={() => setMenuState(true)}>
             <Dash id="two" onClick={() => setMenuState(true)} />
             <Dash
               onClick={() => setMenuState(true)}
