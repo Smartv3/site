@@ -28,10 +28,10 @@ const Mouse = () => {
   return (
     <motion.div
       className="cursor"
+      animate={{ scale: cursor.active ? 4 : 1}}
       style={{
         translateX: cursorXSpring,
         translateY: cursorYSpring,
-        transform: 'scale(0.5, 0.5) translateX(-50%)'
       }}
     />
   );

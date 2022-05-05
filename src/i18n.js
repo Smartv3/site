@@ -30,5 +30,4 @@ i18n
     },
   });
   i18n.changeLanguage('ar');
-console.log(i18n)
 export default i18n;
