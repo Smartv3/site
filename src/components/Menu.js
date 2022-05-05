@@ -6,7 +6,7 @@ import Youtube from "../assets/Svgs/youtube.svg";
 import Twitter from "../assets/Svgs/twitter.svg";
 import Tiktok from "../assets/Svgs/tiktok.svg";
 import SnapChat from "../assets/Svgs/snapchat.svg";
-import CursorContextProvider from "../helper/CursorContextProvider";
+import { CursorContext } from "../helper/CursorContextProvider";
 
 import ImageOne from "../assets/Images/award1.webp";
 import ImageTwo from "../assets/Images/award2.webp";
@@ -61,7 +61,7 @@ const NavLogo = styled.div`
   }
   @media (max-width: 768px) {
     width: 3rem;
-    left: 24px;
+    left: 8px;
     top: 40px;
   }
 `;
@@ -92,6 +92,7 @@ const Label = styled.div`
   color: #9e9e9e;
   margin-right: 16px;
   font-size: 0.8vw;
+  cursor: pointer;
   @media (max-width: 768px) {
     font-size: 2.4vw;
   }
@@ -292,12 +293,14 @@ const Menu = ({ setMenuState, menu }) => {
     policy: false,
   });
   const { t, i18n } = useTranslation();
+  const [, setCursor] = React.useContext(CursorContext);
+  const toggleCursor = React.useCallback(() => {
+    setCursor(({ active }) => ({ active: !active }));
+  });
   return (
     <Section activerun={menu}>
-      <CursorContextProvider>
-        <Mouse />
-      </CursorContextProvider>
-      <NavLogo>
+      <Mouse />
+      <NavLogo onMouseEnter={toggleCursor} onMouseLeave={toggleCursor}>
         <Link to="/">
           <svg
             id="Layer_1"

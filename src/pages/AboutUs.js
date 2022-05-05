@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+import ScrollTriggerProxy from '../components/ScrollTriggerProxy'
 import AboutUsCover from "../components/AboutUsCover";
 import Footer from "../components/Footer";
 import AboutUsImage from "../assets/Images/about3.webp";
@@ -210,7 +211,7 @@ const AboutUs = () => {
           }
           containerRef={containerRef}
         >
-          {/* <ScrollTriggerProxy/> */}
+          <ScrollTriggerProxy/>
           <AboutUsCover setMenuState={setMenuState} />
           <Menu setMenuState={setMenuState} menu={menuState} />
           <Mouse/>

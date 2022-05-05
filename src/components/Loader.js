@@ -15,7 +15,7 @@ const Container = styled(motion.div)`
   width: 100vw;
   height: 100vh;
 
-  z-index: 6;
+  z-index: 7;
 
   display: flex;
   flex-direction: column;

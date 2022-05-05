@@ -35,6 +35,32 @@ const Section = styled.section`
   }
 `;
 
+const CoverImageContainer = styled.section`
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+
+  img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    top: 0;
+    padding: none;
+    position: fixed; /* optional depending on what you want to do in your app */
+    z-index: -1;
+  }
+`;
+
+const DarkOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
+`;
 const Container = styled.div`
   width: 100%;
   padding-right: 8vw;
@@ -259,7 +285,7 @@ const ContactUs = () => {
                     gridColumnEnd: 8,
                     gridColumnStart: 2,
                     gridRowEnd: 6,
-                    gridRowStart: 5,
+                    gridRowStart: 5
                   }}
                 >
                   <div>

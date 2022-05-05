@@ -5,7 +5,6 @@ import "./mouse.css";
 
 const Mouse = () => {
   const [cursor] = React.useContext(CursorContext);
-  console.log(cursor)
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -28,7 +27,12 @@ const Mouse = () => {
   return (
     <motion.div
       className="cursor"
-      animate={{ scale: cursor.active ? 4 : 1}}
+      animate={{ scale: cursor.active ? 4 : 1 }}
+      transition={{
+        duration: 0.4,
+        ease: "easeInOut",
+        repeatDelay: 1,
+      }}
       style={{
         translateX: cursorXSpring,
         translateY: cursorYSpring,

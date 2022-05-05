@@ -7,8 +7,14 @@
   border-radius: 16px;
   mix-blend-mode: difference;
   background-color: white;
-  z-index: 5;
+  z-index: 6;
   pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+  .cursor {
+    display: none;
+  }
 }
 
 /* * {
