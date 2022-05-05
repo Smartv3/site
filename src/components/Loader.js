@@ -41,7 +41,7 @@ const Container = styled(motion.div)`
 
   @media (max-width: 768px) {
     svg {
-      width: 40vw;
+      width: 25vw;
     }
   }
 `;
