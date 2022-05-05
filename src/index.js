@@ -6,7 +6,7 @@ import CursorContextProvider from "./helper/CursorContextProvider";
 // import reportWebVitals from './reportWebVitals';
 
 // Before
-// Build 22
+// Build 23
 import "./i18n";
 ReactDOM.render(
   <React.StrictMode>
