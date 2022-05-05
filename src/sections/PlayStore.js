@@ -49,7 +49,7 @@ const PlayStore = () => {
           data-scroll-speed="4"
           data-scroll-delay="0.1"
         >
-          <a href="http//onelink.to/statav">
+          <a href="https://onelink.to/statav">
             <img src={GooglePlay} loading="lazy" alt="Google Play Icon" />
           </a>
         </CardImage>
@@ -58,7 +58,7 @@ const PlayStore = () => {
           data-scroll-speed="4"
           data-scroll-delay="0.1"
         >
-          <a href="http//onelink.to/statav">
+          <a href="https://onelink.to/statav">
             <img src={AppleStore} loading="lazy" alt="Google Play Icon" />
           </a>
         </CardImage>
