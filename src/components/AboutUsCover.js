@@ -4,8 +4,7 @@ import styled from "styled-components";
 import ImageUrl from "../assets/Images/aboutUs.webp";
 import { useTranslation } from "react-i18next";
 import { CursorContext } from "../helper/CursorContextProvider";
-import {gsap} from 'gsap'
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
+
 const ImageContainer = styled.section`
   width: 100%;
   height: 100vh;
@@ -111,33 +110,9 @@ const AboutUsCover = ({ setMenuState }) => {
     setCursor(({ active }) => ({ active: !active }));
   });
 
-  const reference = React.useRef()
-  const element = reference.current
-
-  gsap.registerPlugin(ScrollTrigger)
-
-  React.useLayoutEffect(() => {
-    setTimeout(() => {
-      gsap.to(element.querySelector("#th"),{
-        duration: 1,
-        backgroundColor: "#352344",
-        ease: "none",
-        scrollTrigger: {
-          id: "testTwo",
-          trigger: element.querySelector("#th"),
-          start: "top 300px",
-          end: "bottom 100px",
-          // markers: true,
-          scrub: true,
-          scroller: ".one",
-        },
-      });
-    }, 1000)
-  }, [])
-
   return (
     <>
-      <div id="th" className="one">
+      <div>
         <ImageContainer>
           <DarkOverlay />
           <img src={ImageUrl} loading="lazy" alt="About us cover" />

@@ -181,7 +181,6 @@ const ContactUs = () => {
         }
         containerRef={containerRef}
       >
-        {/* <ScrollTriggerProxy /> */}
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
         <Mouse/>

@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import ScrollTriggerProxy from '../components/ScrollTriggerProxy'
 import AboutUsCover from "../components/AboutUsCover";
 import Footer from "../components/Footer";
 import AboutUsImage from "../assets/Images/about3.webp";
@@ -172,15 +171,6 @@ const AboutUs = () => {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
   const { t, i18n } = useTranslation();
-
-  // React.useEffect(() => {
-
-  //   return () => {
-  //     // Let's clear instances
-  //     ScrollTrigger.kill();
-  //   };
-
-  // }, []);
   const container1 = {
     visible: {
       transition: {
@@ -211,7 +201,6 @@ const AboutUs = () => {
           }
           containerRef={containerRef}
         >
-          <ScrollTriggerProxy/>
           <AboutUsCover setMenuState={setMenuState} />
           <Menu setMenuState={setMenuState} menu={menuState} />
           <Mouse/>

@@ -177,8 +177,6 @@ const Term = () => {
         }
         containerRef={containerRef}
       >
-              {/* <ScrollTriggerProxy/> */}
-
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
         <Mouse/>
