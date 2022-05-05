@@ -32,7 +32,7 @@ const Section = styled.section`
     font-weight: bold;
     margin-bottom: 10px;
     @media (max-width: 768px) {
-      font-size: 17px
+      font-size: 17px;
     }
   }
   a {
@@ -181,7 +181,7 @@ const Term = () => {
       >
         <Header setMenuState={setMenuState} />
         <Menu setMenuState={setMenuState} menu={menuState} />
-        <Mouse/>
+        <Mouse />
         <main data-scroll-container ref={containerRef}>
           <Section lang={i18n.language}>
             <Container>
@@ -192,9 +192,7 @@ const Term = () => {
                   animate={"visible"}
                   variants={container1}
                 >
-                  <LabelTwo variants={item}>
-                    {t("lang103")}
-                  </LabelTwo>
+                  <LabelTwo variants={item}>{t("lang103")}</LabelTwo>
                 </motion.div>
               </MainHeader>
               <TermContainer>
