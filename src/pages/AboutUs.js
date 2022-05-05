@@ -147,7 +147,7 @@ const ImageContainer = styled.div`
 const Title = styled.div`
   color: #000;
   font-size: 2vw;
-  line-height: 120%;
+  
   font-weight: 400;
   margin-bottom: 10px;
   @media (max-width: 768px) {

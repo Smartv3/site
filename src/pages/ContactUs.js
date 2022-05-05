@@ -26,7 +26,7 @@ const Section = styled.section`
   span {
     margin-bottom: 24px;
     font-size: 0.8vw;
-    line-height: 120%;
+    
     font-weight: 800;
     @media (max-width: 768px) {
       font-size: 14px;
@@ -97,13 +97,13 @@ const Address = styled.div`
 const AddressLocation = styled.div`
   margin-bottom: 24px;
   font-size: 1.2vw;
-  line-height: 120%;
+  
   font-weight: 800;
 
   @media (max-width: 768px) {
     margin-bottom: 16px;
     font-size: 5vw;
-    line-height: 120%;
+    
     font-weight: 800;
   }
 `;

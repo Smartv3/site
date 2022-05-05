@@ -98,7 +98,7 @@ const Title = styled.div`
   grid-row-start: 1;
   color: #fff;
   font-size: 2vw;
-  line-height: 120%;
+  
   font-weight: 400;
   margin-bottom: 10px;
   @media (max-width: 768px) {
@@ -564,8 +564,14 @@ const AboutUs = () => {
                             lang29[6] +
                             " " +
                             lang29[7] +
+                            " " +
+                            lang29[8] +
+                            " " +
+                            lang29[9] +
+                            " " +
+                            lang29[10] +
                             " "}
-                          <strong>{lang29[8]}</strong>.
+                          <strong>{lang29[11]}</strong>.
                         </motion.p>
                         <motion.p variants={item}>
                           <strong>{lang30[0] + " "}</strong>

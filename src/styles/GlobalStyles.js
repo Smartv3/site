@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-
+import { createGlobalStyle } from "styled-components";
+import ArbFONTSDINNextLTArabicBlack from "../assets/fonts/ArbFONTS-DINNextLTArabic-Regular-4.ttf";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
 body{
     overflow-x: hidden;
+    font-family: MyFont;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -22,5 +23,9 @@ a{
     text-decoration: none;
 }
 
-`
+@font-face {
+  font-family: 'MyFont';
+  src: local('MyFont'), url(${ArbFONTSDINNextLTArabicBlack}) format('truetype');
+}
+`;
 export default GlobalStyles;
