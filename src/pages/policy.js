@@ -34,6 +34,9 @@ const Section = styled.section`
     margin-top: 20px;
     font-weight: bold;
     margin-bottom: 10px;
+    @media (max-width: 768px) {
+      font-size: 17px
+    }
   }
   a {
     color: #bc668c;
@@ -41,14 +44,13 @@ const Section = styled.section`
   ol {
     margin-top: 0px;
     margin-bottom: 10px;
-    padding-left: 12px;
     display: block;
     list-style-type: decimal;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    padding-inline-start: 40px;
+    padding-inline-start: 14px;
   }
   p {
     margin-bottom: 10px;
