@@ -100,7 +100,7 @@ const Paragraph = styled.div`
     font-size: 3.4vw;
     font-weight: 500;
     @media (max-width: 768px) {
-      font-size: 10vw;
+      font-size: 6vw;
     }
   }
   @media (max-width: 768px) {

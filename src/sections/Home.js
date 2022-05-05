@@ -67,7 +67,7 @@ const ParagraphOne = styled.div`
     font-size: 4.4vw;
     font-weight: 600;
     @media (max-width: 768px) {
-      font-size: 10vw;
+      font-size: 6vw;
     }
   }
   @media (max-width: 768px) {
@@ -87,7 +87,7 @@ const ParagraphTwo = styled.div`
     font-size: 4.4vw;
     font-weight: 600;
     @media (max-width: 768px) {
-      font-size: 10vw;
+      font-size: 6vw;
     }
   }
   @media (max-width: 768px) {
@@ -107,7 +107,7 @@ const ParagraphThree = styled.div`
     font-size: 4.4vw;
     font-weight: 600;
     @media (max-width: 768px) {
-      font-size: 10vw;
+      font-size: 6vw;
     }
   }
   @media (max-width: 768px) {
