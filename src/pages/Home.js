@@ -3,6 +3,10 @@ import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import { AnimatePresence } from "framer-motion";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/GlobalStyles";
+import { dark } from "../styles/Themes";
+
 import Menu from "../components/Menu";
 import HomeHeader from "../sections/Home";
 import CoverVideo from "../components/CoverVideo";
@@ -28,46 +32,49 @@ function Home() {
     setTimeout(() => {
       setTest(true);
     }, 2500);
-  }, [])
-  
+  }, []);
+
   return (
     <>
-      <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-          smartphone: {
+      <GlobalStyles />
+      <ThemeProvider theme={dark}>
+        <LocomotiveScrollProvider
+          options={{
             smooth: true,
-          },
-          tablet: {
-            smooth: true,
-          },
-        }}
-        watch={
-          [
-            //..all the dependencies you want to watch to update the scroll.
-            //  Basicaly, you would want to watch page/location changes
-            //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
-          ]
-        }
-        containerRef={containerRef}
-      >
-        <AnimatePresence>
-        {loaded ? null : <Loader />}
-        </AnimatePresence>
-        <ScrollTriggerProxy/>
-        <CoverVideo setMenuState={setMenuState} />
-        <Menu setMenuState={setMenuState} menu={menuState} />
-        <Mouse/>
-        <main className="one" data-scroll-container ref={containerRef}>
-          <HomeHeader loaded={loaded} test={test}/>
-          <AboutUsOne />
-          <AboutUs />
-          <Career />
-          <PlayStore />
-          <Footer />
-        </main>
-      </LocomotiveScrollProvider>
+            // ... all available Locomotive Scroll instance options
+            smartphone: {
+              smooth: true,
+            },
+            tablet: {
+              smooth: true,
+            },
+          }}
+          watch={
+            [
+              //..all the dependencies you want to watch to update the scroll.
+              //  Basicaly, you would want to watch page/location changes
+              //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
+            ]
+          }
+          containerRef={containerRef}
+        >
+          <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
+          <ScrollTriggerProxy />
+          <CoverVideo setMenuState={setMenuState} />
+          <Menu setMenuState={setMenuState} menu={menuState} />
+          <Mouse />
+          <AnimatePresence>
+            <main className="one" data-scroll-container ref={containerRef}>
+              <HomeHeader loaded={loaded} test={test} />
+              <AboutUsOne />
+              <AboutUs />
+              <Career />
+              <PlayStore />
+              <Footer />
+            </main>
+          </AnimatePresence>
+        </LocomotiveScrollProvider>
+      </ThemeProvider>
     </>
   );
 }

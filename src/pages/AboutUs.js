@@ -2,13 +2,18 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/GlobalStyles";
+import { dark } from "../styles/Themes";
+
 import AboutUsCover from "../components/AboutUsCover";
 import Footer from "../components/Footer";
 import AboutUsImage from "../assets/Images/about3.webp";
 import Menu from "../components/Menu";
 import { useTranslation } from "react-i18next";
 import { InView } from "react-intersection-observer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import AnimationText from "../components/AnimationText";
 import Mouse from "../components/Mouse";
 
@@ -148,7 +153,7 @@ const ImageContainer = styled.div`
 const Title = styled.div`
   color: #000;
   font-size: 2vw;
-  
+
   font-weight: 400;
   margin-bottom: 10px;
   @media (max-width: 768px) {
@@ -180,7 +185,8 @@ const AboutUs = () => {
   };
   return (
     <>
-      <div>
+      <GlobalStyles />
+      <ThemeProvider theme={dark}>
         <LocomotiveScrollProvider
           options={{
             smooth: true,
@@ -201,286 +207,288 @@ const AboutUs = () => {
           }
           containerRef={containerRef}
         >
-          <AboutUsCover setMenuState={setMenuState} />
-          <Menu setMenuState={setMenuState} menu={menuState} />
-          <Mouse/>
-          <main data-scroll-container ref={containerRef}>
-            <Section>
-              <Container lang={i18n.language}>
-                <Label>
-                  <motion.div
-                    initial="hidden"
-                    animate={"visible"}
-                    variants={container1}
-                  >
-                    <AnimationText type={"paragraph"} text={t("lang10")} />
-                  </motion.div>
-                </Label>
-                <Paragraph>
-                  <motion.div
-                    initial="hidden"
-                    animate={"visible"}
-                    variants={container1}
-                  >
-                    <AnimationText type={"paragraph"} text={t("lang11")} />
-                  </motion.div>
-                  <motion.div
-                    initial="hidden"
-                    animate={"visible"}
-                    variants={container1}
-                  >
-                    <AnimationText type={"paragraph"} text={t("lang12")} />
-                  </motion.div>
-                  <motion.div
-                    initial="hidden"
-                    animate={"visible"}
-                    variants={container1}
-                  >
-                    <AnimationText type={"paragraph"} text={t("lang13")} />
-                  </motion.div>
-                </Paragraph>
-              </Container>
-            </Section>
-            <AboutUsSection lang={i18n.language}>
-              <BodySection>
+          <AnimatePresence>
+            <AboutUsCover setMenuState={setMenuState} />
+            <Menu setMenuState={setMenuState} menu={menuState} />
+            <Mouse />
+            <main data-scroll-container ref={containerRef}>
+              <Section>
                 <Container lang={i18n.language}>
-                  <ParagraphTwo>
-                    <InView>
-                      {({ inView, ref, entry }) => (
-                        <Title
-                          data-scroll="0"
-                          data-scroll-speed="1.2"
-                          data-scroll-delay="0.8"
-                          ref={ref}
-                        >
-                          <p>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang65")}
-                              />
-                            </motion.div>
-                            <br />
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang66")}
-                              />
-                            </motion.div>
-                          </p>
-                        </Title>
-                      )}
-                    </InView>
-                    <InView>
-                      {({ inView, ref, entry }) => (
-                        <TitleText
-                          data-scroll="0"
-                          data-scroll-speed="1.2"
-                          data-scroll-delay="0.8"
-                          ref={ref}
-                        >
-                          <div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang62")}
-                              />
-                            </motion.div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang63")}
-                              />
-                            </motion.div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang64")}
-                              />
-                            </motion.div>
-                            <p></p>
-                          </div>
-                        </TitleText>
-                      )}
-                    </InView>
-                    <InView>
-                      {({ inView, ref, entry }) => (
-                        <Title
-                          data-scroll="0"
-                          data-scroll-speed="1.2"
-                          data-scroll-delay="0.8"
-                          ref={ref}
-                        >
-                          <motion.div
-                            initial="hidden"
-                            animate={inView && "visible"}
-                            variants={container1}
-                          >
-                            <AnimationText
-                              type={"paragraph"}
-                              text={t("lang21")}
-                            />
-                          </motion.div>
-                        </Title>
-                      )}
-                    </InView>
-                    <InView>
-                      {({ inView, ref, entry }) => (
-                        <TitleText
-                          data-scroll="0"
-                          data-scroll-speed="1.2"
-                          data-scroll-delay="0.8"
-                          ref={ref}
-                        >
-                          <div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang22") + t("lang23")}
-                              />
-                            </motion.div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang24") + t("lang25")}
-                              />
-                            </motion.div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang26") + t("lang27")}
-                              />
-                            </motion.div>
-                          </div>
-                        </TitleText>
-                      )}
-                    </InView>
-                    <InView>
-                      {({ inView, ref, entry }) => (
-                        <Title
-                          data-scroll="0"
-                          data-scroll-speed="1.2"
-                          data-scroll-delay="0.8"
-                          ref={ref}
-                        >
-                          <motion.div
-                            initial="hidden"
-                            animate={inView && "visible"}
-                            variants={container1}
-                          >
-                            <AnimationText
-                              type={"paragraph"}
-                              text={t("lang28")}
-                            />
-                          </motion.div>
-                        </Title>
-                      )}
-                    </InView>
-                    <InView>
-                      {({ inView, ref, entry }) => (
-                        <TitleText
-                          data-scroll="0"
-                          data-scroll-speed="1.2"
-                          data-scroll-delay="0.8"
-                          ref={ref}
-                        >
-                          <div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang29")}
-                              />
-                            </motion.div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang30")}
-                              />
-                            </motion.div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang31")}
-                              />
-                            </motion.div>
-                            <motion.div
-                              initial="hidden"
-                              animate={inView && "visible"}
-                              variants={container1}
-                            >
-                              <AnimationText
-                                type={"paragraph"}
-                                text={t("lang32")}
-                              />
-                            </motion.div>
-                          </div>
-                        </TitleText>
-                      )}
-                    </InView>
-                  </ParagraphTwo>
-
-                  <ImageContainer>
-                    <div
-                      data-scroll="0"
-                      data-scroll-speed="3"
-                      data-scroll-delay="0.4"
+                  <Label>
+                    <motion.div
+                      initial="hidden"
+                      animate={"visible"}
+                      variants={container1}
                     >
-                      <ImageSection>
-                        <img src={AboutUsImage} loading="lazy" alt="About" />
-                      </ImageSection>
-                    </div>
-                  </ImageContainer>
+                      <AnimationText type={"paragraph"} text={t("lang10")} />
+                    </motion.div>
+                  </Label>
+                  <Paragraph>
+                    <motion.div
+                      initial="hidden"
+                      animate={"visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang11")} />
+                    </motion.div>
+                    <motion.div
+                      initial="hidden"
+                      animate={"visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang12")} />
+                    </motion.div>
+                    <motion.div
+                      initial="hidden"
+                      animate={"visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang13")} />
+                    </motion.div>
+                  </Paragraph>
                 </Container>
-              </BodySection>
-            </AboutUsSection>
-            <Footer />
-          </main>
+              </Section>
+              <AboutUsSection lang={i18n.language}>
+                <BodySection>
+                  <Container lang={i18n.language}>
+                    <ParagraphTwo>
+                      <InView>
+                        {({ inView, ref, entry }) => (
+                          <Title
+                            data-scroll="0"
+                            data-scroll-speed="1.2"
+                            data-scroll-delay="0.8"
+                            ref={ref}
+                          >
+                            <p>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang65")}
+                                />
+                              </motion.div>
+                              <br />
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang66")}
+                                />
+                              </motion.div>
+                            </p>
+                          </Title>
+                        )}
+                      </InView>
+                      <InView>
+                        {({ inView, ref, entry }) => (
+                          <TitleText
+                            data-scroll="0"
+                            data-scroll-speed="1.2"
+                            data-scroll-delay="0.8"
+                            ref={ref}
+                          >
+                            <div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang62")}
+                                />
+                              </motion.div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang63")}
+                                />
+                              </motion.div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang64")}
+                                />
+                              </motion.div>
+                              <p></p>
+                            </div>
+                          </TitleText>
+                        )}
+                      </InView>
+                      <InView>
+                        {({ inView, ref, entry }) => (
+                          <Title
+                            data-scroll="0"
+                            data-scroll-speed="1.2"
+                            data-scroll-delay="0.8"
+                            ref={ref}
+                          >
+                            <motion.div
+                              initial="hidden"
+                              animate={inView && "visible"}
+                              variants={container1}
+                            >
+                              <AnimationText
+                                type={"paragraph"}
+                                text={t("lang21")}
+                              />
+                            </motion.div>
+                          </Title>
+                        )}
+                      </InView>
+                      <InView>
+                        {({ inView, ref, entry }) => (
+                          <TitleText
+                            data-scroll="0"
+                            data-scroll-speed="1.2"
+                            data-scroll-delay="0.8"
+                            ref={ref}
+                          >
+                            <div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang22") + t("lang23")}
+                                />
+                              </motion.div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang24") + t("lang25")}
+                                />
+                              </motion.div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang26") + t("lang27")}
+                                />
+                              </motion.div>
+                            </div>
+                          </TitleText>
+                        )}
+                      </InView>
+                      <InView>
+                        {({ inView, ref, entry }) => (
+                          <Title
+                            data-scroll="0"
+                            data-scroll-speed="1.2"
+                            data-scroll-delay="0.8"
+                            ref={ref}
+                          >
+                            <motion.div
+                              initial="hidden"
+                              animate={inView && "visible"}
+                              variants={container1}
+                            >
+                              <AnimationText
+                                type={"paragraph"}
+                                text={t("lang28")}
+                              />
+                            </motion.div>
+                          </Title>
+                        )}
+                      </InView>
+                      <InView>
+                        {({ inView, ref, entry }) => (
+                          <TitleText
+                            data-scroll="0"
+                            data-scroll-speed="1.2"
+                            data-scroll-delay="0.8"
+                            ref={ref}
+                          >
+                            <div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang29")}
+                                />
+                              </motion.div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang30")}
+                                />
+                              </motion.div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang31")}
+                                />
+                              </motion.div>
+                              <motion.div
+                                initial="hidden"
+                                animate={inView && "visible"}
+                                variants={container1}
+                              >
+                                <AnimationText
+                                  type={"paragraph"}
+                                  text={t("lang32")}
+                                />
+                              </motion.div>
+                            </div>
+                          </TitleText>
+                        )}
+                      </InView>
+                    </ParagraphTwo>
+
+                    <ImageContainer>
+                      <div
+                        data-scroll="0"
+                        data-scroll-speed="3"
+                        data-scroll-delay="0.4"
+                      >
+                        <ImageSection>
+                          <img src={AboutUsImage} loading="lazy" alt="About" />
+                        </ImageSection>
+                      </div>
+                    </ImageContainer>
+                  </Container>
+                </BodySection>
+              </AboutUsSection>
+              <Footer />
+            </main>
+          </AnimatePresence>
         </LocomotiveScrollProvider>
-      </div>
+      </ThemeProvider>
     </>
   );
 };

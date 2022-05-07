@@ -3,10 +3,15 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/GlobalStyles";
+import { dark } from "../styles/Themes";
+
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Menu from "../components/Menu";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Mouse from "../components/Mouse";
 
 const Section = styled.section`
@@ -162,110 +167,115 @@ const Privacy = () => {
   };
   return (
     <>
-      <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-          smartphone: {
+      <GlobalStyles />
+      <ThemeProvider theme={dark}>
+        <LocomotiveScrollProvider
+          options={{
             smooth: true,
-          },
-          tablet: {
-            smooth: true,
-          },
-        }}
-        watch={
-          [
-            //..all the dependencies you want to watch to update the scroll.
-            //  Basicaly, you would want to watch page/location changes
-            //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
-          ]
-        }
-        containerRef={containerRef}
-      >
-        <Header setMenuState={setMenuState} />
-        <Menu setMenuState={setMenuState} menu={menuState} />
-        <Mouse />
-        <main data-scroll-container ref={containerRef}>
-          <Section lang={i18n.language}>
-            <Container>
-              <MainHeader>
-                <LabelOne>{t("lang67")}</LabelOne>
-                <motion.div
-                  initial="hidden"
-                  animate={"visible"}
-                  variants={container1}
-                >
-                  <LabelTwo variants={item}>{t("lang68")}</LabelTwo>
-                </motion.div>
-              </MainHeader>
-              <PrivacyContainer>
-                <div>
-                  <ol>
-                    <li>
-                      <h3>{t("lang69")}</h3>
-                      <p>{t("lang70")}</p>
-                      <p>{t("lang71")}</p>
-                    </li>
-                    <li>
-                      <h3>{t("lang72")}</h3>
-                      <p>{t("lang73")}</p>
-                    </li>
-                  </ol>
-                  <ol>
-                    <h3>{t("lang74")}</h3>
-                    <li>
-                      <h3>{t("lang75")}</h3>
-                      <p>{t("lang76")}</p>
-                      <p>{t("lang77")}</p>
-                      <p>{t("lang78")}</p>
-                      <p>{t("lang79")}</p>
-                    </li>
-                    <li>
-                      <h3>{t("lang80")}</h3>
-                      <p>{t("lang81")}</p>
-                      <p>{t("lang82")}</p>
-                      <p>{t("lang83")}</p>
-                    </li>
-                  </ol>
-                  <ol>
-                    <h1>{t("lang84")}</h1>
-                    <li>
-                      <h3>{t("lang85")}</h3>
-                      <p>{"lang86"}</p>
-                    </li>
-                    <li>
-                      <h3>{t("lang87")}</h3>
-                      <p>{t("lang88")}</p>
-                    </li>
-                    <li>
-                      <h3>{t("lang89")}</h3>
-                      <p>{t("lang90")}</p>
-                    </li>
-                    <h3>{t("lang91")}</h3>
-                    <li>
-                      <h3>{t("lang92")}</h3>
-                      <ul>
-                        <li>{t("lang93")}</li>
-                        <li>{t("lang94")}</li>
-                        <li>{t("lang95")}</li>
-                        <li>{t("lang96")}</li>
-                        <li>{t("lang97")}</li>
-                      </ul>
-                    </li>
-                  </ol>
-                  <p>
-                    {t("lang98")}&nbsp;
-                    <a href="callto:920012290">{t("lang99")}</a>
-                    &nbsp;{t("lang100")}&nbsp;
-                    <a href="mailto:info@captingirl.com">{t("lang101")}</a>
-                  </p>
-                </div>
-              </PrivacyContainer>
-            </Container>
-          </Section>
-          <Footer />
-        </main>
-      </LocomotiveScrollProvider>
+            // ... all available Locomotive Scroll instance options
+            smartphone: {
+              smooth: true,
+            },
+            tablet: {
+              smooth: true,
+            },
+          }}
+          watch={
+            [
+              //..all the dependencies you want to watch to update the scroll.
+              //  Basicaly, you would want to watch page/location changes
+              //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
+            ]
+          }
+          containerRef={containerRef}
+        >
+          <AnimatePresence>
+            <Header setMenuState={setMenuState} />
+            <Menu setMenuState={setMenuState} menu={menuState} />
+            <Mouse />
+            <main data-scroll-container ref={containerRef}>
+              <Section lang={i18n.language}>
+                <Container>
+                  <MainHeader>
+                    <LabelOne>{t("lang67")}</LabelOne>
+                    <motion.div
+                      initial="hidden"
+                      animate={"visible"}
+                      variants={container1}
+                    >
+                      <LabelTwo variants={item}>{t("lang68")}</LabelTwo>
+                    </motion.div>
+                  </MainHeader>
+                  <PrivacyContainer>
+                    <div>
+                      <ol>
+                        <li>
+                          <h3>{t("lang69")}</h3>
+                          <p>{t("lang70")}</p>
+                          <p>{t("lang71")}</p>
+                        </li>
+                        <li>
+                          <h3>{t("lang72")}</h3>
+                          <p>{t("lang73")}</p>
+                        </li>
+                      </ol>
+                      <ol>
+                        <h3>{t("lang74")}</h3>
+                        <li>
+                          <h3>{t("lang75")}</h3>
+                          <p>{t("lang76")}</p>
+                          <p>{t("lang77")}</p>
+                          <p>{t("lang78")}</p>
+                          <p>{t("lang79")}</p>
+                        </li>
+                        <li>
+                          <h3>{t("lang80")}</h3>
+                          <p>{t("lang81")}</p>
+                          <p>{t("lang82")}</p>
+                          <p>{t("lang83")}</p>
+                        </li>
+                      </ol>
+                      <ol>
+                        <h1>{t("lang84")}</h1>
+                        <li>
+                          <h3>{t("lang85")}</h3>
+                          <p>{"lang86"}</p>
+                        </li>
+                        <li>
+                          <h3>{t("lang87")}</h3>
+                          <p>{t("lang88")}</p>
+                        </li>
+                        <li>
+                          <h3>{t("lang89")}</h3>
+                          <p>{t("lang90")}</p>
+                        </li>
+                        <h3>{t("lang91")}</h3>
+                        <li>
+                          <h3>{t("lang92")}</h3>
+                          <ul>
+                            <li>{t("lang93")}</li>
+                            <li>{t("lang94")}</li>
+                            <li>{t("lang95")}</li>
+                            <li>{t("lang96")}</li>
+                            <li>{t("lang97")}</li>
+                          </ul>
+                        </li>
+                      </ol>
+                      <p>
+                        {t("lang98")}&nbsp;
+                        <a href="callto:920012290">{t("lang99")}</a>
+                        &nbsp;{t("lang100")}&nbsp;
+                        <a href="mailto:info@captingirl.com">{t("lang101")}</a>
+                      </p>
+                    </div>
+                  </PrivacyContainer>
+                </Container>
+              </Section>
+              <Footer />
+            </main>
+          </AnimatePresence>
+        </LocomotiveScrollProvider>
+      </ThemeProvider>
     </>
   );
 };

@@ -2,12 +2,17 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/GlobalStyles";
+import { dark } from "../styles/Themes";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import ContactImage1 from "../assets/Images/contactUs1.webp";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import AnimationText from "../components/AnimationText";
 import Mouse from "../components/Mouse";
 
@@ -27,7 +32,7 @@ const Section = styled.section`
   span {
     margin-bottom: 24px;
     font-size: 0.8vw;
-    
+
     font-weight: 800;
     @media (max-width: 768px) {
       font-size: 14px;
@@ -97,13 +102,13 @@ const Address = styled.div`
 const AddressLocation = styled.div`
   margin-bottom: 24px;
   font-size: 1.2vw;
-  
+
   font-weight: 800;
 
   @media (max-width: 768px) {
     margin-bottom: 16px;
     font-size: 5vw;
-    
+
     font-weight: 800;
   }
 `;
@@ -134,268 +139,279 @@ const ContactUs = () => {
   };
   return (
     <>
-      <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-          smartphone: {
+      <GlobalStyles />
+      <ThemeProvider theme={dark}>
+        <LocomotiveScrollProvider
+          options={{
             smooth: true,
-          },
-          tablet: {
-            smooth: true,
-          },
-        }}
-        watch={
-          [
-            //..all the dependencies you want to watch to update the scroll.
-            //  Basicaly, you would want to watch page/location changes
-            //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
-          ]
-        }
-        containerRef={containerRef}
-      >
-        <Header setMenuState={setMenuState} />
-        <Menu setMenuState={setMenuState} menu={menuState} />
-        <Mouse/>
-        <main data-scroll-container ref={containerRef}>
-          <Section
-            lang={i18n.language}
-            style={{ backgroundColor: "#000", color: "#fff" }}
-          >
-            <div
-              style={{
-                paddingRight: "8vw",
-                paddingLeft: "8vw",
-                padding: "30vh 5vw 60px",
-                maxWidth: "100%",
-              }}
-            >
-              <div
-                style={{
-                  display: "grid",
-                  width: "100%",
-                  alignItems: "start",
-                  gridTemplateRows: "auto auto auto 24px max-content",
-                }}
+            // ... all available Locomotive Scroll instance options
+            smartphone: {
+              smooth: true,
+            },
+            tablet: {
+              smooth: true,
+            },
+          }}
+          watch={
+            [
+              //..all the dependencies you want to watch to update the scroll.
+              //  Basicaly, you would want to watch page/location changes
+              //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
+            ]
+          }
+          containerRef={containerRef}
+        >
+          <AnimatePresence>
+            <Header setMenuState={setMenuState} />
+            <Menu setMenuState={setMenuState} menu={menuState} />
+            <Mouse />
+            <main data-scroll-container ref={containerRef}>
+              <Section
+                lang={i18n.language}
+                style={{ backgroundColor: "#000", color: "#fff" }}
               >
                 <div
                   style={{
-                    gridColumnEnd: 7,
-                    gridColumnStart: 2,
-                    gridRowEnd: 4,
-                    gridRowStart: 2,
-                    alignSelf: "center",
+                    paddingRight: "8vw",
+                    paddingLeft: "8vw",
+                    padding: "30vh 5vw 60px",
+                    maxWidth: "100%",
                   }}
                 >
-                  <div style={{ marginBottom: 16 }}>
-                    <HeaderTitle>
+                  <div
+                    style={{
+                      display: "grid",
+                      width: "100%",
+                      alignItems: "start",
+                      gridTemplateRows: "auto auto auto 24px max-content",
+                    }}
+                  >
+                    <div
+                      style={{
+                        gridColumnEnd: 7,
+                        gridColumnStart: 2,
+                        gridRowEnd: 4,
+                        gridRowStart: 2,
+                        alignSelf: "center",
+                      }}
+                    >
+                      <div style={{ marginBottom: 16 }}>
+                        <HeaderTitle>
+                          <motion.div
+                            initial="hidden"
+                            animate={"visible"}
+                            variants={container1}
+                          >
+                            <AnimationText
+                              type={"paragraph"}
+                              text={t("lang44")}
+                            />
+                          </motion.div>
+                        </HeaderTitle>
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        gridColumnEnd: 7,
+                        gridColumnStart: 2,
+                        gridRowEnd: 4,
+                        gridRowStart: 6,
+                        alignSelf: "center",
+                      }}
+                    >
                       <motion.div
                         initial="hidden"
                         animate={"visible"}
                         variants={container1}
                       >
-                        <AnimationText type={"paragraph"} text={t("lang44")} />
-                      </motion.div>
-                    </HeaderTitle>
-                  </div>
-                </div>
-                <div
-                  style={{
-                    gridColumnEnd: 7,
-                    gridColumnStart: 2,
-                    gridRowEnd: 4,
-                    gridRowStart: 6,
-                    alignSelf: "center",
-                  }}
-                >
-                  <motion.div
-                    initial="hidden"
-                    animate={"visible"}
-                    variants={container1}
-                  >
-                    <motion.h1
-                      style={{
-                        fontSize: "3.1vw",
-                        marginBottom: 40,
-                        fontWeight: 500,
-                      }}
-                      variants={item}
-                    >
-                      {t("lang45")}
-                    </motion.h1>
-                  </motion.div>
-                </div>
-              </div>
-              <div
-                style={{
-                  gridColumnEnd: 8,
-                  gridColumnStart: 2,
-                  gridRowEnd: 5,
-                  gridRowStart: 4,
-                  alignSelf: "center",
-                }}
-              >
-                <div
-                  style={{
-                    width: "100%",
-                    height: 1,
-                    backgroundColor: "#9e9e9e",
-                  }}
-                ></div>
-              </div>
-
-              <div
-                style={{
-                  display: "grid",
-                  width: "100%",
-                  alignItems: "start",
-                  gridTemplateRows: "auto auto auto 24px max-content",
-                }}
-              >
-                <div
-                  style={{
-                    gridColumnEnd: 8,
-                    gridColumnStart: 2,
-                    gridRowEnd: 6,
-                    gridRowStart: 5
-                  }}
-                >
-                  <div>
-                    <div>
-                      <div>
-                        <motion.div
-                          initial="hidden"
-                          animate={"visible"}
-                          variants={container1}
+                        <motion.h1
+                          style={{
+                            fontSize: "3.1vw",
+                            marginBottom: 40,
+                            fontWeight: 500,
+                          }}
+                          variants={item}
                         >
-                          <motion.p variants={item}>{t("lang46")}</motion.p>
-                        </motion.div>
-                      </div>
+                          {t("lang45")}
+                        </motion.h1>
+                      </motion.div>
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      gridColumnEnd: 8,
+                      gridColumnStart: 2,
+                      gridRowEnd: 5,
+                      gridRowStart: 4,
+                      alignSelf: "center",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "100%",
+                        height: 1,
+                        backgroundColor: "#9e9e9e",
+                      }}
+                    ></div>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      width: "100%",
+                      alignItems: "start",
+                      gridTemplateRows: "auto auto auto 24px max-content",
+                    }}
+                  >
+                    <div
+                      style={{
+                        gridColumnEnd: 8,
+                        gridColumnStart: 2,
+                        gridRowEnd: 6,
+                        gridRowStart: 5,
+                      }}
+                    >
                       <div>
                         <div>
-                          <a href="mailto:info@srmg.com?subject=Advertising">
+                          <div>
                             <motion.div
                               initial="hidden"
                               animate={"visible"}
                               variants={container1}
                             >
-                              <motion.p variants={item}>
-                                {t("lang47")}
-                                <br />
-                                {t("lang48")}
-                                <br />
-                                {t("lang49")}
-                              </motion.p>
+                              <motion.p variants={item}>{t("lang46")}</motion.p>
                             </motion.div>
-                          </a>
+                          </div>
+                          <div>
+                            <div>
+                              <a href="mailto:info@srmg.com?subject=Advertising">
+                                <motion.div
+                                  initial="hidden"
+                                  animate={"visible"}
+                                  variants={container1}
+                                >
+                                  <motion.p variants={item}>
+                                    {t("lang47")}
+                                    <br />
+                                    {t("lang48")}
+                                    <br />
+                                    {t("lang49")}
+                                  </motion.p>
+                                </motion.div>
+                              </a>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </Section>
-          <Section
-            lang={i18n.language}
-            style={{
-              paddingTop: "5vh",
-              paddingBottom: "5vh",
-              backgroundColor: "#fff",
-            }}
-          >
-            <Container>
-              <div
+              </Section>
+              <Section
+                lang={i18n.language}
                 style={{
-                  display: "grid",
-                  width: "100%",
-                  gridAutoColumns: "1fr",
-                  gridColumnGap: "2vw",
-                  gridRowGap: 16,
-                  gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
-                  gridTemplateRows: "auto max-content max-content max-content",
+                  paddingTop: "5vh",
+                  paddingBottom: "5vh",
+                  backgroundColor: "#fff",
                 }}
               >
-                <div
-                  style={{
-                    gridColumnEnd: 5,
-                    gridColumnStart: 1,
-                    gridRowEnd: 2,
-                    gridRowStart: 1,
-                  }}
-                >
-                  <p>{t("lang50")}</p>
-                </div>
-                <div
-                  style={{
-                    gridColumnEnd: 9,
-                    gridColumnStart: 1,
-                    gridRowEnd: 5,
-                    gridRowStart: 2,
-                  }}
-                >
-                  <div>
-                    <div>
-                      {t("lang48")} <br />
-                    </div>
-                  </div>
-                </div>
-                <Address>
-                  <div>
-                    <div>
-                      <div>
-                        <AddressLocation>{t("lang51")} </AddressLocation>
-                      </div>
+                <Container>
+                  <div
+                    style={{
+                      display: "grid",
+                      width: "100%",
+                      gridAutoColumns: "1fr",
+                      gridColumnGap: "2vw",
+                      gridRowGap: 16,
+                      gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+                      gridTemplateRows:
+                        "auto max-content max-content max-content",
+                    }}
+                  >
+                    <div
+                      style={{
+                        gridColumnEnd: 5,
+                        gridColumnStart: 1,
+                        gridRowEnd: 2,
+                        gridRowStart: 1,
+                      }}
+                    >
+                      <p>{t("lang50")}</p>
                     </div>
                     <div
                       style={{
-                        marginBottom: 16,
+                        gridColumnEnd: 9,
+                        gridColumnStart: 1,
+                        gridRowEnd: 5,
+                        gridRowStart: 2,
                       }}
                     >
                       <div>
-                        <span>{t("lang52")}</span>
-                        <br />
-                      </div>
-                      <div>
-                        <p>
-                          {t("lang53")}
-                          <br />
-                          {t("lang54")}
-                        </p>
+                        <div>
+                          {t("lang48")} <br />
+                        </div>
                       </div>
                     </div>
-                    <div>
-                      <div
-                        style={{
-                          marginBottom: 16,
-                        }}
-                      >
-                        <p>
-                          <span>{t("lang55")}</span>
-                          <br />‍<a href="tel:920012290">{t("lang56")}</a>
-                        </p>
-                      </div>
+                    <Address>
                       <div>
-                        <p>
-                          <span>{t("lang57")}</span>
-                          <br />‍
-                          <a href="mailto:info@captingirl.com">{t("lang58")}</a>
-                        </p>
+                        <div>
+                          <div>
+                            <AddressLocation>{t("lang51")} </AddressLocation>
+                          </div>
+                        </div>
+                        <div
+                          style={{
+                            marginBottom: 16,
+                          }}
+                        >
+                          <div>
+                            <span>{t("lang52")}</span>
+                            <br />
+                          </div>
+                          <div>
+                            <p>
+                              {t("lang53")}
+                              <br />
+                              {t("lang54")}
+                            </p>
+                          </div>
+                        </div>
+                        <div>
+                          <div
+                            style={{
+                              marginBottom: 16,
+                            }}
+                          >
+                            <p>
+                              <span>{t("lang55")}</span>
+                              <br />‍<a href="tel:920012290">{t("lang56")}</a>
+                            </p>
+                          </div>
+                          <div>
+                            <p>
+                              <span>{t("lang57")}</span>
+                              <br />‍
+                              <a href="mailto:info@captingirl.com">
+                                {t("lang58")}
+                              </a>
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </Address>
+                    <ImageContainer>
+                      <div>
+                        <img src={ContactImage1} loading="lazy" alt="Riyadh" />
+                      </div>
+                    </ImageContainer>
                   </div>
-                </Address>
-                <ImageContainer>
-                  <div>
-                    <img src={ContactImage1} loading="lazy" alt="Riyadh" />
-                  </div>
-                </ImageContainer>
-              </div>
-            </Container>
-          </Section>
-          <Footer />
-        </main>
-      </LocomotiveScrollProvider>
+                </Container>
+              </Section>
+              <Footer />
+            </main>
+          </AnimatePresence>
+        </LocomotiveScrollProvider>
+      </ThemeProvider>
     </>
   );
 };

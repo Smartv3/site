@@ -3,10 +3,15 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/GlobalStyles";
+import { dark } from "../styles/Themes";
+
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Menu from "../components/Menu";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Mouse from "../components/Mouse";
 
 const Section = styled.section`
@@ -159,203 +164,208 @@ const Term = () => {
   };
   return (
     <>
-      <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-          smartphone: {
+      <GlobalStyles />
+      <ThemeProvider theme={dark}>
+        <LocomotiveScrollProvider
+          options={{
             smooth: true,
-          },
-          tablet: {
-            smooth: true,
-          },
-        }}
-        watch={
-          [
-            //..all the dependencies you want to watch to update the scroll.
-            //  Basicaly, you would want to watch page/location changes
-            //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
-          ]
-        }
-        containerRef={containerRef}
-      >
-        <Header setMenuState={setMenuState} />
-        <Menu setMenuState={setMenuState} menu={menuState} />
-        <Mouse />
-        <main data-scroll-container ref={containerRef}>
-          <Section lang={i18n.language}>
-            <Container>
-              <MainHeader>
-                <LabelOne>{t("lang102")}</LabelOne>
-                <motion.div
-                  initial="hidden"
-                  animate={"visible"}
-                  variants={container1}
-                >
-                  <LabelTwo variants={item}>{t("lang103")}</LabelTwo>
-                </motion.div>
-              </MainHeader>
-              <TermContainer>
-                <p>{t("lang104")}</p>
-                <p>{t("lang105")}</p>
-                <p>{t("lang106")}</p>
-                <p>{t("lang107")}</p>
-                <ol>
-                  <li>
-                    <h3>{t("lang108")}</h3>
-                    <p>{t("lang109")}</p>
-                  </li>
-                  <li>
-                    <h3>{t("lang110")}</h3>
-                    <p>{t("lang111")}</p>
-                  </li>
-                  <li>
-                    <h3>{t("lang112")}</h3>
-                    <p>{t("lang113")}</p>
-                  </li>
-                  <li>
-                    <h3>{t("lang114")}</h3>
-                    <p>{t("lang115")}</p>
-                  </li>
-                  <li>
-                    <h3>{t("lang116")}</h3>
-                    <p>{t("lang117")}</p>
-                  </li>
-                  <li>
-                    <h3>{t("lang118")}</h3>
-                    <ul>
-                      <li>{t("lang119")}</li>
-                      <li>{t("lang120")}</li>
-                      <li>{t("lang121")}</li>
-                      <li>{t("lang122")}</li>
-                      <li>{t("lang123")}</li>
-                      <li>{t("lang124")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang125")}</h3>
-                    <ul>
-                      <li>{t("lang126")}</li>
-                      <li>{t("lang127")}</li>
-                      <li>{t("lang128")}</li>
-                      <li>{t("lang129")}</li>
-                      <li>{t("lang130")}</li>
-                      <li>{t("lang131")}</li>
-                      <li>{t("lang132")}</li>
-                      <li>{t("lang133")}</li>
-                      <li>{t("lang134")}</li>
-                      <li>{t("lang135")}</li>
-                      <li>{t("lang136")}</li>
-                      <li>{t("lang137")}</li>
-                      <li>{t("lang138")}</li>
-                      <li>{t("lang139")}</li>
-                      <li>{t("lang140")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang141")}</h3>
-                    <p>{t("lang142")}</p>
-                    <p>{t("lang143")}</p>
-                  </li>
-                  <li>
-                    <h3>{t("lang144")}</h3>
-                    <ul>
-                      <li>{t("lang145")}</li>
-                      <li>{t("lang146")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang147")}</h3>
-                    <p>{t("lang148")}</p>
-                    <ul>
-                      <li>{t("lang149")}</li>
-                      <li>{t("lang150")}</li>
-                      <li>{t("lang151")}</li>
-                      <li>{t("lang152")}</li>
-                      <li>{t("lang153")}</li>
-                      <li>{t("lang154")}</li>
-                      <li>{t("lang155")}</li>
-                      <li>{t("lang156")}</li>
-                      <li>{t("lang157")}</li>
-                      <li>{t("lang158")}</li>
-                      <li>{t("lang159")}</li>
-                      <li>{t("lang160")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang161")}</h3>
-                    <p>{t("lang162")}</p>
-                    <p>{t("lang163")}</p>
-                  </li>
-                  <li>
-                    <h3>{t("lang164")}</h3>
-                    <ul>
-                      <li>{t("lang165")}</li>
-                      <li>{t("lang166")}</li>
-                      <li>{t("lang167")}</li>
-                      <li>{t("lang168")}</li>
-                      <li>{t("lang169")}</li>
-                      <li>{t("lang170")}</li>
-                      <li>{t("lang171")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang172")}</h3>
-                    <ul>
-                      <li>{t("lang173")}</li>
-                      <li>{t("lang174")}</li>
-                      <li>{t("lang175")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang176")}</h3>
-                    <ul>
-                      <li>{t("lang177")}</li>
-                      <li>{t("lang178")}</li>
-                      <li>{t("lang179")}</li>
-                      <li>{t("lang178")}</li>
-                      <li>{t("lang179")}</li>
-                      <li>{t("lang180")}</li>
-                      <li>{t("lang181")}</li>
-                      <li>{t("lang182")}</li>
-                      <li>{t("lang183")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang184")}</h3>
-                    <ul>
-                      <li>{t("lang185")}</li>
-                      <li>{t("lang186")}</li>
-                      <li>{t("lang187")}</li>
-                      <li>{t("lang188")}</li>
-                      <li>{t("lang189")}</li>
-                      <li>{t("lang190")}</li>
-                      <li>{t("lang191")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang192")}</h3>
-                    <ul>
-                      <li>{t("lang193")}</li>
-                      <li>{t("lang194")}</li>
-                      <li>{t("lang195")}</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <h3>{t("lang196")}</h3>
-                    <p>{t("lang197")}</p>
-                  </li>
-                </ol>
-                <p>
-                  {t("lang198")}&nbsp;
-                  <a href="mailto:info@captingirl.com">{t("lang199")}</a>
-                </p>
-              </TermContainer>
-            </Container>
-          </Section>
-          <Footer />
-        </main>
-      </LocomotiveScrollProvider>
+            // ... all available Locomotive Scroll instance options
+            smartphone: {
+              smooth: true,
+            },
+            tablet: {
+              smooth: true,
+            },
+          }}
+          watch={
+            [
+              //..all the dependencies you want to watch to update the scroll.
+              //  Basicaly, you would want to watch page/location changes
+              //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
+            ]
+          }
+          containerRef={containerRef}
+        >
+          <AnimatePresence>
+            <Header setMenuState={setMenuState} />
+            <Menu setMenuState={setMenuState} menu={menuState} />
+            <Mouse />
+            <main data-scroll-container ref={containerRef}>
+              <Section lang={i18n.language}>
+                <Container>
+                  <MainHeader>
+                    <LabelOne>{t("lang102")}</LabelOne>
+                    <motion.div
+                      initial="hidden"
+                      animate={"visible"}
+                      variants={container1}
+                    >
+                      <LabelTwo variants={item}>{t("lang103")}</LabelTwo>
+                    </motion.div>
+                  </MainHeader>
+                  <TermContainer>
+                    <p>{t("lang104")}</p>
+                    <p>{t("lang105")}</p>
+                    <p>{t("lang106")}</p>
+                    <p>{t("lang107")}</p>
+                    <ol>
+                      <li>
+                        <h3>{t("lang108")}</h3>
+                        <p>{t("lang109")}</p>
+                      </li>
+                      <li>
+                        <h3>{t("lang110")}</h3>
+                        <p>{t("lang111")}</p>
+                      </li>
+                      <li>
+                        <h3>{t("lang112")}</h3>
+                        <p>{t("lang113")}</p>
+                      </li>
+                      <li>
+                        <h3>{t("lang114")}</h3>
+                        <p>{t("lang115")}</p>
+                      </li>
+                      <li>
+                        <h3>{t("lang116")}</h3>
+                        <p>{t("lang117")}</p>
+                      </li>
+                      <li>
+                        <h3>{t("lang118")}</h3>
+                        <ul>
+                          <li>{t("lang119")}</li>
+                          <li>{t("lang120")}</li>
+                          <li>{t("lang121")}</li>
+                          <li>{t("lang122")}</li>
+                          <li>{t("lang123")}</li>
+                          <li>{t("lang124")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang125")}</h3>
+                        <ul>
+                          <li>{t("lang126")}</li>
+                          <li>{t("lang127")}</li>
+                          <li>{t("lang128")}</li>
+                          <li>{t("lang129")}</li>
+                          <li>{t("lang130")}</li>
+                          <li>{t("lang131")}</li>
+                          <li>{t("lang132")}</li>
+                          <li>{t("lang133")}</li>
+                          <li>{t("lang134")}</li>
+                          <li>{t("lang135")}</li>
+                          <li>{t("lang136")}</li>
+                          <li>{t("lang137")}</li>
+                          <li>{t("lang138")}</li>
+                          <li>{t("lang139")}</li>
+                          <li>{t("lang140")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang141")}</h3>
+                        <p>{t("lang142")}</p>
+                        <p>{t("lang143")}</p>
+                      </li>
+                      <li>
+                        <h3>{t("lang144")}</h3>
+                        <ul>
+                          <li>{t("lang145")}</li>
+                          <li>{t("lang146")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang147")}</h3>
+                        <p>{t("lang148")}</p>
+                        <ul>
+                          <li>{t("lang149")}</li>
+                          <li>{t("lang150")}</li>
+                          <li>{t("lang151")}</li>
+                          <li>{t("lang152")}</li>
+                          <li>{t("lang153")}</li>
+                          <li>{t("lang154")}</li>
+                          <li>{t("lang155")}</li>
+                          <li>{t("lang156")}</li>
+                          <li>{t("lang157")}</li>
+                          <li>{t("lang158")}</li>
+                          <li>{t("lang159")}</li>
+                          <li>{t("lang160")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang161")}</h3>
+                        <p>{t("lang162")}</p>
+                        <p>{t("lang163")}</p>
+                      </li>
+                      <li>
+                        <h3>{t("lang164")}</h3>
+                        <ul>
+                          <li>{t("lang165")}</li>
+                          <li>{t("lang166")}</li>
+                          <li>{t("lang167")}</li>
+                          <li>{t("lang168")}</li>
+                          <li>{t("lang169")}</li>
+                          <li>{t("lang170")}</li>
+                          <li>{t("lang171")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang172")}</h3>
+                        <ul>
+                          <li>{t("lang173")}</li>
+                          <li>{t("lang174")}</li>
+                          <li>{t("lang175")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang176")}</h3>
+                        <ul>
+                          <li>{t("lang177")}</li>
+                          <li>{t("lang178")}</li>
+                          <li>{t("lang179")}</li>
+                          <li>{t("lang178")}</li>
+                          <li>{t("lang179")}</li>
+                          <li>{t("lang180")}</li>
+                          <li>{t("lang181")}</li>
+                          <li>{t("lang182")}</li>
+                          <li>{t("lang183")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang184")}</h3>
+                        <ul>
+                          <li>{t("lang185")}</li>
+                          <li>{t("lang186")}</li>
+                          <li>{t("lang187")}</li>
+                          <li>{t("lang188")}</li>
+                          <li>{t("lang189")}</li>
+                          <li>{t("lang190")}</li>
+                          <li>{t("lang191")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang192")}</h3>
+                        <ul>
+                          <li>{t("lang193")}</li>
+                          <li>{t("lang194")}</li>
+                          <li>{t("lang195")}</li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3>{t("lang196")}</h3>
+                        <p>{t("lang197")}</p>
+                      </li>
+                    </ol>
+                    <p>
+                      {t("lang198")}&nbsp;
+                      <a href="mailto:info@captingirl.com">{t("lang199")}</a>
+                    </p>
+                  </TermContainer>
+                </Container>
+              </Section>
+              <Footer />
+            </main>
+          </AnimatePresence>
+        </LocomotiveScrollProvider>
+      </ThemeProvider>
     </>
   );
 };

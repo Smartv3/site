@@ -1,11 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-// import AboutUs from "../pages/AboutUs";
-// import ContactUs from "../pages/ContactUs";
-// import Home from "../pages/Home";
-// import LatestNews from "../pages/LatestNews";
-// import Privacy from "../pages/policy";
-// import Term from "../pages/Term";
 
 const AboutUs = React.lazy(() => import("../pages/AboutUs"));
 const ContactUs = React.lazy(() => import("../pages/ContactUs"));
