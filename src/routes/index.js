@@ -8,7 +8,7 @@ const LatestNews = React.lazy(() => import("../pages/LatestNews"));
 const Privacy = React.lazy(() => import("../pages/policy"));
 const Term = React.lazy(() => import("../pages/Term"));
 
-const Navigation = ({ containerRef }) => {
+const Navigation = () => {
   return (
     <React.Suspense fallback={<p>Loading page...</p>}>
       <Routes>

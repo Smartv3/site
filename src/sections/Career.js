@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { InView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-import AnimationText from "../components/AnimationText";
 import Banner from "../assets/Images/banner.webp";
+import AnimatedText from "react-animated-text-content";
 
 const Section = styled.div`
   color: #fff;
@@ -89,7 +89,19 @@ const Career = () => {
                 animate={inView && "visible"}
                 variants={container1}
               >
-                <AnimationText type={"paragraph"} text={t("lang39")} />
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang39")}
+                </AnimatedText>
               </motion.div>
             </Label>
           )}
@@ -107,14 +119,38 @@ const Career = () => {
                 animate={inView && "visible"}
                 variants={container1}
               >
-                <AnimationText type={"paragraph"} text={t("lang40")} />
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang40")}
+                </AnimatedText>
               </motion.div>
               <motion.div
                 initial="hidden"
                 animate={inView && "visible"}
                 variants={container1}
               >
-                <AnimationText type={"paragraph"} text={t("lang41")} />
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang41")}
+                </AnimatedText>
               </motion.div>
             </Paragraph>
           )}

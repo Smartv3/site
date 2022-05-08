@@ -4,9 +4,8 @@ import Tilt from "../helper/Tilt";
 // import Tilt from '../../dist/tilt.js'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { InView } from "react-intersection-observer";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import AnimationText from "../components/AnimationText";
+import AnimatedText from "react-animated-text-content";
 import Image1 from "../assets/Images/1.webp";
 import Image2 from "../assets/Images/2.webp";
 import Image3 from "../assets/Images/3.webp";
@@ -98,7 +97,7 @@ const Title = styled.div`
   grid-row-start: 1;
   color: #fff;
   font-size: 2vw;
-  
+
   font-weight: 400;
   margin-bottom: 10px;
   @media (max-width: 768px) {
@@ -341,399 +340,499 @@ const AboutUs = () => {
           <Container>
             <div id="th">
               <Grid>
-                <InView>
-                  {({ inView, ref, entry }) => (
-                    <Label
-                      data-scroll="0"
-                      data-scroll-speed="1"
-                      data-scroll-delay="0.1"
-                      ref={ref}
-                      id="text1"
-                    >
-                      <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-                      >
-                        <AnimationText type={"paragraph"} text={t("lang15")} />
-                      </motion.div>
-                    </Label>
-                  )}
-                </InView>
-                <InView>
-                  {({ inView, ref, entry }) => (
-                    <Paragraph
-                      data-scroll="0"
-                      data-scroll-speed="1"
-                      data-scroll-delay="0.1"
-                      ref={ref}
-                    >
-                      <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-                      >
-                        <AnimationText type={"paragraph"} text={t("lang16")} />
-                      </motion.div>
-                    </Paragraph>
-                  )}
-                </InView>
+                <Label
+                  data-scroll="0"
+                  data-scroll-speed="1"
+                  data-scroll-delay="0.1"
+                  id="text1"
+                >
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
+                  >
+                    {t("lang15")}
+                  </AnimatedText>
+                </Label>
+
+                <Paragraph
+                  data-scroll="0"
+                  data-scroll-speed="1"
+                  data-scroll-delay="0.1"
+                >
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
+                  >
+                    {t("lang16")}
+                  </AnimatedText>
+                </Paragraph>
               </Grid>
             </div>
           </Container>
           <Container>
             <Grid>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <Label
-                    data-scroll="0"
-                    data-scroll-speed="1"
-                    data-scroll-delay="0.1"
-                    ref={ref}
-                    id="text2"
-                  >
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <AnimationText type={"paragraph"} text={t("lang17")} />
-                    </motion.div>
-                  </Label>
-                )}
-              </InView>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <Paragraph
-                    data-scroll="0"
-                    data-scroll-speed="1"
-                    data-scroll-delay="0.1"
-                    ref={ref}
-                  >
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <AnimationText type={"paragraph"} text={t("lang18")} />
-                    </motion.div>
-                  </Paragraph>
-                )}
-              </InView>
+              <Label
+                data-scroll="0"
+                data-scroll-speed="1"
+                data-scroll-delay="0.1"
+                id="text2"
+              >
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang17")}
+                </AnimatedText>
+              </Label>
+
+              <Paragraph
+                data-scroll="0"
+                data-scroll-speed="1"
+                data-scroll-delay="0.1"
+              >
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang18")}
+                </AnimatedText>
+              </Paragraph>
             </Grid>
           </Container>
           <Container>
             <Grid>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <Title
-                    data-scroll="0"
-                    data-scroll-speed="1.2"
-                    data-scroll-delay="0.8"
-                    ref={ref}
-                  >
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <AnimationText type={"paragraph"} text={t("lang19")} />
-                    </motion.div>
-                  </Title>
-                )}
-              </InView>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <TitleText
-                    data-scroll="0"
-                    data-scroll-speed="1.2"
-                    data-scroll-delay="0.8"
-                    ref={ref}
-                  >
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <AnimationText type={"paragraph"} text={t("lang20")} />
-                    </motion.div>
-                  </TitleText>
-                )}
-              </InView>
+              <Title
+                data-scroll="0"
+                data-scroll-speed="1.2"
+                data-scroll-delay="0.8"
+              >
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang19")}
+                </AnimatedText>
+              </Title>
+
+              <TitleText
+                data-scroll="0"
+                data-scroll-speed="1.2"
+                data-scroll-delay="0.8"
+              >
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang20")}
+                </AnimatedText>
+              </TitleText>
             </Grid>
           </Container>
 
           <Container>
             <Grid>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <Title
-                    data-scroll="0"
-                    data-scroll-speed="1.2"
-                    data-scroll-delay="0.8"
-                    ref={ref}
-                  >
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <AnimationText type={"paragraph"} text={t("lang21")} />
-                    </motion.div>
-                  </Title>
-                )}
-              </InView>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <TitleText
-                    data-scroll="0"
-                    data-scroll-speed="1.2"
-                    data-scroll-delay="0.8"
-                    ref={ref}
-                  >
-                    <div>
-                      <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-                      >
-                        <motion.p variants={item}>
-                          <strong>{t("lang22")}</strong>
-                          {t("lang23")}
-                        </motion.p>
-                        <motion.p variants={item}>
-                          <strong>{t("lang24")}</strong>
-                          {t("lang25")}
-                        </motion.p>
-                        <motion.p variants={item}>
-                          <strong>{t("lang26")}</strong>
-                          {t("lang27")}
-                        </motion.p>
-                      </motion.div>
-                    </div>
-                  </TitleText>
-                )}
-              </InView>
+              <Title
+                data-scroll="0"
+                data-scroll-speed="1.2"
+                data-scroll-delay="0.8"
+              >
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang21")}
+                </AnimatedText>
+              </Title>
+
+              <TitleText
+                data-scroll="0"
+                data-scroll-speed="1.2"
+                data-scroll-delay="0.8"
+              >
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  <strong>{t("lang22")}</strong>
+                  {t("lang23")}
+                </AnimatedText>
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  <strong>{t("lang24")}</strong>
+                  {t("lang25")}
+                </AnimatedText>
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  <strong>{t("lang26")}</strong>
+                  {t("lang27")}
+                </AnimatedText>
+              </TitleText>
             </Grid>
           </Container>
           <Container>
             <Grid>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <Title
-                    data-scroll="0"
-                    data-scroll-speed="1.2"
-                    data-scroll-delay="0.8"
-                    ref={ref}
+              <Title
+                data-scroll="0"
+                data-scroll-speed="1.2"
+                data-scroll-delay="0.8"
+              >
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang28")}
+                </AnimatedText>
+              </Title>
+
+              <TitleText
+                data-scroll="0"
+                data-scroll-speed="1.2"
+                data-scroll-delay="0.8"
+              >
+                <div>
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
                   >
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <motion.p variants={item}>{t("lang28")}</motion.p>
-                    </motion.div>
-                  </Title>
-                )}
-              </InView>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <TitleText
-                    data-scroll="0"
-                    data-scroll-speed="1.2"
-                    data-scroll-delay="0.8"
-                    ref={ref}
+                    {/* <strong>{lang29[0] + " "}</strong>{" "}
+                    <strong>{lang29[1] + " "}</strong>
+                    {lang29[2] +
+                      " " +
+                      lang29[3] +
+                      " " +
+                      lang29[4] +
+                      " " +
+                      lang29[5] +
+                      " " +
+                      lang29[6] +
+                      " " +
+                      lang29[7] +
+                      " " +
+                      lang29[8] +
+                      " " +
+                      lang29[9] +
+                      " " +
+                      lang29[10] +
+                      " "}
+                    <strong>{lang29[11]}</strong>. */}
+                    {t("lang29")}
+                  </AnimatedText>
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
                   >
-                    <div>
-                      <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-                      >
-                        <motion.p variants={item}>
-                          <strong>{lang29[0] + " "}</strong>{" "}
-                          <strong>{lang29[1] + " "}</strong>
-                          {lang29[2] +
-                            " " +
-                            lang29[3] +
-                            " " +
-                            lang29[4] +
-                            " " +
-                            lang29[5] +
-                            " " +
-                            lang29[6] +
-                            " " +
-                            lang29[7] +
-                            " " +
-                            lang29[8] +
-                            " " +
-                            lang29[9] +
-                            " " +
-                            lang29[10] +
-                            " "}
-                          <strong>{lang29[11]}</strong>.
-                        </motion.p>
-                        <motion.p variants={item}>
-                          <strong>{lang30[0] + " "}</strong>
-                          {lang30[1] +
-                            " " +
-                            lang30[2] +
-                            " " +
-                            lang30[3] +
-                            " " +
-                            lang30[4] +
-                            " " +
-                            lang30[5] +
-                            " "}
-                          <strong>{lang30[6] + " "}</strong>
-                          {lang30[7] + " "}
-                          <strong>{lang30[8]}</strong>.
-                        </motion.p>
-                        <motion.p variants={item}>
-                          <strong>{lang31[0] + " "}</strong>{" "}
-                          <strong>{lang31[1] + " " + lang31[2] + " "}</strong>
-                          {lang31[3] + " " + lang31[4] + " " + lang31[5] + " "}
-                          <strong>
-                            {lang31[6] +
-                              " " +
-                              lang31[7] +
-                              " " +
-                              lang31[8] +
-                              " " +
-                              lang31[9]}
-                          </strong>
-                          .
-                        </motion.p>
-                        <motion.p variants={item}>
-                          <strong>{lang32[0] + " "}</strong>
-                          {lang32[1] +
-                            " " +
-                            lang32[2] +
-                            " " +
-                            lang32[3] +
-                            " " +
-                            lang32[4] +
-                            " " +
-                            lang32[5] +
-                            " " +
-                            lang32[6] +
-                            " " +
-                            lang32[7] +
-                            " " +
-                            lang32[8] +
-                            " " +
-                            lang32[9] +
-                            " " +
-                            lang32[10] +
-                            " "}
-                          <strong>{lang32[11] + " "}</strong>
-                          {lang32[12] + " "}
-                          <strong>
-                            {lang32[13] + " " + lang32[14] + " " + lang32[15]}
-                          </strong>
-                          .
-                        </motion.p>
-                      </motion.div>
-                    </div>
-                  </TitleText>
-                )}
-              </InView>
+                    {/* <strong>{lang30[0] + " "}</strong>
+                    {lang30[1] +
+                      " " +
+                      lang30[2] +
+                      " " +
+                      lang30[3] +
+                      " " +
+                      lang30[4] +
+                      " " +
+                      lang30[5] +
+                      " "}
+                    <strong>{lang30[6] + " "}</strong>
+                    {lang30[7] + " "}
+                    <strong>{lang30[8]}</strong>. */}
+                    {t("lang30")}
+                  </AnimatedText>
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
+                  >
+                    {/* <strong>{lang31[0] + " "}</strong>{" "}
+                    <strong>{lang31[1] + " " + lang31[2] + " "}</strong>
+                    {lang31[3] + " " + lang31[4] + " " + lang31[5] + " "}
+                    <strong>
+                      {lang31[6] +
+                        " " +
+                        lang31[7] +
+                        " " +
+                        lang31[8] +
+                        " " +
+                        lang31[9]}
+                    </strong>
+                    . */}
+                    {t("lang31")}
+                  </AnimatedText>
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
+                  >
+                    {/* <strong>{lang32[0] + " "}</strong>
+                    {lang32[1] +
+                      " " +
+                      lang32[2] +
+                      " " +
+                      lang32[3] +
+                      " " +
+                      lang32[4] +
+                      " " +
+                      lang32[5] +
+                      " " +
+                      lang32[6] +
+                      " " +
+                      lang32[7] +
+                      " " +
+                      lang32[8] +
+                      " " +
+                      lang32[9] +
+                      " " +
+                      lang32[10] +
+                      " "}
+                    <strong>{lang32[11] + " "}</strong>
+                    {lang32[12] + " "}
+                    <strong>
+                      {lang32[13] + " " + lang32[14] + " " + lang32[15]}
+                    </strong>
+                    . */}
+                    {t("lang32")}
+                  </AnimatedText>
+                </div>
+              </TitleText>
             </Grid>
           </Container>
           <Container>
             <Grid>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <Title
-                    data-scroll="0"
-                    data-scroll-speed="1.2"
-                    data-scroll-delay="0.8"
-                    ref={ref}
+              <Title
+                data-scroll="0"
+                data-scroll-speed="1.2"
+                data-scroll-delay="0.8"
+              >
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang33")}
+                </AnimatedText>
+
+                <AnimatedText
+                  type="words" // animate words or chars
+                  animation={{
+                    y: "100px",
+                    ease: "ease",
+                  }}
+                  animationType="block"
+                  interval={0.06}
+                  duration={0.8}
+                  tag="p"
+                >
+                  {t("lang34")}
+                </AnimatedText>
+              </Title>
+
+              <TitleText
+                data-scroll="0"
+                data-scroll-speed="1.2"
+                data-scroll-delay="0.8"
+              >
+                <div>
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
                   >
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <AnimationText type={"paragraph"} text={t("lang33")} />
-                    </motion.div>
-                    <motion.div
-                      initial="hidden"
-                      animate={inView && "visible"}
-                      variants={container1}
-                    >
-                      <AnimationText type={"paragraph"} text={t("lang34")} />
-                    </motion.div>
-                  </Title>
-                )}
-              </InView>
-              <InView>
-                {({ inView, ref, entry }) => (
-                  <TitleText
-                    data-scroll="0"
-                    data-scroll-speed="1.2"
-                    data-scroll-delay="0.8"
-                    ref={ref}
+                    {/* <strong>{lang35[0] + " "}</strong>
+                    {lang35[1] + " " + lang35[2] + " "}
+                    <strong>{lang35[3] + " "}</strong>
+                    {lang35[4] + " " + lang35[5] + " "}
+                    <strong>{lang35[6] + " "}</strong>
+                    {lang35[7] + " " + lang35[8] + " "}
+                    <strong>{lang35[9] + " "}</strong>
+                    {lang35[10] + " " + lang35[11]}. */}
+                    {t("lang35")}
+                  </AnimatedText>
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
                   >
-                    <div>
-                      <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-                      >
-                        <motion.p variants={item}>
-                          <strong>{lang35[0] + " "}</strong>
-                          {lang35[1] + " " + lang35[2] + " "}
-                          <strong>{lang35[3] + " "}</strong>
-                          {lang35[4] + " " + lang35[5] + " "}
-                          <strong>{lang35[6] + " "}</strong>
-                          {lang35[7] + " " + lang35[8] + " "}
-                          <strong>{lang35[9] + " "}</strong>
-                          {lang35[10] + " " + lang35[11]}.
-                        </motion.p>
-                        <motion.p variants={item}>
-                          <strong>{lang36[0] + " "}</strong>
-                          {lang36[1] + " "}
-                          <strong>{lang36[2] + " "}</strong>
-                          {lang36[3] + " "}
-                          <strong>{lang36[4] + " "}</strong>
-                          {lang36[5] + " " + lang36[6]}.
-                        </motion.p>
-                        <motion.p variants={item}>
-                          <strong>{lang37[0] + " "}</strong>{" "}
-                          <strong>{lang37[1] + " "}</strong>
-                          {lang37[2] + " " + lang37[3] + " "}
-                          <strong>{lang37[4] + " " + lang37[5]}</strong>.
-                        </motion.p>
-                        <motion.p variants={item}>
-                          <strong>{lang38[0] + " "}</strong>{" "}
-                          <strong>
-                            {lang38[1] +
-                              " " +
-                              lang38[2] +
-                              " " +
-                              lang38[3] +
-                              " "}
-                          </strong>
-                          {lang38[4] + " " + lang38[5] + " "}
-                          <strong>
-                            {lang38[6] +
-                              " " +
-                              lang38[7] +
-                              " " +
-                              lang38[8] +
-                              " " +
-                              lang38[9] +
-                              " " +
-                              lang38[10]}
-                          </strong>
-                          .
-                        </motion.p>
-                      </motion.div>
-                    </div>
-                  </TitleText>
-                )}
-              </InView>
+                    {/* <strong>{lang36[0] + " "}</strong>
+                    {lang36[1] + " "}
+                    <strong>{lang36[2] + " "}</strong>
+                    {lang36[3] + " "}
+                    <strong>{lang36[4] + " "}</strong>
+                    {lang36[5] + " " + lang36[6]}. */}
+                    {t("lang36")}
+                  </AnimatedText>
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
+                  >
+                    {/* <strong>{lang37[0] + " "}</strong>{" "}
+                    <strong>{lang37[1] + " "}</strong>
+                    {lang37[2] + " " + lang37[3] + " "}
+                    <strong>{lang37[4] + " " + lang37[5]}</strong>. */}
+                    {t("lang37")}
+                  </AnimatedText>
+                  <AnimatedText
+                    type="words" // animate words or chars
+                    animation={{
+                      y: "100px",
+                      ease: "ease",
+                    }}
+                    animationType="block"
+                    interval={0.06}
+                    duration={0.8}
+                    tag="p"
+                  >
+                    {/* <strong>{lang38[0] + " "}</strong>{" "}
+                    <strong>
+                      {lang38[1] + " " + lang38[2] + " " + lang38[3] + " "}
+                    </strong>
+                    {lang38[4] + " " + lang38[5] + " "}
+                    <strong>
+                      {lang38[6] +
+                        " " +
+                        lang38[7] +
+                        " " +
+                        lang38[8] +
+                        " " +
+                        lang38[9] +
+                        " " +
+                        lang38[10]}
+                    </strong>
+                    . */}
+                    {t("lang38")}
+                  </AnimatedText>
+                </div>
+              </TitleText>
             </Grid>
           </Container>
           <HomeNewsSection>
@@ -744,7 +843,9 @@ const AboutUs = () => {
                   data-scroll-speed="0"
                   data-scroll-delay="0.1"
                 >
-                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                  <Tilt
+                    options={{ max: 20, reverse: true, reset: true, scale: 1 }}
+                  >
                     <NewCardWrap>
                       <CardImgWrap>
                         <CardImg>
@@ -761,7 +862,9 @@ const AboutUs = () => {
                   data-scroll-speed="1.8"
                   data-scroll-delay="0.1"
                 >
-                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                  <Tilt
+                    options={{ max: 20, reverse: true, reset: true, scale: 1 }}
+                  >
                     <NewCardWrap>
                       <CardImgWrap>
                         <CardImg>
@@ -778,7 +881,9 @@ const AboutUs = () => {
                   data-scroll-speed="1"
                   data-scroll-delay="0.8"
                 >
-                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                  <Tilt
+                    options={{ max: 20, reverse: true, reset: true, scale: 1 }}
+                  >
                     <NewCardWrap>
                       <CardImgWrap>
                         <CardImg>
@@ -795,7 +900,9 @@ const AboutUs = () => {
                   data-scroll-speed="1.5"
                   data-scroll-delay="0.8"
                 >
-                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                  <Tilt
+                    options={{ max: 20, reverse: true, reset: true, scale: 1 }}
+                  >
                     <NewCardWrap>
                       <CardImgWrap>
                         <CardImg>
@@ -812,7 +919,9 @@ const AboutUs = () => {
                   data-scroll-speed="2.4"
                   data-scroll-delay="0.1"
                 >
-                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                  <Tilt
+                    options={{ max: 20, reverse: true, reset: true, scale: 1 }}
+                  >
                     <NewCardWrap>
                       <CardImgWrap>
                         <CardImg>
@@ -829,7 +938,9 @@ const AboutUs = () => {
                   data-scroll-speed="4"
                   data-scroll-delay="0.1"
                 >
-                  <Tilt options={{ max: 20, reverse: true,  reset: true, scale: 1 }}>
+                  <Tilt
+                    options={{ max: 20, reverse: true, reset: true, scale: 1 }}
+                  >
                     <NewCardWrap>
                       <CardImgWrap>
                         <CardImg>

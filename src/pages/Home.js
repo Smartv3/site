@@ -23,15 +23,11 @@ function Home() {
   const [menuState, setMenuState] = useState(false);
   const containerRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
-  const [test, setTest] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
     }, 2000);
-    setTimeout(() => {
-      setTest(true);
-    }, 2500);
   }, []);
 
   return (
@@ -58,14 +54,14 @@ function Home() {
           }
           containerRef={containerRef}
         >
-          {/* <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence> */}
+          <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
           <ScrollTriggerProxy />
           <CoverVideo setMenuState={setMenuState} />
           <Menu setMenuState={setMenuState} menu={menuState} />
           <Mouse />
           <AnimatePresence>
             <main className="one" data-scroll-container ref={containerRef}>
-              <HomeHeader loaded={loaded} test={test} />
+              <HomeHeader loaded={loaded}/>
               <AboutUsOne />
               <AboutUs />
               <Career />

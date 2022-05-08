@@ -1,9 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import {useInView} from "react-intersection-observer";
+import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
-import { motion} from "framer-motion";
-import AnimationText from "../components/AnimationText";
+import AnimatedText from "react-animated-text-content";
 
 const Section = styled.section`
   position: relative;
@@ -22,7 +21,7 @@ const Section = styled.section`
 `;
 
 const Container = styled.div`
-  direction: ${props => props.lang === 'ar' ? 'rtl' : 'ltr'};
+  direction: ${(props) => (props.lang === "ar" ? "rtl" : "ltr")};
   display: grid;
   width: 100%;
   align-items: start;
@@ -75,8 +74,8 @@ const Paragraph = styled.div`
 `;
 
 const AboutUsOne = () => {
-  const {t, i18n} = useTranslation()
-  const {inView, ref} = useInView();
+  const { t, i18n } = useTranslation();
+  const { inView, ref } = useInView();
 
   const container1 = {
     visible: {
@@ -90,20 +89,38 @@ const AboutUsOne = () => {
     <Section>
       <Container ref={ref} lang={i18n.language}>
         <Label data-scroll="0" data-scroll-speed="1" data-scroll-delay="0.1">
-          {/* <p>{t("lang10")}</p> */}
-          <motion.div initial="hidden" animate={inView && "visible"} variants={container1}>
-            <AnimationText type={"paragraph"} text={t("lang10")} />
-          </motion.div>
+          <AnimatedText
+            type="words" // animate words or chars
+            animation={{
+              y: "100px",
+              ease: "ease",
+            }}
+            animationType="block"
+            interval={0.06}
+            duration={0.8}
+            tag="p"
+          >
+            {t("lang10")}
+          </AnimatedText>
         </Label>
         <Paragraph
           data-scroll="0"
           data-scroll-speed="1"
           data-scroll-delay="0.1"
         >
-          {/* <p>{t("lang14")}</p> */}
-          <motion.div initial="hidden" animate={inView && "visible"} variants={container1}>
-            <AnimationText type={"paragraph"} text={t("lang14")} />
-          </motion.div>
+          <AnimatedText
+            type="words" // animate words or chars
+            animation={{
+              y: "100px",
+              ease: "ease",
+            }}
+            animationType="block"
+            interval={0.06}
+            duration={0.8}
+            tag="p"
+          >
+            {t("lang14")}
+          </AnimatedText>
         </Paragraph>
       </Container>
     </Section>

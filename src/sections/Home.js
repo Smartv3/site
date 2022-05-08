@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import AnimationText from "../components/AnimationText";
 import AnimatedText from "react-animated-text-content";
 
 const Section = styled.section`
@@ -57,7 +55,7 @@ const Label = styled.div`
   }
 `;
 
-const ParagraphOne = styled.div`
+const Paragraph = styled.div`
   grid-column-end: 8;
   grid-column-start: 2;
   grid-row-end: 4;
@@ -77,141 +75,68 @@ const ParagraphOne = styled.div`
   }
 `;
 
-const ParagraphTwo = styled.div`
-  grid-column-end: 8;
-  grid-column-start: 2;
-  grid-row-end: 4;
-  grid-row-start: 4;
-  align-self: start;
-  overflow: hidden;
-  p {
-    font-size: 4.4vw;
-    font-weight: 600;
-    @media (max-width: 768px) {
-      font-size: 6vw;
-    }
-  }
-  @media (max-width: 768px) {
-    grid-column-start: 1;
-    grid-column-end: 8;
-  }
-`;
-
-const ParagraphThree = styled.div`
-  grid-column-end: 8;
-  grid-column-start: 2;
-  grid-row-end: 5;
-  grid-row-start: 5;
-  align-self: start;
-  overflow: hidden;
-  p {
-    font-size: 4.4vw;
-    font-weight: 600;
-    @media (max-width: 768px) {
-      font-size: 6vw;
-    }
-  }
-  @media (max-width: 768px) {
-    grid-column-start: 1;
-    grid-column-end: 8;
-  }
-`;
-
-const Home = (props) => {
+const Home = () => {
   const { t, i18n } = useTranslation();
-
-  const container1 = {
-    visible: {
-      transition: {
-        staggerChildren: 0.025,
-      },
-    },
-  };
-
-  const container2 = {
-    visible: {
-      transition: {
-        staggerChildren: 0.027,
-      },
-    },
-  };
-
-  const container3 = {
-    visible: {
-      transition: {
-        staggerChildren: 0.029,
-      },
-    },
-  };
-
-  const container4 = {
-    visible: {
-      transition: {
-        staggerChildren: 0.031,
-      },
-    },
-  };
 
   return (
     <Section>
-      <Container lang={i18n.language} className="col__content-title">
-        {/* <Label>
-          <motion.div initial="hidden" animate={props.test && "visible"} variants={container1}>
-            <AnimationText type={"paragraph"} text={t("lang10")} />
-          </motion.div>
-        </Label>
-        <ParagraphOne>
-          <motion.div initial="hidden" animate={props.test && "visible"} variants={container2}>
-            <AnimationText type={"paragraph"} text={t("lang11")} />
-          </motion.div>
-        </ParagraphOne>
-        <ParagraphTwo>
-          <motion.div initial="hidden" animate={props.test && "visible"} variants={container3}>
-            <AnimationText type={"paragraph"} text={t("lang12")} />
-          </motion.div>
-        </ParagraphTwo>
-        <ParagraphThree>
-          <motion.div initial="hidden" animate={props.test && "visible"} variants={container4}>
-            <AnimationText type={"paragraph"} text={t("lang13")} />
-          </motion.div>
-        </ParagraphThree> */}
-
+      <Container lang={i18n.language}>
         <Label>
           <AnimatedText
             type="words" // animate words or chars
             animation={{
               y: "100px",
-              
               ease: "ease",
             }}
             animationType="block"
             interval={0.06}
             duration={0.8}
             tag="p"
-            
-           
           >
             {t("lang10")}
           </AnimatedText>
         </Label>
-        <ParagraphOne>
+        <Paragraph>
           <AnimatedText
             type="words" // animate words or chars
             animation={{
               y: "100px",
-              
               ease: "ease",
             }}
             animationType="block"
             interval={0.06}
             duration={0.8}
             tag="p"
-            
-           
           >
             {t("lang11")}
           </AnimatedText>
-        </ParagraphOne>
+          <AnimatedText
+            type="words" // animate words or chars
+            animation={{
+              y: "100px",
+              ease: "ease",
+            }}
+            animationType="block"
+            interval={0.06}
+            duration={0.9}
+            tag="p"
+          >
+            {t("lang12")}
+          </AnimatedText>
+          <AnimatedText
+            type="words" // animate words or chars
+            animation={{
+              y: "100px",
+              ease: "ease",
+            }}
+            animationType="block"
+            interval={0.06}
+            duration={0.95}
+            tag="p"
+          >
+            {t("lang13")}
+          </AnimatedText>
+        </Paragraph>
       </Container>
     </Section>
   );
