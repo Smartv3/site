@@ -58,7 +58,7 @@ function Home() {
           }
           containerRef={containerRef}
         >
-          <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
+          {/* <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence> */}
           <ScrollTriggerProxy />
           <CoverVideo setMenuState={setMenuState} />
           <Menu setMenuState={setMenuState} menu={menuState} />

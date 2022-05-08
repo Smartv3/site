@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import AnimationText from "../components/AnimationText";
+import AnimatedText from "react-animated-text-content";
 
 const Section = styled.section`
   position: relative;
@@ -154,7 +155,7 @@ const Home = (props) => {
   return (
     <Section>
       <Container lang={i18n.language} className="col__content-title">
-        <Label>
+        {/* <Label>
           <motion.div initial="hidden" animate={props.test && "visible"} variants={container1}>
             <AnimationText type={"paragraph"} text={t("lang10")} />
           </motion.div>
@@ -173,7 +174,44 @@ const Home = (props) => {
           <motion.div initial="hidden" animate={props.test && "visible"} variants={container4}>
             <AnimationText type={"paragraph"} text={t("lang13")} />
           </motion.div>
-        </ParagraphThree>
+        </ParagraphThree> */}
+
+        <Label>
+          <AnimatedText
+            type="words" // animate words or chars
+            animation={{
+              y: "100px",
+              
+              ease: "ease",
+            }}
+            animationType="block"
+            interval={0.06}
+            duration={0.8}
+            tag="p"
+            
+           
+          >
+            {t("lang10")}
+          </AnimatedText>
+        </Label>
+        <ParagraphOne>
+          <AnimatedText
+            type="words" // animate words or chars
+            animation={{
+              y: "100px",
+              
+              ease: "ease",
+            }}
+            animationType="block"
+            interval={0.06}
+            duration={0.8}
+            tag="p"
+            
+           
+          >
+            {t("lang11")}
+          </AnimatedText>
+        </ParagraphOne>
       </Container>
     </Section>
   );
