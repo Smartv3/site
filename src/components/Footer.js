@@ -225,9 +225,7 @@ const Footer = () => {
             <Label>{t("lang42")}</Label>
             <InView>
               {({ inView, ref, entry }) => (
-                <List
-                  ref={ref}
-                >
+                <List ref={ref}>
                   <CustomLink
                     style={{ color: hover.main ? "#fff" : "#9e9e9e" }}
                     onMouseOver={() => setHover({ ...hover, main: true })}
@@ -235,27 +233,26 @@ const Footer = () => {
                     to="/"
                   >
                     <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-                      >
-                        <AnimationText type={"paragraph"} text={t("lang01")} />
-                      </motion.div>
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang01")} />
+                    </motion.div>
                   </CustomLink>
                   <CustomLink
-                        style={{ color: hover.aboutUs ? "#fff" : "#9e9e9e" }}
+                    style={{ color: hover.aboutUs ? "#fff" : "#9e9e9e" }}
                     onMouseOver={() => setHover({ ...hover, aboutUs: true })}
                     onMouseOut={() => setHover({ aboutUs: false })}
                     to="/about-us"
                   >
                     <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-
-                      >
-                        <AnimationText type={"paragraph"} text={t("lang02")} />
-                      </motion.div>
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang02")} />
+                    </motion.div>
                   </CustomLink>
                   <CustomLink
                     style={{ color: hover.contactUs ? "#fff" : "#9e9e9e" }}
@@ -264,13 +261,12 @@ const Footer = () => {
                     to="/contact-us"
                   >
                     <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-
-                      >
-                        <AnimationText type={"paragraph"} text={t("lang03")} />
-                      </motion.div>
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang03")} />
+                    </motion.div>
                   </CustomLink>
                   <CustomLinkA
                     style={{ color: hover.joinAsCaptain ? "#fff" : "#9e9e9e" }}
@@ -281,13 +277,12 @@ const Footer = () => {
                     href="https://register.captingirl.com/#/Registration"
                   >
                     <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-
-                      >
-                        <AnimationText type={"paragraph"} text={t("lang04")} />
-                      </motion.div>
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang04")} />
+                    </motion.div>
                   </CustomLinkA>
                 </List>
               )}
@@ -295,41 +290,39 @@ const Footer = () => {
           </Pages>
           <Legal>
             <Label>{t("lang43")}</Label>
-                        <InView>
+            <InView>
               {({ inView, ref, entry }) => (
-            <List ref={ref}>
-              <CustomLink
-                style={{ color: hover.term ? "#fff" : "#9e9e9e" }}
-                onMouseOver={() => setHover({ ...hover, term: true })}
-                onMouseOut={() => setHover({ term: false })}
-                to="/term-and-condition"
-              >
-                <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-
-                      >
-                        <AnimationText type={"paragraph"} text={t("lang06")} />
-                      </motion.div>
-              </CustomLink>
-              <CustomLink
-                style={{ color: hover.policy ? "#fff" : "#9e9e9e" }}
-                onMouseOver={() => setHover({ ...hover, policy: true })}
-                onMouseOut={() => setHover({ policy: false })}
-                to="/privacy-and-policy"
-              >
-                <motion.div
-                        initial="hidden"
-                        animate={inView && "visible"}
-                        variants={container1}
-
-                      >
-                        <AnimationText type={"paragraph"} text={t("lang07")} />
-                      </motion.div>
-              </CustomLink>
-            </List>
-            )}
+                <List ref={ref}>
+                  <CustomLink
+                    style={{ color: hover.term ? "#fff" : "#9e9e9e" }}
+                    onMouseOver={() => setHover({ ...hover, term: true })}
+                    onMouseOut={() => setHover({ term: false })}
+                    to="/term-and-condition"
+                  >
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang06")} />
+                    </motion.div>
+                  </CustomLink>
+                  <CustomLink
+                    style={{ color: hover.policy ? "#fff" : "#9e9e9e" }}
+                    onMouseOver={() => setHover({ ...hover, policy: true })}
+                    onMouseOut={() => setHover({ policy: false })}
+                    to="/privacy-and-policy"
+                  >
+                    <motion.div
+                      initial="hidden"
+                      animate={inView && "visible"}
+                      variants={container1}
+                    >
+                      <AnimationText type={"paragraph"} text={t("lang07")} />
+                    </motion.div>
+                  </CustomLink>
+                </List>
+              )}
             </InView>
           </Legal>
           <FooterLogo>

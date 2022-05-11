@@ -92,7 +92,7 @@ const Paragraph = styled.div`
 `;
 
 const Title = styled.div`
-  grid-column-end: 6;
+  grid-column-end: 7;
   grid-column-start: 2;
   grid-row-end: 2;
   grid-row-start: 1;

@@ -151,7 +151,7 @@ const ImageContainer = styled.div`
 `;
 
 const Title = styled.div`
-  color: #000;
+  color: #bc668c;
   font-size: 2vw;
 
   font-weight: 400;
@@ -208,7 +208,7 @@ const AboutUs = () => {
           containerRef={containerRef}
         >
           <AnimatePresence>
-            <AboutUsCover setMenuState={setMenuState} />
+            <AboutUsCover setMenuState={setMenuState} menu={menuState}/>
             <Menu setMenuState={setMenuState} menu={menuState} />
             <Mouse />
             <main data-scroll-container ref={containerRef}>

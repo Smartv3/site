@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import MainVideo from "../assets/Video/sequence.mp4";
 import { CursorContext } from "../helper/CursorContextProvider";
 
@@ -42,7 +43,7 @@ const NavLogo = styled.div`
   position: fixed;
   left: 8vw;
   top: 80px;
-  z-index: 5;
+  z-index: 7;
   svg {
     width: 5.1rem;
     height: 100%;
@@ -58,13 +59,13 @@ const NavLogo = styled.div`
   }
 `;
 
-const Button = styled.div`
+const Button = styled(motion.div)`
   display: flex;
   align-items: center;
   position: fixed;
   right: 8vw;
   top: 80px;
-  z-index: 5;
+  z-index: 7;
   height: 30px;
   border: none;
   @media (max-width: 768px) {
@@ -89,26 +90,58 @@ const Label = styled.div`
   }
 `;
 
-const CoverVideo = ({ setMenuState }) => {
-  const {t, i18n} = useTranslation()
+const CoverVideo = ({ setMenuState, menu }) => {
+  const { t, i18n } = useTranslation();
   const enLanguageHandler = () => {
-    window.location.reload()
-    localStorage.setItem('lang', 'en')
-  }
+    window.location.reload();
+    localStorage.setItem("lang", "en");
+  };
 
   const arLanguageHandler = () => {
-    window.location.reload()
-    localStorage.setItem('lang', 'ar')
-  }
- 
+    window.location.reload();
+    localStorage.setItem("lang", "ar");
+  };
+
   React.useEffect(() => {
-    i18n.changeLanguage(localStorage.getItem("lang"))
-  }, [i18n])
+    i18n.changeLanguage(localStorage.getItem("lang"));
+  }, [i18n]);
 
   const [, setCursor] = React.useContext(CursorContext);
   const toggleCursor = React.useCallback(() => {
     setCursor(({ active }) => ({ active: !active }));
   });
+
+  const showOpenMenu = {
+    hidden: {
+      opacity: 0,
+      display: "none",
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.3 },
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        ease: [0.455, 0.03, 0.515, 0.955],
+        delay: 0.5,
+        duration: 0.6,
+      },
+    },
+  };
+
+  const showCloseMenu = {
+    hidden: {
+      opacity: 0,
+      display: "none",
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.3 },
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        ease: [0.455, 0.03, 0.515, 0.955],
+        delay: 0.5,
+        duration: 0.2,
+      },
+    },
+  };
 
   return (
     <>
@@ -116,10 +149,7 @@ const CoverVideo = ({ setMenuState }) => {
         <DarkOverlay />
         <video src={MainVideo} type="video/mp4" autoPlay muted loop />
       </VideoContainer>
-      <NavLogo
-      onMouseEnter={toggleCursor}
-      onMouseLeave={toggleCursor}
-      >
+      <NavLogo onMouseEnter={toggleCursor} onMouseLeave={toggleCursor}>
         <Link to="/">
           <svg
             id="Layer_1"
@@ -193,15 +223,35 @@ const CoverVideo = ({ setMenuState }) => {
           </svg>
         </Link>
       </NavLogo>
-      <Button>
-        <Label onClick={i18n.language === "ar" ? enLanguageHandler : arLanguageHandler } style={{cursor: 'pointer'}}>{i18n.language === "ar" ? t("lang61") : t("lang60") }</Label>
-        <Col style={{cursor: 'pointer'}} onClick={() => setMenuState(true)}>
-          <Dash onClick={() => setMenuState(true)} />
+      <Button
+        initial="visible"
+        animate={menu ? "hidden" : "visible"}
+        variants={showOpenMenu}
+      >
+        <Label
+          onClick={
+            i18n.language === "ar" ? enLanguageHandler : arLanguageHandler
+          }
+          style={{ cursor: "pointer" }}
+        >
+          {i18n.language === "ar" ? t("lang61") : t("lang60")}
+        </Label>
+        <Col style={{ cursor: "pointer" }} onClick={() => setMenuState(!menu)}>
+          <Dash onClick={() => setMenuState(!menu)} />
           <Dash
-            onClick={() => setMenuState(true)}
+            onClick={() => setMenuState(!menu)}
             style={{ marginTop: 4, width: 18 }}
           />
         </Col>
+      </Button>
+      <Button
+        initial="visible"
+        animate={menu ? "visible" : "hidden"}
+        variants={showCloseMenu}
+        onClick={() => setMenuState(!menu)}
+      >
+        <Label style={{ cursor: "pointer", color: '#9E9E9F' }}>{t("lang59")}</Label>
+        <Dash />
       </Button>
     </>
   );

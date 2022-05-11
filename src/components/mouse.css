@@ -7,7 +7,7 @@
   border-radius: 16px;
   mix-blend-mode: difference;
   background-color: white;
-  z-index: 6;
+  z-index: 8;
   pointer-events: none;
 }
 

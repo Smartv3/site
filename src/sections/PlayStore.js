@@ -13,7 +13,6 @@ const Section = styled.section`
 const Container = styled.div`
   padding: 8vw;
   position: relative;
-  /* z-index: 4; */
   display: flex;
   overflow: hidden;
   max-width: 100%;

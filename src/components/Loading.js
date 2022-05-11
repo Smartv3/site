@@ -12,7 +12,7 @@ const Section = styled(motion.section)`
   justify-content: center;
   align-items: center;
   svg {
-    width: 100%;
+    width: 50%;
     @media (max-width: 768px) {
       width: 50%;
     }
@@ -34,7 +34,7 @@ const Loading = () => {
               ".b53d451f-54bf-43e5-aa83-296067cc2974,.b9b11289-3899-404d-ad2f-8ee6f1d47191{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:2px;}.b53d451f-54bf-43e5-aa83-296067cc2974{stroke-dasharray:12.02 12.02;}.a5868201-5ed3-40da-93ad-818a32ed55ae{fill:url(#b81321e8-f2aa-4c5b-89b9-422309e41b5b);}.f49f149f-31ab-49da-80dd-2daf4f231d4b{fill:#802382;}.aa0b234a-d86a-4922-88a9-fe4d65ca89a8{fill:#fff;}"
             } */}
             {
-              ".b53d451f-54bf-43e5-aa83-296067cc2974,.b9b11289-3899-404d-ad2f-8ee6f1d47191{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:2px;stroke-dasharray:12.02}.a5868201-5ed3-40da-93ad-818a32ed55ae{fill:url(#b81321e8-f2aa-4c5b-89b9-422309e41b5b);}.f49f149f-31ab-49da-80dd-2daf4f231d4b{fill:#802382;}.aa0b234a-d86a-4922-88a9-fe4d65ca89a8{fill:#fff;}"
+              ".b53d451f-54bf-43e5-aa83-296067cc2974,.b9b11289-3899-404d-ad2f-8ee6f1d47191{fill:none;stroke-miterlimit:10;}.a5868201-5ed3-40da-93ad-818a32ed55ae{fill:url(#b81321e8-f2aa-4c5b-89b9-422309e41b5b);}.f49f149f-31ab-49da-80dd-2daf4f231d4b{fill:#802382;}.aa0b234a-d86a-4922-88a9-fe4d65ca89a8{fill:#fff;}"
             }
           </style>
           <linearGradient
@@ -58,6 +58,9 @@ const Loading = () => {
           transition={{ duration: 1, repeat: Infinity }}
           class="b53d451f-54bf-43e5-aa83-296067cc2974"
           d="M1141.17,562.5c-66.79,4.84-98,15-139.88,27.2-119.14,34.76-217,73.3-303.63,24.53-52.51-29.56-107.5-55.61-124.16-60.89-44-14-51.38-17.41-106.2-40.21-26.27-10.93-51.55-21.44-57.9-43.27C397.4,428.64,456,358,514.21,364.62c23.56,2.67,46.5,18,58.14,39.5,28.31,52.39-14,134.7-70.56,164.1-32.39,16.83-56.46,9.56-117.81,7.94C339.5,575,224,590,143,604.94"
+          stroke="#fff"
+          strokeWidth="2"
+          strokeDasharray="1"
         />
         <path
           class="a5868201-5ed3-40da-93ad-818a32ed55ae"

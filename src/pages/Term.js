@@ -187,7 +187,7 @@ const Term = () => {
           containerRef={containerRef}
         >
           <AnimatePresence>
-            <Header setMenuState={setMenuState} />
+            <Header setMenuState={setMenuState} menu={menuState}/>
             <Menu setMenuState={setMenuState} menu={menuState} />
             <Mouse />
             <main data-scroll-container ref={containerRef}>
