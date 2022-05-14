@@ -173,7 +173,7 @@ const CardMask = styled.div`
   perspective: 1000px;
   @media (max-width: 768px) {
     width: 40vw;
-    height: 90vw;
+    /* height: 90vw; */
   }
 `;
 
