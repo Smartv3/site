@@ -174,9 +174,11 @@ const Privacy = () => {
             smooth: true,
             // ... all available Locomotive Scroll instance options
             smartphone: {
+              breakpoint: 0,
               smooth: true,
             },
             tablet: {
+              breakpoint: 0,
               smooth: true,
             },
           }}

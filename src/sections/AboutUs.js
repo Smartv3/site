@@ -168,7 +168,7 @@ const HomeNewsInnerGrid = styled.div`
 
 const CardMask = styled.div`
   width: 20.6vw;
-  height: 34.7vw;
+  /* height: 34.7vw; */
   margin-bottom: 2vw;
   perspective: 1000px;
   @media (max-width: 768px) {
@@ -189,9 +189,6 @@ const NewCardWrap = styled.div`
 const CardImgWrap = styled.div`
   width: 100%;
   height: 100%;
-  transform: rotate(0deg);
-  @media (max-width: 768px) {
-  }
 `;
 
 const CardImg = styled.div`
@@ -201,21 +198,17 @@ const CardImg = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  transform: rotate(0deg);
   color: #fff;
-  scale: 3;
+  /* scale: 3; */
   text-decoration: none;
   img {
     width: 100%;
     height: 100%;
     max-width: none;
     object-fit: cover;
-
     user-select: none;
     vertical-align: middle;
     display: inline-block;
-  }
-  @media (max-width: 768px) {
   }
 `;
 
@@ -239,11 +232,8 @@ const CardOverlay = styled.div`
     rgba(0, 0, 0, 0.1),
     rgba(16, 16, 16, 0.8)
   );
-  transform: rotate(0deg);
   color: #fff;
   text-decoration: none;
-  @media (max-width: 768px) {
-  }
 `;
 
 const AboutUs = () => {
@@ -336,7 +326,7 @@ const AboutUs = () => {
   }
   return (
     <>
-      <Section lang={i18n.language} className="one" ref={reference}>
+      <Section data-scroll-container lang={i18n.language} className="one" ref={reference}>
         <div id="two">
           <Container>
             <div id="th">

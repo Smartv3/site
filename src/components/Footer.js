@@ -188,9 +188,9 @@ const IconLink = styled.a`
   width: 100%;
   height: 100%;
   justify-content: center;
-  -webkit-box-align: center;
+  /* -webkit-box-align: center;
   -webkit-align-items: center;
-  -ms-flex-align: center;
+  -ms-flex-align: center; */
   align-items: center;
   img {
     height: 10px;
@@ -218,7 +218,7 @@ const Footer = () => {
   };
 
   return (
-    <Section>
+    <Section data-scroll-container>
       <FooterContainer>
         <FooterGrid lang={i18n.language}>
           <Pages>

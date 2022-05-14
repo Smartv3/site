@@ -1,9 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ImageUrl from "../assets/Images/aboutUs.webp";
-import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import ImageUrl from "../assets/Images/aboutUs.webp";
 import { CursorContext } from "../helper/CursorContextProvider";
 
 const ImageContainer = styled.section`
@@ -225,35 +225,40 @@ const AboutUsCover = ({ setMenuState, menu }) => {
           </Link>
         </NavLogo>
         <Button
-        initial="visible"
-        animate={menu ? "hidden" : "visible"}
-        variants={showOpenMenu}
-      >
-        <Label
-          onClick={
-            i18n.language === "ar" ? enLanguageHandler : arLanguageHandler
-          }
-          style={{ cursor: "pointer" }}
+          initial="visible"
+          animate={menu ? "hidden" : "visible"}
+          variants={showOpenMenu}
         >
-          {i18n.language === "ar" ? t("lang61") : t("lang60")}
-        </Label>
-        <Col style={{ cursor: "pointer" }} onClick={() => setMenuState(!menu)}>
-          <Dash onClick={() => setMenuState(!menu)} />
-          <Dash
+          <Label
+            onClick={
+              i18n.language === "ar" ? enLanguageHandler : arLanguageHandler
+            }
+            style={{ cursor: "pointer" }}
+          >
+            {i18n.language === "ar" ? t("lang61") : t("lang60")}
+          </Label>
+          <Col
+            style={{ cursor: "pointer" }}
             onClick={() => setMenuState(!menu)}
-            style={{ marginTop: 4, width: 18 }}
-          />
-        </Col>
-      </Button>
-      <Button
-        initial="visible"
-        animate={menu ? "visible" : "hidden"}
-        variants={showCloseMenu}
-        onClick={() => setMenuState(!menu)}
-      >
-        <Label style={{ cursor: "pointer", color: '#9E9E9F' }}>{t("lang59")}</Label>
-        <Dash />
-      </Button>
+          >
+            <Dash onClick={() => setMenuState(!menu)} />
+            <Dash
+              onClick={() => setMenuState(!menu)}
+              style={{ marginTop: 4, width: 18 }}
+            />
+          </Col>
+        </Button>
+        <Button
+          initial="visible"
+          animate={menu ? "visible" : "hidden"}
+          variants={showCloseMenu}
+          onClick={() => setMenuState(!menu)}
+        >
+          <Label style={{ cursor: "pointer", color: "#9E9E9F" }}>
+            {t("lang59")}
+          </Label>
+          <Dash />
+        </Button>
       </div>
     </>
   );

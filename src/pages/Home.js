@@ -35,7 +35,7 @@ function Home() {
       setTest(true);
     }, 2500);
   }, []);
-
+  
   return (
     <>
       <GlobalStyles />
@@ -45,9 +45,11 @@ function Home() {
             smooth: true,
             // ... all available Locomotive Scroll instance options
             smartphone: {
+              breakpoint: 0,
               smooth: true,
             },
             tablet: {
+              breakpoint: 0,
               smooth: true,
             },
           }}
@@ -61,13 +63,13 @@ function Home() {
           containerRef={containerRef}
         >
           <AnimatePresence>{loaded ? null : <Loader />}</AnimatePresence>
-          <ScrollTriggerProxy />
           <CoverVideo setMenuState={setMenuState} menu={menuState}/>
+          <ScrollTriggerProxy />
           <Menu setMenuState={setMenuState} menu={menuState} />
           <Mouse />
           <AnimatePresence>
             <main className="one" data-scroll-container ref={containerRef}>
-              <HomeHeader loaded={loaded} test={test} />
+              <HomeHeader test={test} />
               <AboutUsOne />
               <AboutUs />
               <Career />

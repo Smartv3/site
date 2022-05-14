@@ -41,7 +41,7 @@ const CardImage = styled.div`
 
 const PlayStore = () => {
   return (
-    <Section>
+    <Section data-scroll-container>
       <Container>
         <CardImage
           data-scroll="0"

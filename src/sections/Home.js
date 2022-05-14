@@ -152,7 +152,7 @@ const Home = (props) => {
   };
 
   return (
-    <Section>
+    <Section data-scroll-container>
       <Container lang={i18n.language} className="col__content-title">
         <Label>
           <motion.div initial="hidden" animate={props.test && "visible"} variants={container1}>

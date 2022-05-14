@@ -38,7 +38,7 @@ const MenuSection = styled.div`
   grid-column-gap: 16px;
   grid-row-gap: 16px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: -webkit-max-content -webkit-max-content auto -webkit-max-content;
+  /* grid-template-rows: -webkit-max-content -webkit-max-content auto -webkit-max-content; */
   grid-template-rows: max-content max-content auto max-content;
 `;
 
@@ -110,13 +110,13 @@ const LatestCardImage = styled(motion.div)`
   height: 14vw;
   margin-left: 2vw;
   align-items: stretch;
-  background-image: -webkit-gradient(
+  /* background-image: -webkit-gradient(
     linear,
     left top,
     left bottom,
     from(rgba(0, 0, 0, 0.1)),
     to(rgba(16, 16, 16, 0.8))
-  );
+  ); */
   background-image: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.1),
