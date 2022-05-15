@@ -148,25 +148,12 @@ const CoverVideo = ({ setMenuState, menu }) => {
     <>
       <VideoContainer>
         <DarkOverlay />
-        {/* <video
-          style={{ backgroundColor: "#000" }}
-          src={MainVideoMp4}
-          type="video/mp4"
-          autoPlay
-          muted
-          loop
-          playsinline
-        /> */}
-
-        {/* <video autoplay loop muted playsinline> */}
-        {/* <video loop={true} muted={true} autoplay={true} playsinline={true}>
-          <source src={MainVideoMp4} type="video/mp4" />
-          <source src={MainVideoWebm} type="video/webm" />
-        </video> */}
-
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `
+        {window.chrome ? (
+          <video src={MainVideoMp4} type="video/mp4" autoPlay muted loop />
+        ) : (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `
             <video
               loop
               muted
@@ -175,8 +162,9 @@ const CoverVideo = ({ setMenuState, menu }) => {
             >
             <source src="${MainVideoMp4}" type="video/mp4" />
             </video>`,
-          }}
-        />
+            }}
+          />
+        )}
       </VideoContainer>
       <NavLogo onMouseEnter={toggleCursor} onMouseLeave={toggleCursor}>
         <Link to="/">
