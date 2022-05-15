@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import MainVideo from "../assets/Video/sequence.mp4";
+import MainVideoMp4 from "../assets/Video/sequence.mp4";
+import MainVideoWebm from "../assets/Video/sequence.webm";
 import { CursorContext } from "../helper/CursorContextProvider";
 
 const VideoContainer = styled.section`
@@ -17,7 +18,7 @@ const VideoContainer = styled.section`
     object-fit: cover;
     top: 0;
     padding: none;
-    position: fixed; /* optional depending on what you want to do in your app */
+    position: absolute; /* optional depending on what you want to do in your app */
     z-index: -1;
   }
 `;
@@ -147,7 +148,35 @@ const CoverVideo = ({ setMenuState, menu }) => {
     <>
       <VideoContainer>
         <DarkOverlay />
-        <video src={MainVideo} type="video/mp4" autoPlay muted loop />
+        {/* <video
+          style={{ backgroundColor: "#000" }}
+          src={MainVideoMp4}
+          type="video/mp4"
+          autoPlay
+          muted
+          loop
+          playsinline
+        /> */}
+
+        {/* <video autoplay loop muted playsinline> */}
+        {/* <video loop={true} muted={true} autoplay={true} playsinline={true}>
+          <source src={MainVideoMp4} type="video/mp4" />
+          <source src={MainVideoWebm} type="video/webm" />
+        </video> */}
+
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+            <video
+              loop
+              muted
+              autoplay
+              playsinline
+            >
+            <source src="${MainVideoMp4}" type="video/mp4" />
+            </video>`,
+          }}
+        />
       </VideoContainer>
       <NavLogo onMouseEnter={toggleCursor} onMouseLeave={toggleCursor}>
         <Link to="/">
@@ -250,7 +279,9 @@ const CoverVideo = ({ setMenuState, menu }) => {
         variants={showCloseMenu}
         onClick={() => setMenuState(!menu)}
       >
-        <Label style={{ cursor: "pointer", color: '#9E9E9F' }}>{t("lang59")}</Label>
+        <Label style={{ cursor: "pointer", color: "#9E9E9F" }}>
+          {t("lang59")}
+        </Label>
         <Dash />
       </Button>
     </>
