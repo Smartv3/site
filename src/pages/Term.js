@@ -192,7 +192,7 @@ const Term = () => {
             <Header setMenuState={setMenuState} menu={menuState}/>
             <Menu setMenuState={setMenuState} menu={menuState} />
             <Mouse />
-            <main ref={containerRef}>
+            <main data-scroll-container ref={containerRef}>
               <Section lang={i18n.language}>
                 <Container>
                   <MainHeader>

@@ -68,7 +68,7 @@ function Home() {
           <Menu setMenuState={setMenuState} menu={menuState} />
           <Mouse />
           <AnimatePresence>
-            <main className="one" ref={containerRef}>
+            <main className="one" data-scroll-container ref={containerRef}>
               <HomeHeader test={test} />
               <AboutUsOne />
               <AboutUs />

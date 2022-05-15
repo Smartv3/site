@@ -213,7 +213,7 @@ const AboutUs = () => {
             <AboutUsCover setMenuState={setMenuState} menu={menuState}/>
             <Menu setMenuState={setMenuState} menu={menuState} />
             <Mouse />
-            <main ref={containerRef}>
+            <main data-scroll-container ref={containerRef}>
               <Section>
                 <Container lang={i18n.language}>
                   <Label>

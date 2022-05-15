@@ -8,6 +8,15 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
 }
 
+html.has-scroll-smooth {
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
 body{
     overflow-x: hidden;
     font-family: MyFont;
