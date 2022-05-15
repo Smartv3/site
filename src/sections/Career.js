@@ -74,7 +74,7 @@ const Career = () => {
     },
   };
   return (
-    <Section data-scroll-container>
+    <Section>
       <Container lang={i18n.language}>
         <InView>
           {({ inView, ref, entry }) => (

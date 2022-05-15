@@ -87,7 +87,7 @@ const AboutUsOne = () => {
   };
 
   return (
-    <Section data-scroll-container>
+    <Section>
       <Container ref={ref} lang={i18n.language}>
         <Label data-scroll="0" data-scroll-speed="1" data-scroll-delay="0.1">
           {/* <p>{t("lang10")}</p> */}

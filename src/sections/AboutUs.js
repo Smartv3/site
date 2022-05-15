@@ -326,7 +326,7 @@ const AboutUs = () => {
   }
   return (
     <>
-      <Section data-scroll-container lang={i18n.language} className="one" ref={reference}>
+      <Section lang={i18n.language} className="one" ref={reference}>
         <div id="two">
           <Container>
             <div id="th">

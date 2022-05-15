@@ -218,7 +218,7 @@ const Footer = () => {
   };
 
   return (
-    <Section data-scroll-container>
+    <Section>
       <FooterContainer>
         <FooterGrid lang={i18n.language}>
           <Pages>
