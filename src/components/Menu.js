@@ -106,10 +106,10 @@ const NewsContainer = styled.div`
 const LatestCardImage = styled(motion.div)`
   display: flex;
   overflow: hidden;
-  width: auto;
+  width: 100%;
   height: 14vw;
   margin-left: 2vw;
-  align-items: stretch;
+  /* align-items: stretch; */
   /* background-image: -webkit-gradient(
     linear,
     left top,
@@ -122,6 +122,9 @@ const LatestCardImage = styled(motion.div)`
     rgba(0, 0, 0, 0.1),
     rgba(16, 16, 16, 0.8)
   );
+  img {
+    width: 100%;
+  }
   transform: rotate(0deg);
   color: #fff;
   text-decoration: none;
@@ -480,7 +483,7 @@ const Menu = ({ setMenuState, menu }) => {
                 <img
                   src={ImageOne}
                   loading="lazy"
-                  sizes="100vw"
+                  // sizes="100vw"
                   alt="Latest news"
                 />
               </LatestCardImage>
@@ -492,7 +495,7 @@ const Menu = ({ setMenuState, menu }) => {
                 <img
                   src={ImageTwo}
                   loading="lazy"
-                  sizes="100vw"
+                  // sizes="100vw"
                   alt="Latest news"
                 />
               </LatestCardImage>
