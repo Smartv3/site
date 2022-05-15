@@ -7,7 +7,7 @@ import { createRoot } from "react-dom/client";
 import "./i18n";
 
 // After
-// Build 38
+// Build 39
 
 const container = document.getElementById("root");
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
