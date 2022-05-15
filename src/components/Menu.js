@@ -124,6 +124,7 @@ const LatestCardImage = styled(motion.div)`
   );
   img {
     width: 100%;
+    object-fit: cover;
   }
   transform: rotate(0deg);
   color: #fff;
